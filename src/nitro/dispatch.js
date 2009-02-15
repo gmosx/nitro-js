@@ -2,6 +2,8 @@ var Request = require("jack/request").Request,
     Response = require("jack/response").Response,
     MIME = require("jack/mime").Mime;
     
+var Template = require("text/template/jst").Template;
+    
 /* 
  * Split the Request uri into path and ext (extension) components. 
  * Also provides special handling for id argument:
@@ -38,7 +40,7 @@ var splitURI = function(request) {
 
 /**
  * Dispatch
- * The default Nitro middleware, dispatches HTTP Requests to action scripts.
+ * The default Nitro app, dispatches HTTP Requests to action scripts.
  */    
 var Dispatch = exports.Dispatch = function() {
     return function(env) {
@@ -50,18 +52,21 @@ var Dispatch = exports.Dispatch = function() {
         parts = splitURI(request);
         path = parts[0];
         ext = parts[1];
-        
-        response.setHeader("Content-Type", MIME.mimeType(ext));
+
+        response.setHeader("X-Powered-By", "Nitro");
+        response.setHeader("Content-Type", MIME.mimeType(ext) + "; charset=utf-8"); 
 
         var action = require(path + ext + ".js")[request.requestMethod()];
 
-        var res = action(request, response);
-/*        
-        var template = Template.load();
-        var body = template.render(args);
-        response.write(body);
-        response.write("nitro");
-*/        
+        var args = action(request, response);
+
+        var template;
+        
+        if (template = Template.load("root/" + path + ext)) {
+            var body = template.render(args || {});
+            response.write(body);
+        }
+        
         return response.finish();
     }
 }
