@@ -56,23 +56,26 @@ var Dispatch = exports.Dispatch = function() {
         response.setHeader("X-Powered-By", "Nitro");
         response.setHeader("Content-Type", MIME.mimeType(ext) + "; charset=utf-8"); 
 
-        var action = require(path + ext + ".js")[request.requestMethod()];
+        var action, args;
 
-        var args = action(request, response);
-
-        var template;
+        try {
+            action = require(path + ext + ".js")[request.requestMethod()];
+            args = action(request, response);
+        } catch (e) {
+            // no action.
+        }
         
-        if (template = Template.load("root/" + path + ext)) {
-            var body = template.render(args || {});
-            response.write(body);
+        if (typeof args === "string") {
+            response.write(args);
+        } else {
+            var template;
+            
+            if (template = Template.load("root/" + path + ext)) {
+                response.write(template.render(args || request.GET()));
+            }
         }
         
         return response.finish();
     }
 }
-
-
-/*
-        response.write("Handled by Nitro Dispatch " + request.params("id") + " || " + path + "." + ext + '  <a href="/kookriko">koko</a>" ' + request.referer());
-*/
 

@@ -15,3 +15,6 @@ Template.load = function(path) {
     }
 }
 
+Template.render = function(path, args) {
+    return Template.load(path).render(args);
+}
