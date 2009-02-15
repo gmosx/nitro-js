@@ -2,7 +2,7 @@ var Request = require("jack/request").Request,
     Response = require("jack/response").Response,
     MIME = require("jack/mime").Mime;
     
-var Template = require("text/template/jst").Template;
+var Template = require("nitro/template").Template;
     
 /* 
  * Split the Request uri into path and ext (extension) components. 
