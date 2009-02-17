@@ -1,8 +1,9 @@
 var Request = require("jack/request").Request,
     Response = require("jack/response").Response,
     MIME = require("jack/mime").Mime;
-    
-var Template = require("nitro/template").Template;
+
+var Template = require("nitro/template").Template,
+    File = require("io/file").File;
     
 /* 
  * Split the Request uri into path and ext (extension) components. 
@@ -38,6 +39,30 @@ var splitURI = function(request) {
     return [path.replace(/^\//, ""), ext];
 }
 
+
+/*
+ * TODO: Convert to LRU.
+ */
+var actions = {};
+
+/*
+ * Special require for actions. Checks if the file is changed before reusing the
+ * cached version.
+ */
+var requireAction = function(path) {
+    var lm = File.lastModified("root/" + path);
+    
+    // lm == 0 if the file does not exist.
+    
+    if (0 != lm) { 
+        var key = path + lm;
+        if (!actions[key]) {
+            actions[key] = require2(path);
+        }
+        return actions[key];
+    }
+}
+
 /**
  * Dispatch
  * The default Nitro app, dispatches HTTP Requests to action scripts.
@@ -59,7 +84,7 @@ var Dispatch = exports.Dispatch = function() {
         var action, args;
 
         try {
-            action = require(path + ext + ".js")[request.requestMethod()];
+            action = requireAction(path + ext + ".js")[request.requestMethod()];
             args = action(request, response);
         } catch (e) {
             // no action.
