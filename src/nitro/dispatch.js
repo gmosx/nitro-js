@@ -57,7 +57,7 @@ var requireAction = function(path) {
     if (0 != lm) { 
         var key = path + lm;
         if (!actions[key]) {
-            actions[key] = require2(path);
+            actions[key] = require(path);
         }
         return actions[key];
     }
