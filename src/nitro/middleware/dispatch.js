@@ -1,18 +1,6 @@
 var Response = require("jack/response").Response;
 var File = require("io/file").File;
 
-// Split the path info into path and extension components. 
-// TODO: move rewrites to another middleware or downstream.
-var parsePathInfo = function(env) {
-    var path = env["PATH_INFO"].toString().split("?")[0];
-    if ("/" == path) path = "/index.html";
-
-    var parts = path.split(".");
-    parts[1] = parts[1] || "html";
-        
-    return parts;
-}
-
 // TODO: Convert to LRU.
 var apps = {};
 
@@ -37,9 +25,10 @@ var requireApp = function(path) {
 var Dispatch = exports.Dispatch = function() {
 
     return function(env) {
-        var parts = parsePathInfo(env), path = parts[0], ext = parts[1];
-
+        var path = env["PATH_INFO"].split(".")[0];
+        
         var app = requireApp(path);
+ 
         if (app) {
             return app(env);
         } else {
