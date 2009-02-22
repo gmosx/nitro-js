@@ -1,8 +1,10 @@
 var HashP = require("hashp").HashP;
 
 /** 
- * Normalizes the request. Also provides special handling for id param:
- * resource/*res-title -> resource/id?id=res-title
+ * Normalizes the request and the response. Also provides special handling for 
+ * id param:
+ *   resource/*res-title -> resource/id?id=res-title
+ *
  * This functionality should be implemented in a downstream node.
  */
 var Normalize = exports.Normalize = function(app) {
@@ -16,8 +18,8 @@ var Normalize = exports.Normalize = function(app) {
         env["PATH_INFO"] = path;
 
         var response = app(env);
-        var headers = response[1];
 
+        var headers = response[1];
         HashP.set(headers, "X-Powered-By", "Nitro");
 //      response.setHeader("Content-Type", MIME.mimeType(ext) + "; charset=utf-8"); 
         

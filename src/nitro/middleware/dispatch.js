@@ -7,13 +7,12 @@ var apps = {};
 // Special require for apps. Checks if the file is changed before reusing the
 // cached version.
 var requireApp = function(path) {
-    path = path.replace(/^\//, "") + ".app.js";
-    
-    var lm = File.lastModified("root/" + path);
+    path += ".js";
+    var lm = File.lastModified("scripts" + path);
     
     if (0 != lm) { // lm == 0 if the file does not exist.
         var key = path + lm;
-        if (!apps[key]) apps[key] = requireForce(path);
+        if (!apps[key]) apps[key] = requireForce(path.replace(/^\//, ""));
         return apps[key].app;
     }
 }

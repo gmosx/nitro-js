@@ -1,3 +1,5 @@
+var Response = require("jack/response").Response;
+
 var Template = require("nitro/template").Template;
 
 /**
@@ -5,7 +7,7 @@ var Template = require("nitro/template").Template;
  */
 var Render = exports.Render = function(app, templateRoot) {
 
-    templateRoot = templateRoot || "root";
+    templateRoot = templateRoot || "templates";
 
     // The request parameters are not used as template arguments by default, 
     // this is a major security risk!
