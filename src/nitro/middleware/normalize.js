@@ -17,6 +17,9 @@ var Normalize = exports.Normalize = function(app) {
 
         env["PATH_INFO"] = path;
 
+//      print("...");
+//      for (var i in env) print(i + " : " + env[i]);
+
         var response = app(env);
 
         var headers = response[1];

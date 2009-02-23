@@ -2,7 +2,7 @@ var File = require("io/file").File;
 
 var Request = require("nitro/request").Request,
     Response = require("nitro/response").Response;
-
+    
 // TODO: Convert to LRU.
 var apps = {};
 
@@ -14,8 +14,23 @@ var requireApp = function(path) {
     if (0 != lm) { // lm == 0 if the file does not exist.
         var key = path + lm;
         if (!apps[key]) apps[key] = requireForce(path.replace(/^\//, ""));
-        return apps[key].app;
+        return apps[key];
     }
+}
+
+// This simple method implements the (request, reponse) interface.
+// Can this be refactored?
+// THINK: Calls the .app function for all extensions, is this OK?
+var run = function(app, env) {
+    var request = new Request(env),
+        response = new Response(),
+        ext = request.pathInfo().split(".")[1];
+    
+    var action = app[ext] || app["app"];
+        
+    action(request, response);
+
+    return response.finish();   
 }
 
 /**
@@ -30,11 +45,7 @@ var Dispatch = exports.Dispatch = function() {
         var app = requireApp(path);
  
         if (app) {
-            var request = new Request(env), response = new Response();
-
-            app(request, response);
-
-            return response.finish();
+            return run(app, env);
         } else {
             return new Response("Not found: " + path, 404).finish();
         }
