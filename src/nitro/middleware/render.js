@@ -1,6 +1,7 @@
-var Response = require("jack/response").Response;
+var HashP = require("hashp").HashP;
 
-var Template = require("nitro/template").Template;
+var Response = require("nitro/response").Response,
+    Template = require("nitro/template").Template;
 
 /**
  * Render middleware.
@@ -15,28 +16,23 @@ var Render = exports.Render = function(app, templateRoot) {
     // THINK: only render templates for GET requests (override if neccessary in
     // upstream)?
     return function(env) {
-        var ret = app(env);
-    
-        if ("string" === typeof(ret)) {
-            // Write the upstream output to the response and finish the response.
-            return new Response(ret).finish();
-        } else if ("object" === typeof(ret)) {
-            if (Array === ret.constructor) {
-                // Just return the upstream response.
-                return ret;
-            } else {
-                // Use the upstream arguments to render a template.
-                var template;
-                
-                if (template = Template.load(templateRoot + env["PATH_INFO"])) {
-                    return new Response(template.render(ret)).finish();
-                } else {
-                    // THINK: what to do here?
-                }
+        var response = app(env);
+        var data = HashP.unset(response[1], "X-Set-Data");
+        
+        if (response[0] == 404 || data) {
+            // If no upstream app was found or if the upstream app has set
+            // X-Set-Data attempt to render a temlate.
+        
+            var template;
+
+            if (template = Template.load(templateRoot + env["PATH_INFO"])) {
+                var body = template.render(data);
+                response[2] = body;
+                HashP.set(response[1], "Content-Length", body.length.toString(10));
             }
-        } else {
-            throw "Render middleware: Invalid upstream response";
         }
+
+        return response;
     }
     
 }

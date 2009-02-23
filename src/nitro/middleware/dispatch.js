@@ -1,5 +1,7 @@
-var Response = require("jack/response").Response;
 var File = require("io/file").File;
+
+var Request = require("nitro/request").Request,
+    Response = require("nitro/response").Response;
 
 // TODO: Convert to LRU.
 var apps = {};
@@ -7,8 +9,7 @@ var apps = {};
 // Special require for apps. Checks if the file is changed before reusing the
 // cached version.
 var requireApp = function(path) {
-    path += ".js";
-    var lm = File.lastModified("scripts" + path);
+    var lm = File.lastModified("scripts" + path + ".js");
     
     if (0 != lm) { // lm == 0 if the file does not exist.
         var key = path + lm;
@@ -29,7 +30,11 @@ var Dispatch = exports.Dispatch = function() {
         var app = requireApp(path);
  
         if (app) {
-            return app(env);
+            var request = new Request(env), response = new Response();
+
+            app(request, response);
+
+            return response.finish();
         } else {
             return new Response("Not found: " + path, 404).finish();
         }
