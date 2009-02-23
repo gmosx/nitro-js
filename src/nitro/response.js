@@ -21,13 +21,6 @@ Response.prototype.setData = function(data) {
  * Send a HTTP redirect.
  */
 Response.prototype.redirect = function(uri, status) {
-    throw new Response.Redirect(uri, status);
+    throw { status: status || 303, uri: uri, exceptionType: "HttpRedirect" };
 }
 
-/**
- * Redirect exception
- */ 
-Response.Redirect = function(uri, status) {
-    this.uri = uri;
-    this.status = status;
-}

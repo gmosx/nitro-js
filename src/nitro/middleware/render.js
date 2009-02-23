@@ -29,9 +29,9 @@ var Render = exports.Render = function(app, templateRoot) {
                 var body = template.render(data);
                 response[2] = body;
                 HashP.set(response[1], "Content-Length", body.length.toString(10));
-            }
+            } 
         }
-
+            
         return response;
     }
     
