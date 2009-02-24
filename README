@@ -1,4 +1,51 @@
-Nitro - Web Application Framework
---
+= Nitro
 
+    Nitro is a Web Application Framework. Nitro applications are implemented with Javascript and leverage (strict) Web Standards like XHTML/HTML, CSS, HTTP, XML, XSLT, ECMAScript 3.0, MicroFormats, etc. Nitro applications are typically a collection of programs that run on the server *and* the client. A control program dispatches work to the application programs and aggregates their output. This output is consumed by modern web browsers or web services (external programs) through a standard REST interface.
+
+    Nitro is a higher level application framework that sits on top of the lower level Jack application framework. Leveraging Jack's simplicity and flexibility, Nitro is implemented as a collection of Jack middleware apps. Moreover, given the lack of a standard JavaScript library, Nitro implements a small and carefully designed library of useful functionality. This library follows the latest developments in the 'serverjs' discussion group.
+
+    Homepage: http://nitro-framework.org/
+
+    Source & Download: http://github.com/gmosx/nitro-framework/
+
+    Mailing list: http://groups.google.com/group/nitro-framework
+    
+    IRC: #nitro-framework on irc.freenode.net    
+
+== Getting Started:
+
+
+== Writing Nitro Applications:
+        
+
+== Caveats
+
+    Nitro is under intense development. Changes to the API are to be expected.
+        
+== Component Status:
+
+   
+== Acknowledgments
+
+
+== License:
+
+Copyright (c) 2009 George Moschovitis, http://gmosx.com
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to
+deal in the Software without restriction, including without limitation the
+rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+sell copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER 
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
