@@ -1,18 +1,16 @@
 var JSTemplate = require("text/template/jst").Template;
 
-var cache = {};
+var FileCache = require("nitro/utils/filecache").FileCache;
+
+var cache = new FileCache(function(path) {
+    var src = readFile(path);
+    return new JSTemplate(src);
+});
 
 var Template = exports.Template = function() {};
 
 Template.load = function(path) {
-    if (t = cache[path]) {
-        return t;
-    } else {
-        var src = readFile(path);
-        var t = new JSTemplate(src);
-        cache[path] = t;
-        return t;
-    }
+    return cache.get(path);
 }
 
 Template.render = function(path, args) {

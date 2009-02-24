@@ -1,7 +1,7 @@
 var HashP = require("hashp").HashP;
 
 var Response = require("nitro/response").Response,
-    Template = require("nitro/template").Template;
+    Template = require("nitro/utils/template").Template;
 
 /**
  * Render middleware.
