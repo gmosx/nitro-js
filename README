@@ -1,8 +1,10 @@
 = Nitro
 
-    Nitro is a Web Application Framework. Nitro applications are implemented with Javascript and leverage (strict) Web Standards like XHTML/HTML, CSS, HTTP, XML, XSLT, ECMAScript 3.0, MicroFormats, etc. Nitro applications are typically a collection of programs that run on the server *and* the client. A control program dispatches work to the application programs and aggregates their output. This output is consumed by modern web browsers or web services (external programs) through a standard REST interface.
+    Nitro is a Web Application Framework. 
+    
+    Nitro applications are implemented with Javascript and leverage (strict) Web Standards like XHTML/HTML, CSS, HTTP, XML, XSLT, ECMAScript 3.0, MicroFormats, etc. Nitro applications are typically a collection of programs that run on the server *and* the client. A control program dispatches work to the application programs and aggregates their output. This output is consumed by modern web browsers or web services (external programs) through a standard REST interface.
 
-    Nitro is a higher level application framework that sits on top of the lower level Jack application framework. Leveraging Jack's simplicity and flexibility, Nitro is implemented as a collection of Jack middleware apps. Moreover, given the lack of a standard JavaScript library, Nitro implements a small and carefully designed library of useful functionality. This library follows the latest developments in the 'serverjs' discussion group.
+    Nitro is a higher level application framework that sits on top of the lower level Jack application framework. Leveraging Jack's simplicity and flexibility, Nitro is implemented as a collection of Jack middleware apps. Given the lack of a standard JavaScript library, Nitro implements a small and carefully designed library of useful functionality. This library follows the latest developments in the 'serverjs' discussion group. Moreover, Nitro runs on top of Rhino and has full access on all Java libararies.
 
     Homepage: http://nitro-framework.org/
 
@@ -12,21 +14,53 @@
     
     IRC: #nitro-framework on irc.freenode.net    
 
-== Getting Started:
+== Getting Started
 
+    At the moment, Nitro requires a customized version of Jack. Please get the patched version from:
+    
+    http://github.com/gmosx/jack
+    
+    Follow the instructions in the jack README file.
+    
+    After you make sure that Jack is installed correctly, go to the example directory and edit the file 'run.js'. You may want to change the shebang line, adapt the LOAD_PATH variable to fit your environment or change the Jack handler used to host the example application (the SimpleFramework handler is used by default). 
+    
+    Then you need to create a symbolic link to the core.js file in the Jack distribution, for example:
+    
+    $ ln -s /path/to/jack/core.js 
+    
+    Finally, just give:
+    
+    $ ./run.js
+    
+    The application will start listening at localhost:8080, so use your favourite browser (FireFox?) to verify that everything works correctly.
 
-== Writing Nitro Applications:
+== Directory structure
+
+    /lib:
+        Contains the implementation of a 'standard' JavaScript library
         
+    /src/nitro:
+        Contains the implementation of the web application framework
+        
+    /example:
+        Contains a simple example        
+    
+== Writing Nitro Applications
+
 
 == Caveats
 
-    Nitro is under intense development. Changes to the API are to be expected.
-        
-== Component Status:
+    Nitro is under intense development. Changes to the API are to be expected.        
+
+== Component Status
 
    
 == Acknowledgments
 
+
+== Credits
+
+    George Moschovitis <george-moschovitis@gmosx.com>
 
 == License:
 
