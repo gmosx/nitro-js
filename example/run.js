@@ -19,11 +19,12 @@ var CommonLogger = require("jack/commonlogger").CommonLogger,
 var Dispatch = require("nitro/middleware/dispatch").Dispatch,
     Normalize = require("nitro/middleware/normalize").Normalize,
     Render = require("nitro/middleware/render").Render,
-    Redirect = require("nitro/middleware/redirect").Redirect;
+    Redirect = require("nitro/middleware/redirect").Redirect,
+    SessionManager = require("nitro/middleware/sessionmanager").SessionManager;
     
 try {
 
-    var cascade = Cascade([File("www"), Lint(Redirect(Render(Dispatch())))]);
+    var cascade = Cascade([File("www"), Lint(SessionManager(Redirect(Render(Dispatch())), "mys3cr3t"))]);
     var app = CommonLogger(ShowExceptions(Normalize(cascade)));
     
     var options = { port : 8080, host : "0.0.0.0" };
@@ -32,6 +33,6 @@ try {
     // you want, so suit yourself ;-)
     require("jack/handler/simple").Handler.run(app, options);
 } catch (e) {
-    print(e.message);
+    print(e);
 }
 
