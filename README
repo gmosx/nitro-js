@@ -51,7 +51,6 @@ The application will start listening at localhost:8080, so use your favourite br
 == Caveats
 
 Nitro is under intense development. Changes to the API are to be expected.        
-
 == Component Status
 
    
