@@ -6,7 +6,7 @@
 $DEBUG = true;
 
 // Set the correct path to jack/lib
-$LOAD_PATH = "scripts:src:lib:../src:../lib:/home/gmosx/u/jack/lib"; 
+$LOAD_PATH = "scripts:src:lib:/home/gmosx/u/nitro/src:/home/gmosx/u/nitro/lib:/home/gmosx/u/jack/lib"; 
 
 load("core.js");
 

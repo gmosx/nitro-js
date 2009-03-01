@@ -1,1 +1,1 @@
-../../jack/core.js
+../../../jack/core.js
