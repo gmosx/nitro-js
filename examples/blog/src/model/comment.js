@@ -5,7 +5,7 @@ var Comment = exports.Comment = function() {
 
 
 /**
- * "Anonymous" comment
+ * Unclaimed comment (disqus)
  */
 var Comment = exports.Comment = function() {
     

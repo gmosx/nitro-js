@@ -35,12 +35,12 @@ Timestamped.prototype.created = function() {
 }
 
 // Example class.
-var User = Object.extend(Identity, function(name, email) {
+var User = Object.define(function(name, email) {
     Identity.call(this, name);
     Timestamped.call(this, new Date());
     this.email = email;
 });
-
+User.extend(Identity); 
 User.include(Validation, Timestamped);
 
 User.prototype.toString = function() {
