@@ -48,7 +48,7 @@ for (var a in articles) {
 }
 
 // use a result iterator for optimized result processing.
-var articles = db.query("SELECT id, title FROM Article WHERE id>? LIMIT 5", 20).each(function(a) {
+var articles = db.query("SELECT id, title FROM Article WHERE id>? LIMIT 5", 20).forEach(function(a) {
     print("*** " + a.dummy("forEach"));
 }, Article);
 
