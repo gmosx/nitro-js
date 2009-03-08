@@ -16,7 +16,7 @@ var sql = db.prepare("INSERT INTO Article (title, body) VALUES (?, ?)");
 var id;
 
 for (var i = 0; i < 10; i++) {
-    // use the prepared statenent.
+    // use the prepared statement.
     id = db.insert(sql, "title " + i, "body " + 1);
     print("inserted: " + id);
 }
