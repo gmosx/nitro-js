@@ -10,6 +10,8 @@ $LOAD_PATH = "scripts:src:lib:/home/gmosx/u/nitro/src:/home/gmosx/u/nitro/lib:/h
 
 load("core.js");
 
+require("lang/object");
+
 var CommonLogger = require("jack/commonlogger").CommonLogger,
     ShowExceptions = require("jack/showexceptions").ShowExceptions,
     Lint = require("jack/lint").Lint, 

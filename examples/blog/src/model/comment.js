@@ -1,36 +1,17 @@
 
-var Comment = exports.Comment = function() {
-
-}
+var Comment = exports.Comment = Object.define(function() {
+});
 
 
 /**
- * Unclaimed comment (disqus)
+ * An unclaimed comment.
+ *
+ * content
+ * authorName
+ * authorEmail
+ * created
+ * parentId
  */
-var Comment = exports.Comment = function() {
-    
-    this.author = author;
-    this.content = content;
-    
-}
+var UnclaimedComment = exports.UnclaimedComment = Object.define(function() {
+});
 
-/*
-
-use Atom fields.
-
-Comment
-
-    parentId
-    authorId
-    created
-    content 
-        
-Comment
-
-    parentId
-    authorName
-    authorEmail
-    created
-    content
-
-*/

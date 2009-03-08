@@ -1,8 +1,14 @@
 
-
-var Article = exports.Article = Object.define(function(title, content) {
+/**
+ * An article is the basic content unit.
+ *
+ * title
+ * content
+ * author
+ */
+var Article = exports.Article = Object.define(function() {
 });
 
-Article.extend(Content);
-Article.include(Timestamped, Validation);
+
+
 
