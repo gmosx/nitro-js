@@ -8,6 +8,8 @@ load("../jack/core.js");
 
 var Database = require("database/rdb").Database;
 
+Database.setAdapter("com.mysql.jdbc.Driver");
+
 var db = new Database("mysql://localhost/example?user=nitro&password=p@ssw0rd");
 
 // pre-prepare the statement
