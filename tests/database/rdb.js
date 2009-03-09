@@ -8,7 +8,7 @@ load("../jack/core.js");
 
 var Database = require("database/rdb").Database;
 
-var db = new Database("jdbc:mysql://localhost/example?user=nitro&password=p@ssw0rd");
+var db = new Database("mysql://localhost/example?user=nitro&password=p@ssw0rd");
 
 // pre-prepare the statement
 var sql = db.prepare("INSERT INTO Article (title, body) VALUES (?, ?)");
