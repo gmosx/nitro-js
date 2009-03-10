@@ -23,7 +23,11 @@ var Dispatch = require("nitro/middleware/dispatch").Dispatch,
     Render = require("nitro/middleware/render").Render,
     Redirect = require("nitro/middleware/redirect").Redirect,
     SessionManager = require("nitro/middleware/sessionmanager").SessionManager;
-    
+
+var Database = require("database/rdb").Database.setAdapter("com.mysql.jdbc.Driver");
+Database.setAdapter("com.mysql.jdbc.Driver");
+$db = new Database("mysql://localhost/blog?user=nitro&password=p@ssw0rd");
+
 try {
 
     var cascade = Cascade([File("www"), Lint(SessionManager(Redirect(Render(Dispatch())), "mys3cr3t"))]);

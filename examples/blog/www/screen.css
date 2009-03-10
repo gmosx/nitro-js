@@ -1,4 +1,57 @@
+body {
+    padding: 10px;
+}
+
+h1 {
+    margin-top: 0px;
+    margin-bottom: 1px;
+}
+
+h2 {
+    color: #666;
+    font-size: 16px;
+    margin-top: 0px;
+    margin-bottom: 40px;
+    padding-left: 15px;
+}
+
+img {
+    border: none;
+}
+
 footer {
+    clear: both;
     display: block;
-    margin-top: 40px;
+    padding-top: 100px;
+}
+
+footer p {
+    border-top: 1px solid #ccc;
+    margin-bottom: 100px;
+    padding-top: 15px;
+}
+
+article {
+    display: block;
+    margin-bottom: 40px;
+}
+
+article footer {
+    clear: none;
+    display: block;
+    margin-top: 10px;
+    padding: 0px;
+}
+
+aside {
+    border: 1px solid #eee;
+    float: left;
+    margin-left: -342px;
+    padding: 20px;
+    width: 300px;
+}
+
+section.main {
+    float: left;
+    margin-right: 382px;
 }

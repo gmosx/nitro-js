@@ -1,3 +1,5 @@
 = A simple weblog powered by Nitro.
 
-This example is NOT READY!
+A simple blog is the defacto standard example for a Web Application Framework. This is Nitro's version.
+
+This example strives to use clean and semantically rich markup. For this reason it uses HTML5 tags (header, footer, aside, article etc) and MicroFormat css classes (hAtom).

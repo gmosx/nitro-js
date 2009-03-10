@@ -10,7 +10,7 @@
     <xsl:template match="/">
         <!-- output HTML5 doctype
         http://www.mail-archive.com/whatwg@lists.whatwg.org/msg12983.html -->
-        <xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE html></xsl:text>
+        <xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE HTML></xsl:text>
         <xsl:apply-templates />
     </xsl:template>
 
@@ -43,13 +43,15 @@
 
     <xsl:template name="x:header">
         <header>
-            <h1>A simple Blog</h1>
-            <h2>A more involved Nitro example</h2>
+            <h1><a href="/">A simple Blog</a></h1>
+            <h2>The canonical Nitro example</h2>
         </header>
     </xsl:template>
 
     <xsl:template name="x:footer">
-        <footer>Copyright © 2009 <a href="http://gmosx.com" target="blank">George Moschovitis</a>.</footer>
+        <footer>
+            <p>Copyright © 2009 <a href="http://gmosx.com" target="blank">George Moschovitis</a>.</p>
+        </footer>
     </xsl:template>
     
     <!-- match templates -->
@@ -58,16 +60,8 @@
         <html>
             <xsl:call-template name="x:head" />
             <body>
-                <div id="container">
-                    <xsl:call-template name="x:header" />
-                    <nav>
-                        <xsl:apply-templates select="x:nav" mode="show" />
-                    </nav>
-                    <aside>
-                        <xsl:apply-templates select="x:aside" mode="show" />
-                    </aside>
-                    <xsl:apply-templates />
-                </div>
+                <xsl:call-template name="x:header" />
+                <xsl:apply-templates />
                 <xsl:call-template name="x:footer" />
             </body>
         </html>
@@ -85,20 +79,6 @@
 
     <xsl:template match="x:script-ref" mode="show">
         <script href="{@href}" />
-    </xsl:template>
-	
-	<xsl:template match="x:aside">
-	</xsl:template>
-
-	<xsl:template match="x:aside" mode="show">
-		<xsl:apply-templates />
-	</xsl:template>
-
-    <xsl:template match="x:nav">
-    </xsl:template>
-
-    <xsl:template match="x:nav" mode="show">
-		<xsl:apply-templates />
     </xsl:template>
 
     <!-- reddit button: http://www.reddit.com/buttons/ -->

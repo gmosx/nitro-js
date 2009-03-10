@@ -4,6 +4,58 @@
 <x:page xmlns:x="http://lib.unjou.org/Schemas/Style"
        xmlns:xi="http://www.w3.org/2001/XInclude">
 
-Welcome to the blog example.
+<section class="main hfeed">
+{for a in articles} 
+<article class="hentry">
+    <h3 class="entry-title"><a href="/*${a.seoName()}">${a.title}</a></h3>
+    <section class="entry-content">
+        ${a.content}
+    </section>
+    <footer>
+        <x:reddit />
+    </footer>
+</article>
+{/for}
+</section>
+
+<aside>
+    <a href="/create">New article</a><br /><br />
+    <p>
+    This is the sidebar, I really like it!<br />
+    This is the sidebar, I really like it!<br />
+    This is the sidebar, I really like it!<br />
+    This is the sidebar, I really like it!<br />
+    This is the sidebar, I really like it!<br />
+    This is the sidebar, I really like it!<br />
+    This is the sidebar, I really like it!<br />
+    This is the sidebar, I really like it!<br />
+    This is the sidebar, I really like it!<br />
+    This is the sidebar, I really like it!<br />
+    </p>
+    <p>
+    This is the sidebar, I really like it!<br />
+    This is the sidebar, I really like it!<br />
+    This is the sidebar, I really like it!<br />
+    This is the sidebar, I really like it!<br />
+    This is the sidebar, I really like it!<br />
+    This is the sidebar, I really like it!<br />
+    This is the sidebar, I really like it!<br />
+    This is the sidebar, I really like it!<br />
+    This is the sidebar, I really like it!<br />
+    This is the sidebar, I really like it!<br />
+    </p>
+    <p>
+    This is the sidebar, I really like it!<br />
+    This is the sidebar, I really like it!<br />
+    This is the sidebar, I really like it!<br />
+    This is the sidebar, I really like it!<br />
+    This is the sidebar, I really like it!<br />
+    This is the sidebar, I really like it!<br />
+    This is the sidebar, I really like it!<br />
+    This is the sidebar, I really like it!<br />
+    This is the sidebar, I really like it!<br />
+    This is the sidebar, I really like it!<br />
+    </p>
+</aside>
 
 </x:page>
