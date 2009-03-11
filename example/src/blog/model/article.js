@@ -16,6 +16,7 @@ var seoEncode = function(str) {
 }
 
 Article.prototype.seoName = function() {
-    return seoEncode(this.title) + "-" + this.id;
+//    return seoEncode(this.title) + "-" + this.id;
+    return this.id;
 }
 

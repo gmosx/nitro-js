@@ -12,3 +12,4 @@ Request.prototype.session = function() {
     }
     return env["NITRO_SESSION"]; 
 }
+
