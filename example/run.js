@@ -24,7 +24,7 @@ var Dispatch = require("nitro/middleware/dispatch").Dispatch,
     Redirect = require("nitro/middleware/redirect").Redirect,
     SessionManager = require("nitro/middleware/sessionmanager").SessionManager;
 
-var Database = require("database/rdb").Database.setAdapter("com.mysql.jdbc.Driver");
+var Database = require("database/rdb").Database;
 Database.setAdapter("com.mysql.jdbc.Driver");
 $db = new Database("mysql://localhost/blog?user=nitro&password=p@ssw0rd");
 
