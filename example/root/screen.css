@@ -44,14 +44,14 @@ article footer {
 }
 
 aside {
-    border: 1px solid #eee;
+    border-left: 1px solid #eee;
     float: left;
-    margin-left: -342px;
-    padding: 20px;
+    margin-left: -322px;
+    padding-left: 20px;
     width: 300px;
 }
 
 section.main {
     float: left;
-    margin-right: 382px;
+    margin-right: 362px;
 }
