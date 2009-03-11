@@ -32,7 +32,7 @@ var Dispatch = exports.Dispatch = function() {
     return function(env) {
         var path = env["PATH_INFO"].split(".")[0];
         
-        var app = cache.get("scripts" + path + ".js");
+        var app = cache.get("src/root" + path + ".js");
  
         if (app) {
             return run(app, env);

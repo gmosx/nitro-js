@@ -8,7 +8,7 @@ var Response = require("nitro/response").Response,
  */
 var Render = exports.Render = function(app, templateRoot) {
 
-    templateRoot = templateRoot || "templates";
+    templateRoot = templateRoot || "src/root";
 
     // The request parameters are not used as template arguments by default, 
     // this is a major security risk!

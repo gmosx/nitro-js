@@ -8,7 +8,7 @@ $DEBUG = true;
 // Set the correct path to jack/lib
 $LOAD_PATH = "scripts:src:lib:/home/gmosx/u/nitro/src:/home/gmosx/u/nitro/lib:/home/gmosx/u/jack/lib"; 
 
-load("core.js");
+load("src/core.js");
 
 require("lang/object");
 
@@ -30,7 +30,7 @@ $db = new Database("mysql://localhost/blog?user=nitro&password=p@ssw0rd");
 
 try {
 
-    var cascade = Cascade([File("www"), Lint(SessionManager(Redirect(Render(Dispatch())), "mys3cr3t"))]);
+    var cascade = Cascade([File("root"), Lint(SessionManager(Redirect(Render(Dispatch())), "mys3cr3t"))]);
     var app = CommonLogger(ShowExceptions(Normalize(cascade)));
     
     var options = { port : 8080, host : "0.0.0.0" };
