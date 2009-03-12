@@ -17,7 +17,8 @@ var cache = new FileCache(function(path) {
         // If the template includes an XSL processing instruction, XSL transform
         // the input.
         var xslPath = "src/xsl/" + match[1];       
-        src = XSLT.transform(src, readFile(xslPath));
+//      src = XSLT.transform(src, readFile(xslPath));
+        src = XSLT.transformFile(path, xslPath);
     }
 
     return new JSTemplate(src);
