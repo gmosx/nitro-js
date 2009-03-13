@@ -38,6 +38,7 @@
             <meta name="description" content="A simple blog, powered by Nitro" />
             <meta name="keywords" content="nitro, blog, example" />
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		    <xsl:apply-templates select="x:in-head" mode="show" />
         </head>
     </xsl:template>
 
@@ -67,19 +68,12 @@
         </html>
     </xsl:template>
 
-	<xsl:template match="x:script">
+	<xsl:template match="x:in-head">
 	</xsl:template>
 
-	<xsl:template match="x:script" mode="show">
+	<xsl:template match="x:in-head" mode="show">
 		<xsl:apply-templates />
 	</xsl:template>
-
-    <xsl:template match="x:script-ref">
-    </xsl:template>
-
-    <xsl:template match="x:script-ref" mode="show">
-        <script href="{@href}" />
-    </xsl:template>
 
     <!-- reddit button: http://www.reddit.com/buttons/ -->
     <xsl:template match="x:reddit">

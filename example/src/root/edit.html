@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="html.xsl"?>
+
+<x:page xmlns:x="http://lib.unjou.org/Schemas/Style"
+       xmlns:xi="http://www.w3.org/2001/XInclude">
+
+<x:in-head>
+<style>
+textarea.content {
+    width: 90%;
+    height: 150px;
+}
+</style>
+</x:in-head>
+
+<form method="POST" action="${action}">
+    <fieldset>
+        <legend>Article form</legend>
+        <ol>
+            <li>
+                <label for="title">Title</label>
+                <input type="text" name="title" value="${article.title}" style="width: 400px" />
+            </li>
+            <li>
+                <label for="content">Content</label>
+                <textarea name="content" class="content">${article.content}</textarea>
+            </li>
+            <li>
+                <label for="categoryId">Category</label>
+                <select name="categoryId">
+                    <option value="1">Life</option>
+                    <option value="2">Technology</option>
+                    <option value="3">Business</option>
+                    <option value="4">Art</option>
+                </select>
+            </li>
+            <li>
+                <label for="tagString">Tags</label>
+                <input type="text" name="tagString" value="${article.title}" />
+            </li>
+        </ol>
+    </fieldset>
+    <fieldset class="submit">
+        <button type="submit">Save</button>
+        <button type="reset">Reset</button>
+        <button>Cancel</button>
+    </fieldset>
+</form>    
+
+</x:page>
