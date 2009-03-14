@@ -12,7 +12,7 @@
         ${article.content}
     </section>
     <footer>
-        <x:reddit />
+        <a href="/edit?id=${article.id}">edit</a> | <a href="/*${article.seoName()}?_method=DELETE" class="confirm">delete</a>
     </footer>
 </article>
 {/for}

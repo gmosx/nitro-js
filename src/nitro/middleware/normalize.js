@@ -1,11 +1,15 @@
 var HashP = require("hashp").HashP;
 
+var Request = require("nitro/request").Request;
+
 /** 
  * Normalizes the request and the response. Also provides special handling for 
  * id param:
  *   resource/*res-title -> resource/id?id=res-title
  *
  * This functionality should be implemented in a downstream node.
+ *
+ * TODO: Split this in multiple middleware classes.
  */
 var Normalize = exports.Normalize = function(app) {
     
@@ -45,3 +49,4 @@ var Normalize = exports.Normalize = function(app) {
     }
     
 }
+

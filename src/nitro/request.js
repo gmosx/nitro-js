@@ -13,3 +13,10 @@ Request.prototype.session = function() {
     return env["NITRO_SESSION"]; 
 }
 
+/**
+ * http://code.google.com/apis/gdata/docs/2.0/basics.html#UpdatingEntry
+ */
+Request.prototype.requestMethod = function() { 
+    return this.GET()["_method"] || this.env["X-HTTP-Method-Override"] || this.env["REQUEST_METHOD"];            
+};
+
