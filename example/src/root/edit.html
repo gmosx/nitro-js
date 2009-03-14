@@ -13,7 +13,7 @@ textarea.content {
 </style>
 </x:in-head>
 
-<form method="POST" action="${action}">
+<form method="POST" action="/articles">
     <fieldset>
         <legend>Article form</legend>
         <ol>
@@ -28,10 +28,9 @@ textarea.content {
             <li>
                 <label for="categoryId">Category</label>
                 <select name="categoryId">
-                    <option value="1">Life</option>
-                    <option value="2">Technology</option>
-                    <option value="3">Business</option>
-                    <option value="4">Art</option>
+                    {for category in categories}
+                    <option value="${category.id}">${category.title}</option>
+                    {/for}
                 </select>
             </li>
             <li>

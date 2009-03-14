@@ -1,4 +1,4 @@
-var Article = require("blog/model/article").Article;
+var Article = require("blog/article").Article;
 
 exports.app = function(request, response) {
     var params = request.params();

@@ -54,6 +54,7 @@ aside {
 section.main {
     float: left;
     margin-right: 362px;
+    overflow: hidden;
 }
 
 fieldset {  

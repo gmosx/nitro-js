@@ -1,4 +1,5 @@
-var Article = require("blog/model/article").Article;
+var Article = require("blog/article").Article,
+    Category = require("blog/category").Category;
 
 exports.app = function(request, response) {
     var params = request.params;
@@ -12,7 +13,7 @@ exports.app = function(request, response) {
     }
     
     response.setData({
-        action: "",
-        article: article
+        article: article,
+        categories: $db.query("SELECT id, title FROM Category ORDER BY title").all(Category)
     });
 }

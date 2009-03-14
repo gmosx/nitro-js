@@ -7,7 +7,7 @@
  * author
  */
 var Article = exports.Article = function() {
-};
+}
 
 // Make the given string SEO friendly.
 var seoEncode = function(str) {
