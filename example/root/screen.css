@@ -51,6 +51,16 @@ aside {
     width: 300px;
 }
 
+aside h2 {
+    margin-bottom: 1em;
+    padding: 0;    
+}
+
+aside ul {  
+    padding: 0;  
+    list-style: none;
+}
+
 section.main {
     float: left;
     margin-right: 362px;
@@ -85,3 +95,7 @@ label {
     display: block;
 }
 
+textarea.content {
+    width: 90%;
+    height: 8em;
+}

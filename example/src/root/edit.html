@@ -4,26 +4,18 @@
 <x:page xmlns:x="http://lib.unjou.org/Schemas/Style"
        xmlns:xi="http://www.w3.org/2001/XInclude">
 
-<x:in-head>
-<style>
-textarea.content {
-    width: 90%;
-    height: 150px;
-}
-</style>
-</x:in-head>
-
 <form method="POST" action="/articles">
+    <input type="hidden" name="id" value="${article.id}" />
     <fieldset>
-        <legend>Article form</legend>
+        <legend>Edit the article</legend>
         <ol>
             <li>
                 <label for="title">Title</label>
-                <input type="text" name="title" value="${article.title}" style="width: 400px" />
+                <input type="text" name="title" value="${article.title}" style="width: 60em" />
             </li>
             <li>
                 <label for="content">Content</label>
-                <textarea name="content" class="content">${article.content}</textarea>
+                <textarea name="content" class="content" style="height: 20em">${article.content}</textarea>
             </li>
             <li>
                 <label for="categoryId">Category</label>
@@ -35,7 +27,7 @@ textarea.content {
             </li>
             <li>
                 <label for="tagString">Tags</label>
-                <input type="text" name="tagString" value="${article.title}" />
+                <input type="text" name="tagString" value="${article.title}" style="width: 40em" />
             </li>
         </ol>
     </fieldset>

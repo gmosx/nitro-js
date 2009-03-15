@@ -5,15 +5,48 @@
        xmlns:xi="http://www.w3.org/2001/XInclude">
 
 <section class="main hfeed">
-<article class="hentry">
-    <h3 class="entry-title"><a href="/*${article.seoName()}">${article.title}</a></h3>
-    <section class="entry-content">
-        ${article.content}
-    </section>
-    <footer>
-        <x:reddit />
-    </footer>
-</article>
+
+<xi:include href="article.inc.html" />
+
+<section class="comments">
+{for comment in comments}
+    <article class="comment">
+        ${comment.content}
+        <footer>
+            <a href="" class="confirm">delete</a>
+        </footer>
+    </article>
+{/for}
+</section>
+
+<form method="POST" action="/comments">
+    <input type="hidden" name="parentId" value="${article.id}" />
+    <fieldset>
+        <legend>Add a comment</legend>
+        <ol>
+            <li>
+                <label for="authorName">Name</label>
+                <input type="text" name="authorName" style="width: 40em" />
+            </li>
+            <li>
+                <label for="authorEmail">Email (not published)</label>
+                <input type="text" name="authorEmail" style="width: 40em" />
+            </li>
+            <li>
+                <label for="authorURI">Website</label>
+                <input type="text" name="authorURI" style="width: 40em" />
+            </li>
+            <li>
+                <label for="content">Content</label>
+                <textarea name="content" class="content"></textarea>
+            </li>
+        </ol>
+    </fieldset>
+    <fieldset class="submit">
+        <button type="submit">Add</button>
+    </fieldset>
+</form>    
+
 </section>
 
 <xi:include href="aside.inc.html" />

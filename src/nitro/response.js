@@ -13,7 +13,8 @@ Response.prototype.setData = function(data) {
     if (undefined == setData) {
         this.setHeader("X-Set-Data", data);
     } else {
-        this.headers = HashP.merge(data, this.headers);
+        // TODO: optimize?
+        this.setHeader("X-Set-Data", HashP.merge(data, setData));
     }
 }
 
@@ -21,6 +22,7 @@ Response.prototype.setData = function(data) {
  * Send a HTTP redirect.
  */
 Response.prototype.redirect = function(uri, status) {
+    // TODO: optimize?
     throw { status: status || 303, uri: uri, exceptionType: "HttpRedirect" };
 }
 

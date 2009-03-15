@@ -2,7 +2,7 @@ var Article = require("blog/article").Article,
     Category = require("blog/category").Category;
 
 exports.app = function(request, response) {
-    var params = request.params;
+    var params = request.params();
     
     var article;
     

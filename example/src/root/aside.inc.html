@@ -1,7 +1,10 @@
 <aside>
     <a href="/edit">New article</a><br /><br />
-    <br /><br /><br />
-    <br /><br /><br />
-    <br /><br /><br />
-    <br /><br /><br />
+
+    <h2>Categories</h2>
+    <ul>
+        {for category in asideCategories}
+        <li><a href="/categories/*${category.id}/${category.title}">${category.title}</a></li>
+        {/for}
+    </ul>
 </aside>
