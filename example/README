@@ -3,3 +3,11 @@
 A simple blog is the defacto standard example for a Web Application Framework. This is Nitro's version.
 
 This example strives to use clean and semantically rich markup. For this reason it uses HTML5 tags (header, footer, aside, article etc) and MicroFormat css classes (hAtom).
+
+= Running the example
+
+First of all, you have to configure the application for your system. Open your favourite text editor and edit the file:
+
+etc/config.js
+
+You may have to update the nitro and jack paths or the database configuration parameters. Please note that you need MySQL to run this example.
