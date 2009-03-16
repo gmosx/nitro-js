@@ -4,7 +4,7 @@
     <h2>Categories</h2>
     <ul>
         {for category in asideCategories}
-        <li><a href="/categories/*${category.id}/${category.title}">${category.title}</a></li>
+        <li><a href="/categories/*${category.id}/${category.term}">${category.label}</a></li>
         {/for}
     </ul>
 </aside>
