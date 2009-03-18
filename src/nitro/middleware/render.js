@@ -17,8 +17,10 @@ var Render = exports.Render = function(app, templateRoot) {
     // upstream)?
     return function(env) {
         var response = app(env);
-        var data = HashP.unset(response[1], "X-Set-Data");
         
+        // Use data from env["NITRO_DATA"] and response.setData;
+        var data = HashP.update(env["NITRO_DATA"], HashP.unset(response[1], "X-Set-Data"));
+               
         if (response[0] == 404 || data) {
             // If no upstream app was found or if the upstream app has set
             // X-Set-Data attempt to render a temlate.

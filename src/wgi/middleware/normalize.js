@@ -1,7 +1,5 @@
 var HashP = require("hashp").HashP;
 
-var Request = require("nitro/request").Request;
-
 /** 
  * Normalizes the request and the response. Also provides special handling for 
  * id param:
@@ -11,9 +9,10 @@ var Request = require("nitro/request").Request;
  *
  * TODO: Split this in multiple middleware classes.
  */
-var Normalize = exports.Normalize = function(app) {
+exports.Normalize = function(app) {
     
-    return function(env) {
+    return function(request, response) {
+        var env = request.env;
         var path = env["PATH_INFO"];
 
         if ("/" == path) 
@@ -38,17 +37,11 @@ var Normalize = exports.Normalize = function(app) {
         }
         
         env["PATH_INFO"] = path;
-
-        env["NITRO_DATA"] = {};
     
-        var response = app(env);
+        app(request, response);
 
-        var headers = response[1];
-        HashP.set(headers, "X-Powered-By", "Nitro");
-//      response.setHeader("Content-Type", MIME.mimeType(ext) + "; charset=utf-8"); 
-        HashP.unset(headers, "X-Set-Data");        
-        
-        return response;
+        response.setHeader("X-Powered-By", "Nitro");
+        response.unsetHeader("X-Set-Data");
     }
     
 }
