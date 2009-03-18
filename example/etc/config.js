@@ -6,7 +6,6 @@ CONFIG = {
         jack: "/home/gmosx/u/jack",
     },
     database: {
-        adapter: "com.mysql.jdbc.Driver",
         system: "mysql",
         host: "localhost",
         name: "blog",

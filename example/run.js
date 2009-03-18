@@ -11,7 +11,7 @@ try {
     require("lang/object");
 
     var Database = require("database/rdb").Database;
-    Database.setAdapter(CONFIG.database.adapter);
+    Database.registerDriver(CONFIG.database.system);
     $db = new Database(CONFIG.database);
 
     var CommonLogger = require("jack/commonlogger").CommonLogger,
