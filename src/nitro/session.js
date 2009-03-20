@@ -26,6 +26,14 @@ Session.prototype.put = function(key, value) {
 }
 
 /**
+ * Remove a session variable.
+ */
+Session.prototype.remove = function(key) {
+    delete this.vars[key];
+    this.dirty = true;
+}
+  
+/**
  * Optimize the session object for serialization by removing empty keys and 
  * transient data.
  */
