@@ -6,9 +6,9 @@ exports.app = function(request, response) {
         var comment = request.params();
 
         $db.execute(
-            "INSERT INTO Comment (parentId, authorName, authorEmail, authorURI, content) VALUES (?, ?, ?, ?, ?)",
-            comment.parentId, comment.authorName, comment.authorEmail,
-            comment.authorURI, markup(comment.content)
+            "INSERT INTO Comment (parentId, name, email, uri, content) VALUES (?, ?, ?, ?, ?)",
+            comment.parentId, comment.name, comment.email,
+            comment.uri, markup(comment.content)
         );
         
         response.redirect();

@@ -16,6 +16,10 @@ var Comment = exports.Comment = Object.type(function() {});
 
 Comment.include(Gravatar);
 
+Comment.prototype.authorLink = function() {
+    return '<a href="' + this.uri + '" rel="nofollow">' + this.name + '</a>';
+}
+
 Comment.validate = function(obj) {
     var errors = {}
     

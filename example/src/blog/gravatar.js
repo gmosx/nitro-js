@@ -8,7 +8,7 @@ var md5 = require("data/digest/md5").MD5.hexdigest;
  *
  * http://www.gravatar.com
  */
-var Gravatar = exports.Gravatar = {};
+var Gravatar = exports.Gravatar = function() {};
 
 /**
  * Generate the gravatar uri.

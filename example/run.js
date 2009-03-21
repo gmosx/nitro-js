@@ -1,5 +1,7 @@
 #!/usr/bin/java org.mozilla.javascript.tools.shell.Main
 
+$DEBUG = true;
+
 // Run this script to start the example application. You may need to change the
 // 'shebang' line at the top of this file.
 

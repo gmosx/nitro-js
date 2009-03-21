@@ -8,15 +8,20 @@
 
 <xi:include href="article.inc.html" />
 
+<h3>${comments.length} Comments</h3>
+
 <section class="comments">
 {for comment in comments}
     <article class="comment">
+        <img src="${comment.gravatarURI()}" class="avatar" />
+        <h3>from ${comment.authorLink()} at ${comment.created}</h3>
         ${comment.content}
         <footer>
             <a href="" class="confirm">delete</a>
         </footer>
     </article>
 {/for}
+<x:clear />
 </section>
 
 <form method="POST" action="/comments">
@@ -25,16 +30,16 @@
         <legend>Add a comment</legend>
         <ol>
             <li>
-                <label for="authorName">Name</label>
-                <input type="text" name="authorName" style="width: 40em" />
+                <label for="name">Name</label>
+                <input type="text" name="name" style="width: 40em" />
             </li>
             <li>
-                <label for="authorEmail">Email (not published)</label>
-                <input type="text" name="authorEmail" style="width: 40em" />
+                <label for="email">Email (not published)</label>
+                <input type="text" name="email" style="width: 40em" />
             </li>
             <li>
-                <label for="authorURI">Website</label>
-                <input type="text" name="authorURI" style="width: 40em" />
+                <label for="uri">Website</label>
+                <input type="text" name="uri" style="width: 40em" />
             </li>
             <li>
                 <label for="content">Content</label>

@@ -99,3 +99,27 @@ textarea.content {
     width: 90%;
     height: 8em;
 }
+
+section.comments {
+    margin-bottm: 3em;
+}
+
+article.comment {
+    border-top: 1px solid #eee;
+    clear: both;
+    margin-bottom: 1em;
+    padding-top: 1em;
+}
+
+article.comment h3 {
+    font-size: 1em;
+    margin: 0 0 1em 0;
+}
+
+article.comment img.avatar {
+    float: right;
+}
+
+.clear {
+    clear: both;
+}

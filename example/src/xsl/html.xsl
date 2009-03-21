@@ -75,6 +75,10 @@
 		<xsl:apply-templates />
 	</xsl:template>
 
+    <xsl:template match="x:clear">
+        <p class="clear" />
+    </xsl:template>
+
     <!-- reddit button: http://www.reddit.com/buttons/ -->
     <xsl:template match="x:reddit">
         <script type="text/javascript" src="http://www.reddit.com/button.js?t=3"></script>
