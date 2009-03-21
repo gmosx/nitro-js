@@ -1,3 +1,4 @@
+var Gravatar = require("blog/gravatar").Gravatar;
 
 var VALID_EMAIL_RE = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 
@@ -11,8 +12,9 @@ var VALID_EMAIL_RE = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
  * created
  * parentId
  */
-var Comment = exports.Comment = function() {
-};
+var Comment = exports.Comment = Object.type(function() {});
+
+Comment.include(Gravatar);
 
 Comment.validate = function(obj) {
     var errors = {}
