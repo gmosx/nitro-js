@@ -101,7 +101,8 @@ textarea.content {
 }
 
 section.comments {
-    margin-bottm: 3em;
+    display: block;
+    margin-bottom: 3em;
 }
 
 article.comment {
@@ -123,3 +124,20 @@ article.comment img.avatar {
 .clear {
     clear: both;
 }
+
+.pager {
+    clear: both;
+    background: #eee;
+    font-weight: bold;
+    margin-top: 3em;
+    padding: 1em;
+}
+
+.pager .prev {
+    float :right;
+}
+
+.pager .next {
+    float :left;
+}
+

@@ -17,7 +17,7 @@
         <h3>from ${comment.authorLink()} at ${comment.created}</h3>
         ${comment.content}
         <footer>
-            <a href="" class="confirm">delete</a>
+            <a href="/comments/*${comment.id}?_method=DELETE" class="confirm">delete</a>
         </footer>
     </article>
 {/for}

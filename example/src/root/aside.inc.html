@@ -7,4 +7,11 @@
         <li><a href="/categories/*${category.id}/${category.term}">${category.label}</a></li>
         {/for}
     </ul>
+
+    <h2>Latest comments</h2>
+    <ul>
+        {for comment in asideLatestComments}
+        <li>${comment.name} on <a href="/*${comment.parentId}">${comment.articleTitle}</a></li>
+        {/for}
+    </ul>
 </aside>

@@ -19,6 +19,13 @@ Response.prototype.setData = function(data) {
 }
 
 /**
+ *
+ */
+Response.prototype.getData = function() {
+    return this.getHeader("X-Set-Data");
+}
+
+/**
  * Send a HTTP redirect.
  */
 Response.prototype.redirect = function(uri, status) {
