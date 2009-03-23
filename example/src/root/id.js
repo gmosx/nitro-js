@@ -4,16 +4,17 @@ var Article = require("blog/article").Article,
     
 exports.app = function(request, response) {
     var params = request.params();
-
+    var id = params.id.split("/")[0];
+    
     if (request.isGet()) {
         response.setData({
-            article: $db.query("SELECT * FROM Article WHERE id=?", params.id).one(Article),
-            comments: $db.query("SELECT * FROM Comment WHERE parentId=?", params.id).all(Comment)
+            article: $db.query("SELECT * FROM Article WHERE id=?", id).one(Article),
+            comments: $db.query("SELECT * FROM Comment WHERE parentId=?", id).all(Comment)
         });
 
         Aside(request, response);
     } else if (request.isDelete()) {
-        $db.execute("DELETE FROM Article WHERE id=?", params.id);
+        $db.execute("DELETE FROM Article WHERE id=?", id);
         response.redirect();
     } else /* isPut() */ {
     }

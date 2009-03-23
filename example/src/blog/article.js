@@ -20,3 +20,6 @@ Article.prototype.seoName = function() {
     return this.id;
 }
 
+Article.prototype.path = function() {
+    return "*" + this.id + "/" + this.title;
+}

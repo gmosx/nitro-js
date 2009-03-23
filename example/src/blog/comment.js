@@ -21,7 +21,7 @@ Comment.prototype.authorLink = function() {
 }
 
 Comment.validate = function(obj) {
-    var errors = {}
+    var errors = {};
     
     if ((!obj.authorName) || (obj.name.length < 3)) {
         errors.authorName = "Invalid author name";

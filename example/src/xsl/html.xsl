@@ -35,10 +35,11 @@
         <head>
             <title>A simple blog</title>
             <link rel="stylesheet" href="/screen.css" type="text/css" />
+            <link rel="alternate" title="Blog Atom feed" href="/index.atom" type="application/atom+xml" />
             <meta name="description" content="A simple blog, powered by Nitro" />
             <meta name="keywords" content="nitro, blog, example" />
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		    <xsl:apply-templates select="x:in-head" mode="show" />
+<xsl:apply-templates select="x:in-head" mode="show" />
         </head>
     </xsl:template>
 
