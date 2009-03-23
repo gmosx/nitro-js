@@ -7,28 +7,6 @@
 
     <xsl:output method="html" encoding="UTF-8" />
 
-    <xsl:template match="/">
-        <!-- output HTML5 doctype
-        http://www.mail-archive.com/whatwg@lists.whatwg.org/msg12983.html -->
-        <xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE HTML></xsl:text>
-        <xsl:apply-templates />
-    </xsl:template>
-
-    <!-- preserve tags -->
-    
-    <xsl:template match="node()|@*">
-        <xsl:copy>
-	          <xsl:apply-templates select="node()|@*" />
-        </xsl:copy>
-    </xsl:template>
-
-    <!-- use this tag to enclose fragments with a single element 
-         as required for valid xml documents. --> 
-         
-    <xsl:template match="x:root">
-        <xsl:apply-templates />
-    </xsl:template>
-
     <!-- name templates -->
     
     <xsl:template name="x:head">
@@ -39,7 +17,7 @@
             <meta name="description" content="A simple blog, powered by Nitro" />
             <meta name="keywords" content="nitro, blog, example" />
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<xsl:apply-templates select="x:in-head" mode="show" />
+            <xsl:apply-templates select="x:in-head" mode="show" />
         </head>
     </xsl:template>
 
@@ -57,6 +35,38 @@
     </xsl:template>
     
     <!-- match templates -->
+
+    <!-- output HTML5 doctype
+    http://www.mail-archive.com/whatwg@lists.whatwg.org/msg12983.html -->
+    <xsl:template match="/">
+        <xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE HTML></xsl:text>
+        <xsl:apply-templates />
+    </xsl:template>
+
+    <!-- preserve tags -->
+    <xsl:template match="node()|@*">
+        <xsl:copy>
+	          <xsl:apply-templates select="node()|@*" />
+        </xsl:copy>
+    </xsl:template>
+
+    <!-- strip PIs -->
+    <xsl:template match="processing-instruction()">
+    </xsl:template>
+
+    <!-- strip xml:base -->
+    <xsl:template match="@xml:base">
+    </xsl:template>
+
+    <!-- strip comments -->
+    <xsl:template match="comment()">
+    </xsl:template>
+
+    <!-- use this tag to enclose fragments with a single element 
+         as required for valid xml documents. --> 
+    <xsl:template match="x:root">
+        <xsl:apply-templates />
+    </xsl:template>
 
     <xsl:template match="x:page">
         <html>

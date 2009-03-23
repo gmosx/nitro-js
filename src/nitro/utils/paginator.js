@@ -67,3 +67,10 @@ Paginator.prototype.paginate = function(objects, uri) {
         
     return this;
 }
+
+/**
+ * Is the paginator needed? 
+ */
+Paginator.prototype.needed = function() {
+    return (this.next || this.prev);
+}

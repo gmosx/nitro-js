@@ -1,4 +1,6 @@
-<div class="pager" xmlns:x="http://lib.unjou.org/Schemas/Style">
+<div xmlns:x="http://lib.unjou.org/Schemas/Style">
+{if paginator.needed()}
+<div class="pager">
     {if paginator.next}
     <a href="${paginator.next}" class="next">newer</a>
     {/if}
@@ -6,4 +8,6 @@
     <a href="${paginator.prev}" class="prev">older</a>
     {/if}
     <x:clear />
+</div>
+{/if}
 </div>
