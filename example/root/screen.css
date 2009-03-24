@@ -36,6 +36,15 @@ article {
     margin-bottom: 2em;
 }
 
+article header {
+    display: block;
+    margin-bottom: 2em;
+}
+
+article header h3 {
+    margin-bottom: .2em;
+}
+
 article footer {
     clear: none;
     display: block;

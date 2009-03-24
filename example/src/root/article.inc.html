@@ -1,9 +1,12 @@
 <article class="hentry">
+    <header>
     <h3 class="entry-title"><a href="/${article.path()}">${article.title}</a></h3>
+    by <strong>George Moschovitis</strong> in <a href="/categories/*${article.categoryId}/${article.categoryLabel}">${article.categoryLabel}</a> at ${article.created}
+    </header>
     <section class="entry-content">
         ${article.content}
     </section>
     <footer>
-        <a href="/edit?id=${article.id}">edit</a> | <a href="/*${article.seoName()}?_method=DELETE" class="confirm">delete</a>
+        <a href="/${article.path()}#comments">${article.commentCount} comments</a> | <a href="/edit?id=${article.id}">edit</a> | <a href="/${article.path()}?_method=DELETE" class="confirm">delete</a>
     </footer>
 </article>

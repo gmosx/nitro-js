@@ -8,7 +8,7 @@ exports.app = function(request, response) {
     
     if (request.isGet()) {
         response.setData({
-            article: $db.query("SELECT * FROM Article WHERE id=?", id).one(Article),
+            article: $db.query("SELECT a.*, ca.id AS categoryId, ca.label AS categoryLabel FROM Article a LEFT JOIN Category ca ON a.categoryId=ca.id WHERE a.id=?", id).one(Article),
             comments: $db.query("SELECT * FROM Comment WHERE parentId=?", id).all(Comment)
         });
 
