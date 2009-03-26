@@ -17,7 +17,7 @@
             <meta name="description" content="A simple blog, powered by Nitro" />
             <meta name="keywords" content="nitro, blog, example" />
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-            <xsl:apply-templates select="x:in-head" mode="show" />
+            <xsl:apply-templates select="x:head" mode="show" />
         </head>
     </xsl:template>
 
@@ -77,20 +77,23 @@
                 <xsl:call-template name="x:footer" />
                 <script src="/jquery.js" type="text/javascript"></script>
                 <script>
-                    $(document).bind("ready", function() {
-                        $("header").bind("click", function() { 
-                            alert("hello"); 
-                        });
-                    });
-                </script>              
+                    <xsl:apply-templates select="x:script" mode="show" />
+                </script>
             </body>
         </html>
     </xsl:template>
 
-	<xsl:template match="x:in-head">
+	<xsl:template match="x:head">
 	</xsl:template>
 
-	<xsl:template match="x:in-head" mode="show">
+	<xsl:template match="x:head" mode="show">
+		<xsl:apply-templates />
+	</xsl:template>
+
+	<xsl:template match="x:script">
+	</xsl:template>
+
+	<xsl:template match="x:script" mode="show">
 		<xsl:apply-templates />
 	</xsl:template>
 

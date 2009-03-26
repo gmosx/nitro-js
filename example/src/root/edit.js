@@ -14,6 +14,6 @@ exports.app = function(request, response) {
     
     response.setData({
         article: article,
-        categories: $db.query("SELECT id, title FROM Category ORDER BY title").all(Category)
+        categories: $db.query("SELECT id, label FROM Category ORDER BY label").all(Category)
     });
 }

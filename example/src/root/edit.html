@@ -4,6 +4,9 @@
 <x:page xmlns:x="http://lib.unjou.org/Schemas/Style"
        xmlns:xi="http://www.w3.org/2001/XInclude">
 
+<x:script>
+</x:script>
+
 <form method="POST" action="/articles">
     <input type="hidden" name="id" value="${article.id}" />
     <fieldset>
@@ -21,7 +24,7 @@
                 <label for="categoryId">Category</label>
                 <select name="categoryId">
                     {for category in categories}
-                    <option value="${category.id}">${category.title}</option>
+                    <option value="${category.id}">${category.label}</option>
                     {/for}
                 </select>
             </li>
