@@ -76,8 +76,9 @@
                 <xsl:apply-templates />
                 <xsl:call-template name="x:footer" />
                 <script src="/jquery.js" type="text/javascript"></script>
+                <xsl:apply-templates select="x:script[@href]" mode="href" />
                 <script>
-                    <xsl:apply-templates select="x:script" mode="show" />
+                    <xsl:apply-templates select="x:script[not(@href)]" mode="script" />
                 </script>
             </body>
         </html>
@@ -90,11 +91,28 @@
 		<xsl:apply-templates />
 	</xsl:template>
 
+    <!--
+    Injects a script before the body. Use <x:head> to inject a script in <head>.
+    Handles external and internal script files.
+    
+    Example:
+    <x:script href="/jquery.js" />
+    <x:script>
+        alert("it works");
+    </x:script>
+    <x:script>
+        alert("really");
+    </x:script>
+    -->
 	<xsl:template match="x:script">
 	</xsl:template>
 
-	<xsl:template match="x:script" mode="show">
-		<xsl:apply-templates />
+	<xsl:template match="x:script" mode="href">
+        <script href="{@href}" />
+	</xsl:template>
+
+	<xsl:template match="x:script" mode="script">
+        <xsl:apply-templates />
 	</xsl:template>
 
     <xsl:template match="x:clear">
