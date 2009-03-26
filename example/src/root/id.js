@@ -7,9 +7,14 @@ exports.app = function(request, response) {
     var id = params.id.split("/")[0];
     
     if (request.isGet()) {
+        var article = $db.query("SELECT a.*, ca.id AS categoryId, ca.label AS categoryLabel FROM Article a LEFT JOIN Category ca ON a.categoryId=ca.id WHERE a.id=?", id).one(Article);
+        var comments = $db.query("SELECT * FROM Comment WHERE parentId=?", id).all(Comment);
+        
+        article.commentCount = comments.length;
+        
         response.setData({
-            article: $db.query("SELECT a.*, ca.id AS categoryId, ca.label AS categoryLabel FROM Article a LEFT JOIN Category ca ON a.categoryId=ca.id WHERE a.id=?", id).one(Article),
-            comments: $db.query("SELECT * FROM Comment WHERE parentId=?", id).all(Comment)
+            article: article,
+            comments: comments
         });
 
         Aside(request, response);

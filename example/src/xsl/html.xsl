@@ -75,6 +75,14 @@
                 <xsl:call-template name="x:header" />
                 <xsl:apply-templates />
                 <xsl:call-template name="x:footer" />
+                <script src="/jquery.js" type="text/javascript"></script>
+                <script>
+                    $(document).bind("ready", function() {
+                        $("header").bind("click", function() { 
+                            alert("hello"); 
+                        });
+                    });
+                </script>              
             </body>
         </html>
     </xsl:template>
