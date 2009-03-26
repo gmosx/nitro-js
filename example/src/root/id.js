@@ -1,6 +1,5 @@
 var Article = require("blog/article").Article,
-    Comment = require("blog/comment").Comment,
-    Aside = require("blog/widgets/aside").Aside;
+    Comment = require("blog/comment").Comment;
     
 exports.app = function(request, response) {
     var params = request.params();
@@ -16,8 +15,6 @@ exports.app = function(request, response) {
             article: article,
             comments: comments
         });
-
-        Aside(request, response);
     } else if (request.isDelete()) {
         $db.execute("DELETE FROM Article WHERE id=?", id);
         response.redirect();

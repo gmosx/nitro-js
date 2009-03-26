@@ -7,6 +7,6 @@
         ${article.content}
     </section>
     <footer>
-        <a href="/${article.path()}#comments">${article.commentCount} comments</a> | <a href="/edit?id=${article.id}">edit</a> | <a href="/${article.path()}?_method=DELETE" class="confirm">delete</a>
+        <a href="/tags">Tags</a>: ${article.tagString_linked()} | <a href="/${article.path()}#comments">${article.commentCount} comments</a> | <a href="/edit?id=${article.id}">edit</a> | <a href="/${article.path()}?_method=DELETE" class="confirm">delete</a>
     </footer>
 </article>

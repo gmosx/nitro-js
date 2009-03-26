@@ -150,3 +150,16 @@ article.comment img.avatar {
     float :left;
 }
 
+.tags a {
+    color: green;
+}
+
+.tags a:hover {
+    background: green;
+    color: #fff;
+}
+
+.tagcloud {
+    background: #eee;
+    padding: 20px;
+}

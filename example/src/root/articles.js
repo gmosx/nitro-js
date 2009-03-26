@@ -14,11 +14,13 @@ exports.app = function(request, response) {
             );
         } else { // Insert a new object.
             article = new Article();
-            article.id = $db.execute(
+            article.id = $db.insert(
                 "INSERT INTO Article (title, content, categoryId) VALUES (?, ?, ?)",
                 params.title, markup(params.content), params.categoryId
             );
         }        
+
+        article.updateTags(params.tagString);
         
         response.redirect("/");
     }

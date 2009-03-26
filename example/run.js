@@ -26,9 +26,11 @@ try {
         Redirect = require("wgi/middleware/redirect").Redirect,
         SessionManager = require("wgi/middleware/sessionmanager").SessionManager;
 
+    var Setup = require("blog/middleware/setup").Setup;
+    
     var cascade = Cascade([
             File("root"), 
-            JackAdapter(Normalize(SessionManager(Redirect(Render(Dispatch())), CONFIG.session.secret)))
+            JackAdapter(Normalize(SessionManager(Redirect(Render(Setup(Dispatch()))), CONFIG.session.secret)))
         ]);
     var app = CommonLogger(ShowExceptions(Lint(cascade)));
     

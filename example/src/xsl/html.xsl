@@ -108,7 +108,7 @@
 	</xsl:template>
 
 	<xsl:template match="x:script" mode="href">
-        <script href="{@href}" />
+        <script src="{@href}" type="text/javascript" />
 	</xsl:template>
 
 	<xsl:template match="x:script" mode="script">

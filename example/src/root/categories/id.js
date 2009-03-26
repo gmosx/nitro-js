@@ -1,8 +1,7 @@
 var Paginator = require("nitro/utils/paginator").Paginator;
 
 var Article = require("blog/article").Article,
-    Category = require("blog/category").Category,
-    Aside = require("blog/widgets/aside").Aside;
+    Category = require("blog/category").Category;
     
 exports.app = function(request, response) {
     var params = request.params();
@@ -18,6 +17,4 @@ exports.app = function(request, response) {
             paginator: pg.paginate(articles)
         });
     } 
-
-    Aside(request, response);
 }
