@@ -1,14 +1,15 @@
-
 exports.SeeOther = function(uri) {
-    return [303, { Location: uri }, 'Go to <a href="' + uri + '">' + uri + '</a>'];
+    this.status = 303;
+    this.headers = { Location: uri };
+    this.body = 'Go to <a href="' + uri + '">' + uri + '</a>';
 }
 
-exports.NotFound = function(env) {
-    return [404, {}, "Not found"];
+exports.NotModified = function(uri) {
+    this.status = 304;
 }
 
-/*
-var SeeOther = require("nitro/exceptions").SeeOther;
-return SeeOther("/register");
-throw SeeOther("/register");
-*/
+exports.NotFound = function(msg) {
+    this.status = 404;
+    this.body = msg || "Not found";
+}
+

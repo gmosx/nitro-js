@@ -10,8 +10,8 @@ load(CONFIG.paths.jack + "/core.js");
 try {
     require("lang/object");
 
-    var Database = require("database/rdb").Database;
-    $db = new Database(CONFIG.database);
+    var Database = require("database").Database;
+    Database.register(CONFIG.database);
 
     var CommonLogger = require("jack/commonlogger").CommonLogger,
         ShowExceptions = require("jack/showexceptions").ShowExceptions,

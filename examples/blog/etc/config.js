@@ -6,6 +6,7 @@ CONFIG = {
         jack: "/home/gmosx/u/jack",
     },
     database: {
+        type: "relational",
         system: "mysql",
         host: "localhost",
         name: "blog",

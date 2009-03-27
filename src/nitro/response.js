@@ -4,7 +4,7 @@ var Response = exports.Response = require("jack/response").Response;
 
 /**
  * Add response data. 
- * The specila X-Set-Data header is used to store response data. Downstream
+ * The special X-Set-Data header is used to store response data. Downstream
  * apps can use the data to perform calculations or rendering.
  */
 Response.prototype.setData = function(data) {
