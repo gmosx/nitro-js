@@ -4,6 +4,17 @@
 <x:page xmlns:x="http://lib.unjou.org/Schemas/Style"
        xmlns:xi="http://www.w3.org/2001/XInclude">
 
+<x:script>
+$(document).bind("ready", function() {
+    $(".delete").bind("click", function(e) {
+        e.preventDefault();
+        if (confirm("Are you sure you want to delete?")) {
+            $.post(e.target.href, { _method: "DELETE" });
+        }
+    });
+});
+</x:script>
+
 <section class="main hfeed">
 
 <xi:include href="article.inc.html" />
@@ -17,7 +28,7 @@
         <h3>from ${comment.authorLink()} at ${comment.created}</h3>
         ${comment.content}
         <footer>
-            <a href="/comments/*${comment.id}?_method=DELETE" class="confirm">delete</a>
+            <a href="/comments/*${comment.id}" class="delete">delete</a>
         </footer>
     </article>
 {/for}

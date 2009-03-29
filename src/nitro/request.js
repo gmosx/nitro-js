@@ -21,12 +21,4 @@ Request.prototype.session = function() {
 Request.prototype.redirect = function(uri) {
     // TODO: ignore redirect in XHR requests!
     throw SeeOther(uri || this.referer());
-} 
- 
-/**
- * http://code.google.com/apis/gdata/docs/2.0/basics.html#UpdatingEntry
- */
-Request.prototype.requestMethod = function() { 
-    return this.GET()["_method"] || this.env["X-HTTP-Method-Override"] || this.env["REQUEST_METHOD"];            
-};
-
+}

@@ -23,9 +23,8 @@ exports.Dispatch = function(root) {
             // THINK: Useful helper?
             env.request = new Request(env);
 
-// FIXME: use methodoverride filter!                          
-//            var response = app[env["REQUEST_METHOD"]](env);
-            var response = app[env.request.requestMethod()](env);
+            var response = app[env["REQUEST_METHOD"]](env);
+
             if (!isArray(response)) {
                 return  [200, {}, response];
             } else

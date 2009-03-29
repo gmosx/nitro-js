@@ -18,8 +18,9 @@ try {
         Lint = require("jack/lint").Lint, 
         File = require("jack/file").File, 
         ContentLength = require("jack/contentlength").ContentLength, 
-        Cascade = require("jack/cascade").Cascade;
-
+        Cascade = require("jack/cascade").Cascade,
+        MethodOverride = require("jack/methodoverride").MethodOverride;
+        
     var Dispatch = require("nitro/middleware/dispatch").Dispatch,
         Normalize = require("nitro/middleware/normalize").Normalize,
         Render = require("nitro/middleware/render").Render,
@@ -32,7 +33,7 @@ try {
             File("root"), 
             SessionManager(Catch(Render(Setup(Dispatch()))), CONFIG.session.secret)
         ]);
-    var app = CommonLogger(ShowExceptions(Lint(ContentLength(Normalize(cascade)))));
+    var app = MethodOverride(CommonLogger(ShowExceptions(Lint(ContentLength(Normalize(cascade))))));
     
     var options = { port : 8080, host : "0.0.0.0" };
 
