@@ -30,9 +30,9 @@ try {
     
     var cascade = Cascade([
             File("root"), 
-            Normalize(SessionManager(Catch(Render(Setup(Dispatch()))), CONFIG.session.secret))
+            SessionManager(Catch(Render(Setup(Dispatch()))), CONFIG.session.secret)
         ]);
-    var app = CommonLogger(ShowExceptions(Lint(ContentLength(cascade))));
+    var app = CommonLogger(ShowExceptions(Lint(ContentLength(Normalize(cascade)))));
     
     var options = { port : 8080, host : "0.0.0.0" };
 
