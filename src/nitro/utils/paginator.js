@@ -1,5 +1,6 @@
 // THINK: implement as middleware?
 
+var Request = require("nitro/request").Request;
 
 // Update (or add) a query string parameter.
 var updateParam = function(uri, key, val) {
@@ -24,18 +25,18 @@ var PKEY = "po";
  * http://www.mysqlperformanceblog.com/2008/09/24/four-ways-to-optimize-paginated-displays/
  *
  * Example:
- * var app = function(request, response) {
- *     var pg = new Paginator(request, 10);
+ * var app = function(env) {
+ *     var pg = new Paginator(env, 10);
  *     var articles = $db.query("SELECT * FROM Article " + pg.sqlLimit()).all(Article);
- *     response.setData({
+ *     return {
  *         articles: articles,
  *         paginator: pg.paginate(articles)
- *     });
+ *     }
  * }
  */
-var Paginator = exports.Paginator = function(request, limit) {
-    this.request = request;
-    this.params = request.params();
+var Paginator = exports.Paginator = function(env, limit) {
+    this.request = new Request(env);
+    this.params = this.request.params();
     this.offset = parseInt(this.params[PKEY] || 0, 10);
     this.limit = limit || 10;
 }

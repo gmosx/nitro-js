@@ -2,13 +2,11 @@ var NotFound = require("nitro/exceptions").NotFound;
 
 var Tag = require("blog/tag").Tag;
 
-exports.app = function(request, response) {
+exports.GET = function(env) {
     var db = openDatabase();
     
     var tags = db.query("SELECT name, count FROM Tag ORDER BY COUNT DESC LIMIT 100").all(Tag);
 
-    if (!tags) throw new NotFound("No tags found");
-    
     if (tags) {
         var size, maxSize = 0;
         var maxCount = Number(tags[0].count);
@@ -26,11 +24,10 @@ exports.app = function(request, response) {
             cloud.push('<a href="/tags/*' + t.name + '" style="font-size: ' + size + 'em">' + t.name + '</a>');
         }
         
-        response.setData({
+        return {
             tags: cloud.join(" "),
             maxSize: maxSize
-        });
-    } else {
+        }
+    } else
         throw NotFound("No tags found");
-    }
 }

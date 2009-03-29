@@ -7,3 +7,9 @@ http://www.w3.org/2001/tag/doc/selfDescribingDocuments.html
 
 Rules For JavaScript Library Authors
 http://deanedwards.me.uk/weblog/2007/03/rules/
+
+--
+
+Tips:
+
+Generate Content-Length response headers. It’s easy to do, and it will allow the response of your script to be used in a persistent connection. This allows clients to request multiple representations on one TCP/IP connection, instead of setting up a connection for every request. It makes your site seem much faster.

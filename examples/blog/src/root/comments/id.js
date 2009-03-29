@@ -1,10 +1,10 @@
 var Comment = require("blog/comment").Comment;
     
-exports.app = function(request, response) {
-    var params = request.params();
-
-    if (request.isDelete()) {
-        $db.execute("DELETE FROM Comment WHERE id=?", params.id);
-        response.redirect();
-    }
+exports.DELETE = function(env) {
+    var db = openDatabase();
+    var params = env.request.params();
+ 
+    db.execute("DELETE FROM Comment WHERE id=?", params.id);
+ 
+    env.request.redirect();
 }

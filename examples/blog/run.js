@@ -17,22 +17,22 @@ try {
         ShowExceptions = require("jack/showexceptions").ShowExceptions,
         Lint = require("jack/lint").Lint, 
         File = require("jack/file").File, 
+        ContentLength = require("jack/contentlength").ContentLength, 
         Cascade = require("jack/cascade").Cascade;
 
-    var JackAdapter = require("wgi/middleware/jack").JackAdapter;
-        Dispatch = require("wgi/middleware/dispatch").Dispatch,
-        Normalize = require("wgi/middleware/normalize").Normalize,
-        Render = require("wgi/middleware/render").Render,
-        Redirect = require("wgi/middleware/redirect").Redirect,
-        SessionManager = require("wgi/middleware/sessionmanager").SessionManager;
+    var Dispatch = require("nitro/middleware/dispatch").Dispatch,
+        Normalize = require("nitro/middleware/normalize").Normalize,
+        Render = require("nitro/middleware/render").Render,
+        Catch = require("nitro/middleware/catch").Catch,
+        SessionManager = require("nitro/middleware/sessionmanager").SessionManager;
 
     var Setup = require("blog/middleware/setup").Setup;
     
     var cascade = Cascade([
             File("root"), 
-            JackAdapter(Normalize(SessionManager(Redirect(Render(Setup(Dispatch()))), CONFIG.session.secret)))
+            Normalize(SessionManager(Catch(Render(Setup(Dispatch()))), CONFIG.session.secret))
         ]);
-    var app = CommonLogger(ShowExceptions(Lint(cascade)));
+    var app = CommonLogger(ShowExceptions(Lint(ContentLength(cascade))));
     
     var options = { port : 8080, host : "0.0.0.0" };
 

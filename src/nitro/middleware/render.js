@@ -1,12 +1,11 @@
 var HashP = require("hashp").HashP;
 
-var Response = require("nitro/response").Response,
-    Template = require("nitro/utils/template").Template;
+var Template = require("nitro/utils/template").Template;
 
 /**
  * Render middleware.
  */
-var Render = exports.Render = function(app, templateRoot) {
+exports.Render = function(app, templateRoot) {
 
     templateRoot = templateRoot || "src/root";
 
@@ -18,22 +17,14 @@ var Render = exports.Render = function(app, templateRoot) {
     return function(env) {
         var response = app(env);
         
-        // Use data from env["NITRO_DATA"] and response.setData;
-        var data = HashP.update(env["NITRO_DATA"], HashP.unset(response[1], "X-Set-Data"));
-               
-        if (response[0] == 404 || data) {
-            // If no upstream app was found or if the upstream app has set
-            // X-Set-Data attempt to render a temlate.
-        
+        if (typeof(response[2]) != "string") {
             var template;
+            var templatePath = templateRoot + (env["TEMPLATE_PATH"] || env["PATH_INFO"]);
 
-            if (template = Template.load(templateRoot + env["PATH_INFO"])) {
-                var body = template.render(data);
-                response[2] = body;
-                HashP.set(response[1], "Content-Length", body.length.toString(10));
-            } 
+            if (template = Template.load(templatePath))
+                response[2] = template.render(response[2]);
         }
-            
+        
         return response;
     }
     

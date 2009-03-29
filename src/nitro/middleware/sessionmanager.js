@@ -2,8 +2,7 @@ var SHA256 = require("data/digest/sha256").SHA256,
     JSON = require("codec/json").JSON,
     Base64 = require("codec/mime/base64").Base64,
     Session = require("nitro/session").Session,
-    Request = require("nitro/request").Request,
-    Response = require("nitro/response").Response;
+    Request = require("nitro/request").Request;
 
 /**
  * Session management.
@@ -50,21 +49,16 @@ var SessionManager = exports.SessionManager = function(app, secret, cookieName) 
             var data = Base64.encode(JSON.encode(session.vars));
             var hash = SHA256(data + secret);
 
-            var newResponse = new Response(response[2], response[0], response[1]);
-
             var date = new Date();
             date.setFullYear(date.getFullYear() + 1);
             
-            newResponse.setCookie(cookieName, {
+            response.setCookie(cookieName, {
                 path: "/",
                 value: data + "--" + hash,
                 expires: date,
                 httpOnly: true
             });
-            return newResponse.finish();
         }
-        
-        return response;
     }
       
     return function(env) {
@@ -73,7 +67,9 @@ var SessionManager = exports.SessionManager = function(app, secret, cookieName) 
         env["NITRO_SESSION_LOADER"] = loadSession;
 
         // WARN: First calculate the response, then extract the session.
-        return saveSession(app(env), env["NITRO_SESSION"]);
+        var response = app(env); 
+        //saveSession(response, env["NITRO_SESSION"]);
+        return response;
     }
 
 }

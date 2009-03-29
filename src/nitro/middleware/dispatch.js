@@ -1,44 +1,37 @@
-var File = require("io/file").File;
-
-var Request = require("nitro/request").Request,
-    Response = require("nitro/response").Response,
-    FileCache = require("nitro/utils/filecache").FileCache;
-    
-var cache = new FileCache(function(path) {
-    return requireForce(path.replace(/^\//, ""));
-});
-
-// This simple method implements the (request, reponse) interface.
-// Can this be refactored?
-// THINK: Calls the .app function for all extensions, is this OK?
-var run = function(app, env) {
-    var request = new Request(env),
-        response = new Response(),
-        ext = request.pathInfo().split(".")[1];
-    
-    var action = app[ext] || app["app"];
-        
-    action(request, response);
-
-    return response.finish();   
-}
-
+var FileCache = require("nitro/utils/filecache").FileCache,
+    Request = require("nitro/request").Request;
+   
 /**
- * A Jack middleware app that selects another app from the root tree to 
- * dispatch the Request.
+ * A middleware that selects an app from the root tree.
+ * In essence it acts as the Unix shell (or PHP ;-))
  */
-var Dispatch = exports.Dispatch = function() {
+exports.Dispatch = function(root) {
+
+    root = root || "root";
+    
+    var cache = new FileCache(function(path) {
+        return require(path.replace(/^\//, ""));
+    });
 
     return function(env) {
         var path = env["PATH_INFO"].split(".")[0];
         
-        var app = cache.get("src/root" + path + ".js");
- 
+//        var app = cache.get(root + path + ".js");
+        var app = require(root + path);
+        
         if (app) {
-            return run(app, env);
-        } else {
-            return new Response("Not found: " + path, 404).finish();
-        }
+            // THINK: Useful helper?
+            env.request = new Request(env);
+
+// FIXME: use methodoverride filter!                          
+//            var response = app[env["REQUEST_METHOD"]](env);
+            var response = app[env.request.requestMethod()](env);
+            if (!isArray(response)) {
+                return  [200, {}, response];
+            } else
+                return response;
+        } else
+            return [404, {}, ""];
     }
 
 }

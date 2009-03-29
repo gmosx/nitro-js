@@ -1,15 +1,12 @@
-exports.SeeOther = function(uri) {
-    this.status = 303;
-    this.headers = { Location: uri };
-    this.body = 'Go to <a href="' + uri + '">' + uri + '</a>';
+
+exports.SeeOther = function(location) {
+    return [303, { "Location": location }, 'Go to <a href="' + location + '">' + location + '</a>'];
 }
 
-exports.NotModified = function(uri) {
-    this.status = 304;
+exports.NotModified = function() {
+    return [304, {}, ""];
 }
 
 exports.NotFound = function(msg) {
-    this.status = 404;
-    this.body = msg || "Not found";
+    return [404, {}, msg || "Not found"];
 }
-

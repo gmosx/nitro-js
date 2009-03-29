@@ -1,3 +1,5 @@
+var SeeOther = require("nitro/exceptions").SeeOther;
+
 var Request = exports.Request = require("jack/request").Request;
 
 /**
@@ -12,6 +14,15 @@ Request.prototype.session = function() {
     return env["NITRO_SESSION"]; 
 }
 
+/**
+ * Redirect this request to another URI. This helper throws a SeeOther (307)
+ * exception to skip the normal application middleware pipeline.
+ */
+Request.prototype.redirect = function(uri) {
+    // TODO: ignore redirect in XHR requests!
+    throw SeeOther(uri || this.referer());
+} 
+ 
 /**
  * http://code.google.com/apis/gdata/docs/2.0/basics.html#UpdatingEntry
  */
