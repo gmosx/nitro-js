@@ -2,6 +2,8 @@ var HashP = require("hashp").HashP,
     STATUS_WITH_NO_ENTITY_BODY = require("jack/utils").STATUS_WITH_NO_ENTITY_BODY,
     MIME_TYPES = require("jack/mime").Mime.MIME_TYPES;
 
+var ContentType = require("nitro/middleware/contenttype").ContentType;
+
 /** 
  * Normalizes the request and the response. Also provides special handling for 
  * id param:
@@ -12,6 +14,8 @@ var HashP = require("hashp").HashP,
  * TODO: Split this in multiple middleware classes.
  */
 exports.Normalize = function(app) {
+
+    var contentTypeApp = ContentType(app);
     
     return function(env) {
         var path = env["PATH_INFO"];
@@ -39,14 +43,8 @@ exports.Normalize = function(app) {
         
         env["PATH_INFO"] = path;
 
-        env["CONTENT_TYPE"] = env["CONTENT_TYPE"] || MIME_TYPES["." + path.split(".")[1]];
-    
-        var response = app(env);
+        var response = contentTypeApp(env);
 
-        if (!STATUS_WITH_NO_ENTITY_BODY(response[0]))
-            if (!HashP.get(response[1], "Content-Type")) 
-                HashP.set(response[1], "Content-Type", env["CONTENT_TYPE"]);
-        
         //HashP.set(response[1], "X-Powered-By", "Nitro");
         
         return response;
