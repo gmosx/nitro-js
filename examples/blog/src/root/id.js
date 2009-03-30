@@ -17,15 +17,15 @@ exports.GET= function(env) {
     
     if (!article) throw NotFound();
     
-    var etag = md5(article.created.toString());
+    var etag = md5(article.updated.toString());
 
     if (env["HTTP_IF_NONE_MATCH"] == etag) {
         throw [
             304, {
 //              "X-Cache": "HIT",
 //              "X-Cache-Lookup": "HIT",
-                "Cache-Control": "public; max-age=0; must-revalidate",
-                "Last-Modified": Date.fromSQLString(article.created).toGMTString(),
+                "Cache-Control": "public; must-revalidate",
+                "Last-Modified": Date.fromSQLString(article.updated).toGMTString(),
                 "ETag": etag
             }, 
             ""
@@ -37,8 +37,8 @@ exports.GET= function(env) {
         
         return [
             200, {
-                "Cache-Control": "public; max-age=0; must-revalidate",
-                "Last-Modified": Date.fromSQLString(article.created).toGMTString(),
+                "Cache-Control": "public; must-revalidate",
+                "Last-Modified": Date.fromSQLString(article.updated).toGMTString(),
                 "ETag": etag
             }, {
                 article: article,

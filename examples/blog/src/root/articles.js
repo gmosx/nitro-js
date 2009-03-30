@@ -15,7 +15,7 @@ exports.POST = function(env) {
     } else { // Insert a new object.
         article = new Article();
         article.id = db.insert(
-            "INSERT INTO Article (title, content, categoryId) VALUES (?, ?, ?)",
+            "INSERT INTO Article (title, content, categoryId, created) VALUES (?, ?, ?, NOW())",
             params.title, markup(params.content), params.categoryId
         );
     }        

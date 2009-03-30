@@ -12,6 +12,20 @@ $(document).bind("ready", function() {
             $.post(e.target.href, { _method: "DELETE" });
         }
     });
+    
+    $("#commentForm").bind("submit", function(e) {
+        e.preventDefault();
+        $.post(e.target.action, {
+            parentId: $("#commentForm #parentId").val(),
+            name: $("#commentForm #name").val(),
+            email: $("#commentForm #email").val(),
+            uri: $("#commentForm #uri").val(),
+            content: $("#commentForm #content").val(),
+        }, function(data) {
+            $("#commentList").append(data);
+            e.target.reset();
+        });
+    });
 });
 </x:script>
 
@@ -21,47 +35,14 @@ $(document).bind("ready", function() {
 
 <h3 id="comments">${comments.length} Comments</h3>
 
-<section class="comments">
+<section id="commentList" class="comments">
 {for comment in comments}
-    <article class="comment">
-        <img src="${comment.gravatarURI()}" class="avatar" />
-        <h3>from ${comment.authorLink()} at ${comment.created}</h3>
-        ${comment.content}
-        <footer>
-            <a href="/comments/*${comment.id}" class="delete">delete</a>
-        </footer>
-    </article>
+    <xi:include href="comments/comment.inc.html" />
 {/for}
 <x:clear />
 </section>
 
-<form method="POST" action="/comments">
-    <input type="hidden" name="parentId" value="${article.id}" />
-    <fieldset>
-        <legend>Add a comment</legend>
-        <ol>
-            <li>
-                <label for="name">Name</label>
-                <input type="text" name="name" style="width: 40em" />
-            </li>
-            <li>
-                <label for="email">Email (not published)</label>
-                <input type="text" name="email" style="width: 40em" />
-            </li>
-            <li>
-                <label for="uri">Website</label>
-                <input type="text" name="uri" style="width: 40em" />
-            </li>
-            <li>
-                <label for="content">Content</label>
-                <textarea name="content" class="content"></textarea>
-            </li>
-        </ol>
-    </fieldset>
-    <fieldset class="submit">
-        <button type="submit">Add</button>
-    </fieldset>
-</form>    
+<xi:include href="comments/form.inc.html" />
 
 </section>
 
