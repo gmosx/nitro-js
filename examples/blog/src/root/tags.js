@@ -25,6 +25,7 @@ exports.GET = function(env) {
         }
         
         return {
+            windowTitle: "Tags",
             tags: cloud.join(" "),
             maxSize: maxSize
         }

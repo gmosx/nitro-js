@@ -8,8 +8,14 @@ exports.Setup = function(app) {
         var response = app(env);
         
         if (typeof(response[2]) != "string")
-            if (env["REQUEST_METHOD"] == "GET") // TODO: also check that Content-Type == text/html!
-                response[2] = Aside(response[2])[2];
+            if (env["REQUEST_METHOD"] == "GET") { // TODO: also check that Content-Type == text/html!
+                var data = Aside(response[2])[2];
+ 
+                if (!data.metaKeywords)
+                    data.metaKeywords = "nitro,blog,example,javascript";
+
+                response[2] = data;
+            }
         
         return response;
     }

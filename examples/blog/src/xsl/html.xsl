@@ -10,12 +10,15 @@
     <!-- name templates -->
     
     <xsl:template name="x:head">
+        <xsl:variable name="title">Some dummy text</xsl:variable>
         <head>
-            <title>A simple blog</title>
+            <title><xsl:if test="@title"><xsl:value-of select="@title" /> | </xsl:if>A simple blog</title>
             <link rel="stylesheet" href="/screen.css" type="text/css" />
             <link rel="alternate" title="Blog Atom feed" href="/index.atom" type="application/atom+xml" />
             <meta name="description" content="A simple blog, powered by Nitro" />
-            <meta name="keywords" content="nitro, blog, example" />
+            <meta name="keywords">
+                <xsl:attribute name="content">${metaKeywords}</xsl:attribute>
+            </meta>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
             <xsl:apply-templates select="x:head" mode="show" />
         </head>

@@ -15,7 +15,7 @@ var ContentType = require("nitro/middleware/contenttype").ContentType;
  */
 exports.Normalize = function(app) {
 
-    var contentTypeApp = ContentType(app);
+    var upstream = ContentType(app);
     
     return function(env) {
         var path = env["PATH_INFO"];
@@ -43,7 +43,7 @@ exports.Normalize = function(app) {
         
         env["PATH_INFO"] = path;
 
-        var response = contentTypeApp(env);
+        var response = upstream(env);
 
         //HashP.set(response[1], "X-Powered-By", "Nitro");
         

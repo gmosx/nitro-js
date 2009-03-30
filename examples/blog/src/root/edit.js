@@ -13,7 +13,10 @@ exports.GET = function(env) {
         article = new Article();
     }
     
+    var windowTitle = article.id ? "Edit '"+article.title+"'" : "New article"; 
+    
     return {
+        title: article.id ? ("Edit '"+article.title+"'") : "New article",
         article: article,
         categories: db.query("SELECT id, label FROM Category ORDER BY label").all(Category)
     }

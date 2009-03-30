@@ -42,6 +42,7 @@ exports.GET= function(env) {
                 "ETag": etag
             }, {
                 article: article,
+                metaKeywords: article.tagString,
                 comments: comments
             }
         ];
