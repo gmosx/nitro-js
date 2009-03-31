@@ -2,26 +2,33 @@
  * Session variables live throughout a user's session.
  *
  * HTTP is a stateless protocol for a *good* reason. Try to avoid using 
- * session variables.
+ * session variables. 
+ *
+ * The framework explicitly makes session manipulation 'painful' to discourage 
+ * users from using them.
  */
-var Session = exports.Session = function() {
-    this.vars = {};
+var Session = exports.Session = function(env) {
+    if (env["jack.session"])
+        return env["jack.session"];
+
+    this.data = env["jack.session.load"](env);
     this.dirty = false;
-};
+
+    env["jack.session"] = this;
+}
 
 /**
- * Get a variable from the session, returns the default value passed if the
- * variable does not exist.
+ * Get a variable from the session.
  */
-Session.prototype.get = function(key, defaultValue) {
-    return this.vars[key] || defaultValue;    
+Session.prototype.get = function(key) {
+    return this.data[key];    
 }
 
 /**
  * Set a session variable to the given value.
  */
 Session.prototype.put = function(key, value) {
-    this.vars[key] = value;
+    this.data[key] = value;
     this.dirty = true;
 }
 
@@ -29,14 +36,7 @@ Session.prototype.put = function(key, value) {
  * Remove a session variable.
  */
 Session.prototype.remove = function(key) {
-    delete this.vars[key];
+    delete this.data[key];
     this.dirty = true;
-}
-  
-/**
- * Optimize the session object for serialization by removing empty keys and 
- * transient data.
- */
-Session.prototype.pack = function() {
 }
 
