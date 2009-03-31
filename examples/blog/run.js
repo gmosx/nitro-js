@@ -1,11 +1,10 @@
-#!/usr/bin/java org.mozilla.javascript.tools.shell.Main
-
-// Run this script to start the example application. You may need to change the
-// 'shebang' line at the top of this file.
+#!/usr/bin/env narwhal
 
 load("etc/config.js");
-$LOAD_PATH = "src:lib:" + CONFIG.paths.nitro + "/src:" + CONFIG.paths.nitro + "/lib:" + CONFIG.paths.jack + "/lib"; 
-load(CONFIG.paths.jack + "/core.js");
+
+require.loader.setPaths(
+    require.loader.getPaths().concat(["src", "lib", CONFIG.paths.nitro + "/src", CONFIG.paths.nitro + "/lib"])
+);
 
 try {
     require("lang/object");
