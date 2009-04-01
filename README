@@ -22,13 +22,9 @@ http://github.com/gmosx/jack
 
 Follow the instructions in the jack README file.
 
-After you make sure that Jack is installed correctly, go to the example directory and edit the file 'run.js'. You may want to change the shebang line, adapt the LOAD_PATH variable to fit your environment or change the Jack handler used to host the example application (the SimpleFramework handler is used by default). 
+After you make sure that Jack is installed correctly, go to the example directory and edit the file 'etc/config.js'. 
     
-Then you need to create a symbolic link to the core.js file in the Jack distribution, for example:
-
-$ ln -s /path/to/jack/core.js 
-
-Finally, just give:
+When you are happy with the configuration, just give:
 
 $ ./run.js
 
@@ -42,8 +38,11 @@ The application will start listening at localhost:8080, so use your favourite br
 /src/nitro:
     Contains the implementation of the web application framework
     
-/example:
+/examples/simple:
     Contains a simple example        
+
+/examples/blog:
+    A sophisticated example, implements a real world blog.
     
 == Writing Nitro Applications
 
@@ -51,6 +50,7 @@ The application will start listening at localhost:8080, so use your favourite br
 == Caveats
 
 Nitro is under intense development. Changes to the API are to be expected.        
+
 == Component Status
 
    
