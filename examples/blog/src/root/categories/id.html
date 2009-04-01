@@ -4,6 +4,10 @@
 <x:page title="${category}" xmlns:x="http://lib.unjou.org/Schemas/Style"
                             xmlns:xi="http://www.w3.org/2001/XInclude">
 
+<x:breadcrumbs>
+    / ${category}
+</x:breadcrumbs>
+
 <section class="main hfeed">
 {for article in articles} 
 <xi:include href="../article.inc.html" />

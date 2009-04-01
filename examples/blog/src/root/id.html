@@ -4,6 +4,10 @@
 <x:page title="${article.title}" xmlns:x="http://lib.unjou.org/Schemas/Style"
                                  xmlns:xi="http://www.w3.org/2001/XInclude">
 
+<x:breadcrumbs>
+    / <a href="/categories/*${article.categoryId}/${article.categoryLabel}">${article.categoryLabel}</a> / ${article.title}
+</x:breadcrumbs>
+
 <x:script>
 $(document).bind("ready", function() {
     $(".delete").bind("click", function(e) {

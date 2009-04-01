@@ -4,7 +4,9 @@
 <x:page title="${tag}" xmlns:x="http://lib.unjou.org/Schemas/Style"
                        xmlns:xi="http://www.w3.org/2001/XInclude">
 
-<h1>Tagged with ${tag}</h1>
+<x:breadcrumbs>
+    / <a href="/tags">Tags</a> / articles tagged with '${tag}'
+</x:breadcrumbs>
 
 <section class="main hfeed">
 {for article in articles} 

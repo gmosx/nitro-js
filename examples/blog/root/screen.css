@@ -19,6 +19,11 @@ img {
     border: none;
 }
 
+header nav {
+    display: block;
+    margin-bottom: 2em;
+}
+
 footer {
     clear: both;
     display: block;
@@ -33,7 +38,7 @@ footer p {
 
 article {
     display: block;
-    margin-bottom: 2em;
+    margin-bottom: 3em;
 }
 
 article header {
@@ -42,6 +47,7 @@ article header {
 }
 
 article header h3 {
+    margin-top: 0;
     margin-bottom: .2em;
 }
 

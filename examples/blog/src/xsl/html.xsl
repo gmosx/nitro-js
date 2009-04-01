@@ -28,6 +28,7 @@
         <header>
             <h1><a href="/">A simple Blog</a></h1>
             <h2>The canonical Nitro example</h2>
+            <nav><xsl:apply-templates select="x:breadcrumbs" mode="show" /></nav>
         </header>
     </xsl:template>
 
@@ -86,6 +87,16 @@
             </body>
         </html>
     </xsl:template>
+
+    <!--
+    http://developer.yahoo.com/ypatterns/pattern.php?pattern=breadcrumbs
+    -->
+	<xsl:template match="x:breadcrumbs">
+	</xsl:template>
+
+	<xsl:template match="x:breadcrumbs" mode="show">
+	    <a href="/">Home</a> <xsl:apply-templates />
+	</xsl:template>
 
 	<xsl:template match="x:head">
 	</xsl:template>
