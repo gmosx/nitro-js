@@ -5,7 +5,7 @@ the path and give:
 
 $ nitro app.js
 
-Then browse localhost:8080. You get two simple examples:
+Then browse localhost:8080:
 
 localhost:8080/
     A simple template with one interpolated param
@@ -16,5 +16,5 @@ localhost:8080/hello
 localhost:8080/stream
     A simple streaming example
 	
-The is not much to see in this example so go on and try the more advanced blog
+There is not much to see in this example so go on and try the more advanced blog
 example!
