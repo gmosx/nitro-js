@@ -1,3 +1,5 @@
+var Chunked = require("nitro/chunked").Chunked;
+
 var JThread = Packages.java.lang.Thread;
 
 var stream = function(write) {
@@ -8,5 +10,6 @@ var stream = function(write) {
 }
 
 exports.GET = function(env) {
-    return [200, {"Transfer-Encoding": "chunked"}, {forEach: stream}];
+    return new Chunked(stream);
 }
+
