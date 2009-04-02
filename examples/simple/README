@@ -1,0 +1,20 @@
+A simple Nitro example
+
+This is a very simple example. To start make sure you have the nitro command in 
+the path and give:
+
+$ nitro app.js
+
+Then browse localhost:8080. You get two simple examples:
+
+localhost:8080/
+    A simple template with one interpolated param
+
+localhost:8080/hello
+    The mandatory Hello World
+
+localhost:8080/stream
+    A simple streaming example
+	
+The is not much to see in this example so go on and try the more advanced blog
+example!
