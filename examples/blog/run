@@ -1,7 +1,0 @@
-#!/bin/bash
-
-# Add jars in classpath and start the application.
-
-SELF_PATH=$(cd -P -- "$(dirname -- "$0")" && pwd -P) && SELF_PATH=$SELF_PATH/$(basename -- "$0")
-DIR=$(dirname -- "$SELF_PATH")
-export CLASSPATH="$(find $DIR/lib -name '*.jar' | tr '\n' ':')$CLASSPATH"; narwhal src/blog.js
