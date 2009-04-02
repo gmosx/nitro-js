@@ -1,3 +1,3 @@
 exports.GET = function(env) {
-    return [200, {}, "Hello World"];
+    return "Hello World";
 }
