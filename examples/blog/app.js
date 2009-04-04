@@ -10,7 +10,7 @@ var CommonLogger = require("jack/commonlogger").CommonLogger,
     Cascade = require("jack/cascade").Cascade,
     MethodOverride = require("jack/methodoverride").MethodOverride;
     
-var Nitro = require("nitro").Nitro;
+var Nitro = require("nitro").Nitro,
     Dispatch = require("nitro/middleware/dispatch").Dispatch,
     Normalize = require("nitro/middleware/normalize").Normalize,
     Render = require("nitro/middleware/render").Render,

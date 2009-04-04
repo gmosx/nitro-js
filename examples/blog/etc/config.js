@@ -1,9 +1,4 @@
-$DEBUG = true;
-
 CONFIG = {
-    paths: {
-        nitro: "/home/gmosx/u/nitro"
-    },
     database: {
         type: "relational",
         system: "mysql",
