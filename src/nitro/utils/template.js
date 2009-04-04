@@ -8,7 +8,7 @@ var FileCache = require("nitro/utils/filecache").FileCache;
 
 var XSLPI_RE = new RegExp('<\?xml-stylesheet type="text/xsl" href="([^"]*)');
 
-var cache = new FileCache(function(path) {
+var loadTemplate = function(path) {
     var src = readFile(path);
     
     var match = XSLPI_RE.exec(src);
@@ -17,12 +17,13 @@ var cache = new FileCache(function(path) {
         // If the template includes an XSL processing instruction, XSL transform
         // the input.
         var xslPath = "src/xsl/" + match[1];       
-//      src = XSLT.transform(src, readFile(xslPath));
         src = XSLT.transformFile(path, xslPath);
     }
 
     return new JSTemplate(src);
-});
+}
+
+var cache = new FileCache(loadTemplate);
 
 /**
  * High level template manager.
@@ -33,7 +34,10 @@ var Template = exports.Template = function(xslPath) {
 };
 
 Template.load = function(path) {
-    return cache.get(path);
+    if ($DEBUG)
+        return loadTemplate(path);
+    else
+        return cache.get(path);
 }
 
 Template.render = function(path, args) {
