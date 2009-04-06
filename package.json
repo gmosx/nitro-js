@@ -1,0 +1,6 @@
+{
+    author: "George Moschovitis",
+    email: "george-moschovitis@gmosx.com",
+    dependencies: ["jack"],
+    js: "src"
+}
