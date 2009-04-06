@@ -25,16 +25,18 @@ Taggable.prototype.updateTags = function(tagString) {
     this.tagString = tagStringCleanup(tagString);
 
     if (this.tagString != "") {
+        var db = openDatabase();
+        
         // TODO: add option to skip the UPDATE.
-        $db.execute("UPDATE " + table + " SET tagString=? WHERE id=?", this.tagString, this.id);
+        db.execute("UPDATE " + table + " SET tagString=? WHERE id=?", this.tagString, this.id);
 
         var t, tname, tags = this.tagString.split(",");
     
         for (var i in tags) {
             tname = tags[i];
-            $db.execute("INSERT INTO Tag (name, count) VALUES (?, ?) ON DUPLICATE KEY UPDATE count=count+1", tname, 1);
-            t = $db.query("SELECT id FROM Tag WHERE name=?", tname).one(Tag);
-            $db.execute("INSERT INTO TagTo" + table + " (parentId, tagId) VALUES (?, ?)", this.id, t.id);
+            db.execute("INSERT INTO Tag (name, count) VALUES (?, ?) ON DUPLICATE KEY UPDATE count=count+1", tname, 1);
+            t = db.query("SELECT id FROM Tag WHERE name=?", tname).one(Tag);
+            db.execute("INSERT INTO TagTo" + table + " (parentId, tagId) VALUES (?, ?)", this.id, t.id);
         }
     }
 }
@@ -48,13 +50,15 @@ Taggable.prototype.removeTags = function() {
     var tags = this.tagString.split(",");
     var table = this.constructor.db.table;
     
+    var db = openDatabase();
+    
     for (var i in tags) {
-        $db.execute("UPDATE Tag SET count=count-1 WHERE name=?", tags[i]);
-        $db.execute("DELETE FROM TagTo" + table + " WHERE parent_id=?", this.id);
+        db.execute("UPDATE Tag SET count=count-1 WHERE name=?", tags[i]);
+        db.execute("DELETE FROM TagTo" + table + " WHERE parent_id=?", this.id);
     }
     
     // Delete obsolete tags. FIXME: potentially expensive, use index?
-    $db.execute("DELETE FROM Tag WHERE count=0");
+    db.execute("DELETE FROM Tag WHERE count=0");
 }
 
 /**
