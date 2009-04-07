@@ -27,6 +27,7 @@ var cascade = Cascade([
         File("root"), 
         SessionManager(Catch(Render(Setup(Dispatch()))), CONFIG.session.secret)
     ]);
+
 var app = MethodOverride(CommonLogger(ShowExceptions(Lint(ContentLength(Normalize(cascade))))));
 
 Nitro.run(app);

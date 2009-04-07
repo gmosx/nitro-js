@@ -17,7 +17,11 @@ Nitro.run = function(app) {
     
     var options = { handler: "simple", port: 8080, host: "0.0.0.0" };
     if (CONFIG.jack) options = Hash.merge(options, CONFIG.jack);
-    
-    require("jack/handler/" + options.handler).Handler.run(app, options);
+
+    try {    
+        require("jack/handler/" + options.handler).Handler.run(app, options);
+    } catch (e) {
+        print(e.message);
+    }
 }
 

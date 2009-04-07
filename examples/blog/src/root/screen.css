@@ -1,5 +1,5 @@
 body {
-    padding: 10px;
+    padding: 1em;
 }
 
 h1 {
@@ -59,7 +59,7 @@ article footer {
 }
 
 aside {
-    border-left: 1px solid #eee;
+    border-left: 1px solid ${gray};
     float: left;
     margin-left: -322px;
     padding-left: 20px;
@@ -121,7 +121,7 @@ section.comments {
 }
 
 article.comment {
-    border-top: 1px solid #eee;
+    border-top: 1px solid ${gray};
     clear: both;
     margin-bottom: 1em;
     padding-top: 1em;
@@ -142,7 +142,7 @@ article.comment img.avatar {
 
 .pager {
     clear: both;
-    background: #eee;
+    background: ${gray};
     font-weight: bold;
     margin-top: 3em;
     padding: 1em;
@@ -166,6 +166,6 @@ article.comment img.avatar {
 }
 
 .tagcloud {
-    background: #eee;
-    padding: 20px;
+    background: ${gray};
+    padding: 2em;
 }
