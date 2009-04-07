@@ -26,7 +26,7 @@ exports.Dispatch = function(root) {
             var response = app[env["REQUEST_METHOD"]](env);
 
             if (!isArray(response)) {
-                return  [200, {}, response];
+                return  [200, {}, response || {}];
             } else
                 return response;
         } else
