@@ -1,4 +1,4 @@
-var File = require("io/file").File;
+var File = require("file").File;
 
 var FileCache = exports.FileCache = function(loader) {
     this.cache = {}; // FIXME: convert to LRU Cache!
@@ -6,7 +6,7 @@ var FileCache = exports.FileCache = function(loader) {
 };
 
 FileCache.prototype.get = function(path) {
-    var lm = File.lastModified(path);
+    var lm = File.mtime(path);
     
     if (0 != lm) { // lm == 0 if the file does not exist.
         var key = path + lm;
