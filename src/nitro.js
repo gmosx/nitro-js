@@ -15,6 +15,8 @@ var Nitro = exports.Nitro = {};
 
 Nitro.VERSION = "0.0.6";
 
+// Global CONFIG object.
+
 if (!__global__.CONFIG) CONFIG = {};
 
 // Setup js path.
@@ -30,11 +32,13 @@ require.loader.setPaths(paths);
 /*
 var fs = require("file");
 var JURL = Packages.java.net.URL,
+    JThread = Packages.java.lang.Thread,
     JMethod = Packages.java.lang.reflect.Method;
 
 if (fs.exists("lib")) {
     var jars = fs.path("lib");
-    var loader = $CLASS_LOADER;
+    
+    var loader = JThread.currentThread().getContextClassLoader();
     var addURL = loader.getClass().getDeclaredMethod("addURL", [JURL]);
     addURL.setAccessible(true);
     

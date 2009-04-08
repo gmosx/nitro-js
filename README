@@ -18,18 +18,15 @@ IRC: #nitro on irc.freenode.net
 
 == Getting Started
 
-At the moment, Nitro requires customized versions of Jack and Narwhal. Please get patched versions from:
+At the moment, Nitro requires customized versions of Narwhal and Jack. Please get patched versions from:
     
 http://github.com/gmosx/jack
 http://github.com/gmosx/narwhal
 
-Follow the instructions in the jack README file to setup Jack and Narwhal.
-
-Then, make sure that Nitro's bin directory (and the nitro command) is in the PATH. Now you are ready to run the
-simple example:
+After you have installed Narwhal and Jack you are ready to run the simple example:
 
 $ cd examples/simple
-$ nitro app.js
+$ jackup 
 
 The application will start listening at localhost:8080, so use your favourite browser (FireFox?) to verify that everything works correctly.
 
