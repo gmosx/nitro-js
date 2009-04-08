@@ -88,6 +88,17 @@
         </html>
     </xsl:template>
 
+    <xsl:template match="x:error-page">
+        <html>
+            <xsl:call-template name="x:head" />
+            <body>
+                <div class="error-dialog">
+                    <xsl:apply-templates />
+                </div>
+            </body>
+        </html>
+    </xsl:template>
+
     <!--
     http://developer.yahoo.com/ypatterns/pattern.php?pattern=breadcrumbs
     -->

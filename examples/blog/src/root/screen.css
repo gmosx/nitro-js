@@ -169,3 +169,11 @@ article.comment img.avatar {
     background: ${gray};
     padding: 2em;
 }
+
+.error-dialog {
+    border: 1px solid ${gray};
+    margin: auto;
+    margin-top: 5em;
+    padding: 2em;
+    width: 500px;
+}

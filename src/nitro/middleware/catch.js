@@ -7,10 +7,11 @@ exports.Catch = function(app) {
         try {
             return app(env);
         } catch (e) {
-            if (isArray(e)) {
+            if (isArray(e))
                 return e;
-            } else 
-                throw e;
+            else 
+                return [500, {}, e.toString()];    
+//                throw e;
         }    
     }
 
