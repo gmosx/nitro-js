@@ -3,7 +3,8 @@ var FileCache = require("nitro/utils/filecache").FileCache,
    
 /**
  * A middleware that selects an app from the root tree.
- * In essence it acts as the Unix shell (or PHP ;-))
+ * In essence it acts like a Unix shell (or like PHP ;-))
+ * This is the *right thing* to do!
  */
 exports.Dispatch = function(root) {
 
@@ -16,10 +17,9 @@ exports.Dispatch = function(root) {
     return function(env) {
         var path = env["PATH_INFO"].split(".")[0];
         
-//        var app = cache.get(root + path + ".js");
-        var app = require(root + path);
-        
-        if (app) {
+        try {
+            var app = require(root + path); // FIXME: require force needed!
+
             // THINK: Useful helper?
             env.request = new Request(env);
 
@@ -29,8 +29,12 @@ exports.Dispatch = function(root) {
                 return  [200, {}, response || {}];
             } else
                 return response;
-        } else
-            return [404, {}, ""];
+        } catch (e) {
+            if (/^Error: require error/.test(e.toString())) { // FIXME: a better test needed here!
+                return [404, {}, e.toString()];
+            } else
+                throw e;
+        }
     }
 
 }

@@ -1,5 +1,5 @@
 /**
- * Catches HTTP exceptions from upstream. 
+ * Catches rendered HTTP exceptions from upstream. 
  */
 exports.Catch = function(app) {
 
@@ -10,8 +10,7 @@ exports.Catch = function(app) {
             if (isArray(e))
                 return e;
             else 
-                return [500, {}, e.toString()];    
-//                throw e;
+                throw e;
         }    
     }
 

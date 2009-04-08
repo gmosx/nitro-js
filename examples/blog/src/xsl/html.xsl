@@ -10,7 +10,6 @@
     <!-- name templates -->
     
     <xsl:template name="x:head">
-        <xsl:variable name="title">Some dummy text</xsl:variable>
         <head>
             <title><xsl:if test="@title"><xsl:value-of select="@title" /> | </xsl:if>A simple blog</title>
             <link rel="stylesheet" href="/screen.css" type="text/css" />
@@ -90,7 +89,11 @@
 
     <xsl:template match="x:error-page">
         <html>
-            <xsl:call-template name="x:head" />
+            <head>
+                <title>${statusString} | A simple blog</title>
+                <link rel="stylesheet" href="/screen.css" type="text/css" />
+                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            </head>
             <body>
                 <div class="error-dialog">
                     <xsl:apply-templates />
