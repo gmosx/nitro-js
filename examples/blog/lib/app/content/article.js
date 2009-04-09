@@ -1,3 +1,5 @@
+require("lang/date");
+
 var Taggable = require("app/content/taggable").Taggable,
     seo = require("app/content/seo").SEO.encode;
 
@@ -21,3 +23,7 @@ Article.prototype.path = function() {
     return "*" + this.id + "/" + seo(this.title);
 }
 
+Article.prototype.deserialize = function() {
+    this.created = Date.fromSQLString(this.created);
+    this.updated = Date.fromSQLString(this.updated);
+}
