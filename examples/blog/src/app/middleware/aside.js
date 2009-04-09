@@ -1,7 +1,7 @@
 var Hash = require("hash").Hash;
 
-var Category = require("blog/category").Category,
-    Comment = require("blog/comment").Comment;
+var Category = require("app/content/category").Category,
+    Comment = require("app/content/comment").Comment;
 
 exports.Aside = function(env) {
     var db = openDatabase();

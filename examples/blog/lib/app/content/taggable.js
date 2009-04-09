@@ -1,4 +1,4 @@
-var Tag = require("blog/tag").Tag;
+var Tag = require("app/content/tag").Tag;
 
 /**
  * The Taggable mixin adds tagging functionality to objects.

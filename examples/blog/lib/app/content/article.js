@@ -1,5 +1,5 @@
-var Taggable = require("blog/taggable").Taggable,
-    seo = require("blog/seo").SEO.encode;
+var Taggable = require("app/content/taggable").Taggable,
+    seo = require("app/content/seo").SEO.encode;
 
 /**
  * An article is the basic content unit.

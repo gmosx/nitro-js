@@ -2,8 +2,8 @@ var Hash = require("hash").Hash;
 
 var Template = require("nitro/utils/template").Template;
 
-var Comment = require("blog/comment").Comment,
-    markup = require("blog/markup").markup;
+var Comment = require("app/content/comment").Comment,
+    markup = require("app/content/markup").markup;
 
 var template = Template.load("src/root/comments/comment.inc.html");
 

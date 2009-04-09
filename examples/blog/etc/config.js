@@ -7,11 +7,6 @@ CONFIG = {
         user: "nitro",
         password: "p@ssw0rd"
     },
-    jack: {
-        handler: "simple",
-        host: "0.0.0.0",
-        port: 8080
-    },
     session: {
         secret: "s3cr3t"
     },

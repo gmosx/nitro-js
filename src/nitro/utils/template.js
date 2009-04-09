@@ -8,6 +8,8 @@ var FileCache = require("nitro/utils/filecache").FileCache;
 
 var XSLPI_RE = new RegExp('<\?xml-stylesheet type="text/xsl" href="([^"]*)');
 
+var xslRoot = CONFIG.xslRoot || "src/app/";
+
 var loadTemplate = function(path) {
     var src = readFile(path);
     
@@ -16,7 +18,7 @@ var loadTemplate = function(path) {
     if (match) {
         // If the template includes an XSL processing instruction, XSL transform
         // the input.
-        var xslPath = "src/xsl/" + match[1];       
+        var xslPath = xslRoot + match[1];       
         src = XSLT.transformFile(path, xslPath);
     }
 

@@ -1,4 +1,4 @@
-#!/usr/bin/java org.mozilla.javascript.tools.shell.Main
+#!/usr/bin/env narwhal
 
 // Run this script to start the example application. You may need to change the
 // 'shebang' line at the top of this file.

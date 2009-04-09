@@ -4,8 +4,8 @@ var md5 = require("data/digest/md5").MD5.hexdigest;
 
 var NotFound = require("nitro/exceptions").NotFound;
 
-var Article = require("blog/article").Article,
-    Comment = require("blog/comment").Comment;
+var Article = require("app/content/article").Article,
+    Comment = require("app/content/comment").Comment;
     
 exports.GET= function(env) {
     var params = env.request.params();

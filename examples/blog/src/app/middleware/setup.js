@@ -1,6 +1,7 @@
-var Category = require("blog/category").Category,
-    Comment = require("blog/comment").Comment,
-    Aside = require("blog/middleware/aside").Aside;
+var Category = require("app/content/category").Category,
+    Comment = require("app/content/comment").Comment;
+    
+var Aside = require("app/middleware/aside").Aside;
 
 exports.Setup = function(app) {
 

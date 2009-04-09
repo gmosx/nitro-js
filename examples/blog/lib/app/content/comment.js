@@ -1,4 +1,4 @@
-var Gravatar = require("blog/gravatar").Gravatar;
+var Gravatar = require("app/id/gravatar").Gravatar;
 
 var VALID_EMAIL_RE = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 

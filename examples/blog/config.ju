@@ -14,7 +14,7 @@ var Dispatch = require("nitro/middleware/dispatch").Dispatch,
     Errors = require("nitro/middleware/errors").Errors,
     SessionManager = require("nitro/middleware/sessionmanager").SessionManager;
 
-var Setup = require("blog/middleware/setup").Setup;
+var Setup = require("app/middleware/setup").Setup;
 
 load("etc/config.js");
 

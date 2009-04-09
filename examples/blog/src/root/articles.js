@@ -1,5 +1,5 @@
-var Article = require("blog/article").Article,
-    markup = require("blog/markup").markup;
+var Article = require("app/content/article").Article,
+    markup = require("app/content/markup").markup;
 
 exports.POST = function(env) {
     var db = openDatabase();

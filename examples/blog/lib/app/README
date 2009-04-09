@@ -1,0 +1,7 @@
+Two simple application components:
+
+- content: simple content management
+- id: simple user management
+
+Just to demonstrate how a more complex application could be organized. Not 
+really needed for a simple blog (ie you could place the files in src/app instead of lib/app). Files in lib/app are typically meant to be reused.

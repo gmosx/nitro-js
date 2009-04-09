@@ -1,4 +1,4 @@
-var Comment = require("blog/comment").Comment;
+var Comment = require("app/content/comment").Comment;
     
 exports.DELETE = function(env) {
     var db = openDatabase();

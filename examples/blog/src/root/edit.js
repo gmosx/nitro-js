@@ -1,5 +1,5 @@
-var Article = require("blog/article").Article,
-    Category = require("blog/category").Category;
+var Article = require("app/content/article").Article,
+    Category = require("app/content/category").Category;
 
 exports.GET = function(env) {
     var db = openDatabase();

@@ -1,4 +1,3 @@
-
 /**
  * A content category
  */
