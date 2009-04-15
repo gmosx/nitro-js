@@ -11,18 +11,22 @@ var XSLPI_RE = new RegExp('<\?xml-stylesheet type="text/xsl" href="([^"]*)');
 var xslRoot = CONFIG.xslRoot || "src/app/";
 
 var loadTemplate = function(path) {
-    var src = readFile(path);
-    
-    var match = XSLPI_RE.exec(src);
-    
-    if (match) {
-        // If the template includes an XSL processing instruction, XSL transform
-        // the input.
-        var xslPath = xslRoot + match[1];       
-        src = XSLT.transformFile(path, xslPath);
-    }
+    try {
+        var src = readFile(path);
+        
+        var match = XSLPI_RE.exec(src);
+        
+        if (match) {
+            // If the template includes an XSL processing instruction, XSL transform
+            // the input.
+            var xslPath = xslRoot + match[1];       
+            src = XSLT.transformFile(path, xslPath);
+        }
 
-    return new JSTemplate(src);
+        return new JSTemplate(src);
+    } catch (e) {
+        return null;
+    }
 }
 
 var cache = new FileCache(loadTemplate);
