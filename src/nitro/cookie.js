@@ -18,7 +18,7 @@ var Cookie = exports.Cookie = function(key, value) {
         value = value.value;
     }
 
-    if (isArray(value)) {
+    if (Array.isArray(value)) {
         for (var i in value) cookie += encodeURIComponent(value[i]);
     } else {
         cookie += encodeURIComponent(value);

@@ -40,7 +40,7 @@ var Template = exports.Template = function(xslPath) {
 };
 
 Template.load = function(path) {
-    if ($DEBUG)
+    if (system.debug)
         return loadTemplate(path);
     else
         return cache.get(path);

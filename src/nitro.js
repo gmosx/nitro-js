@@ -13,11 +13,11 @@ require("lang/object");
  */
 var Nitro = exports.Nitro = {};
 
-Nitro.VERSION = "0.0.6";
+Nitro.VERSION = "0.0.7";
 
 // Global CONFIG object.
 
-if (!__global__.CONFIG) CONFIG = {};
+if (!global.CONFIG) CONFIG = {};
 
 // Setup js path.
 
@@ -27,24 +27,3 @@ paths.unshift(CONFIG.srcPath || "src");
 paths.unshift(CONFIG.libPath || "lib");
 
 require.loader.setPaths(paths);
-
-// Setup java path.
-/*
-var fs = require("file");
-var JURL = Packages.java.net.URL,
-    JThread = Packages.java.lang.Thread,
-    JMethod = Packages.java.lang.reflect.Method;
-
-if (fs.exists("lib")) {
-    var jars = fs.path("lib");
-    
-    var loader = JThread.currentThread().getContextClassLoader();
-    var addURL = loader.getClass().getDeclaredMethod("addURL", [JURL]);
-    addURL.setAccessible(true);
-    
-    jars.list().forEach(function (jar) {
-        var url = new JURL("file://" + jars.resolve("lib/" + jar).absolute());
-        addURL.invoke(loader, [url]);
-    });
-}
-*/
