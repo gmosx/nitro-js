@@ -12,7 +12,7 @@
     <xsl:template name="x:head">
         <head>
             <title><xsl:if test="@title"><xsl:value-of select="@title" /> | </xsl:if>A simple blog</title>
-            <link rel="stylesheet" href="/screen.css" type="text/css" />
+            <link rel="stylesheet" media="screen" href="/screen.css" type="text/css" />
             <link rel="alternate" title="Blog Atom feed" href="/index.atom" type="application/atom+xml" />
             <meta name="description" content="A simple blog, powered by Nitro" />
             <meta name="keywords">
@@ -72,7 +72,7 @@
     </xsl:template>
 
     <xsl:template match="x:page">
-        <html>
+        <html xml:lang="en" lang="en" dir="ltr">
             <xsl:call-template name="x:head" />
             <body>
                 <xsl:call-template name="x:header" />
@@ -88,7 +88,7 @@
     </xsl:template>
 
     <xsl:template match="x:error-page">
-        <html>
+        <html xml:lang="en" lang="en" dir="ltr">
             <head>
                 <title>${statusString} | A simple blog</title>
                 <link rel="stylesheet" href="/screen.css" type="text/css" />

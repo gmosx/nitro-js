@@ -7,7 +7,7 @@ exports.Catch = function(app) {
         try {
             return app(env);
         } catch (e) {
-            if (isArray(e))
+            if (Array.isArray(e))
                 return e;
             else 
                 throw e;
