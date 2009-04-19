@@ -8,7 +8,7 @@ var Nitro = require("nitro").Nitro,
     Render = require("nitro/middleware/render").Render,
     Catch = require("nitro/middleware/catch").Catch;
 
-ContentLength(Normalize(Cascade([    
+exports.app = ContentLength(Normalize(Cascade([    
     File("root"), 
     Catch(Render(Dispatch()))
 ])));

@@ -20,7 +20,7 @@ load("etc/config.js");
 
 Database.register(CONFIG.database);
 
-ContentLength(Normalize(Cascade([
+exports.app = ContentLength(Normalize(Cascade([
     File("root"), 
     SessionManager(Errors(Catch(Render(Setup(Dispatch())))), CONFIG.session.secret)
 ])));
