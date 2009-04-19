@@ -19,10 +19,11 @@ exports.Render = function(app, templateRoot) {
         
         // FIXME: better test here.
         if ((typeof(response[2]) != "string") && (response[1]["Transfer-Encoding"] != "chunked")) {
-            var template;
             var templatePath = templateRoot + (env["TEMPLATE_PATH"] || env["PATH_INFO"]);
 
-            if (template = Template.load(templatePath))
+            var template = Template.load(templatePath);
+
+            if (template)
                 response[2] = template.render(response[2]);
         }
         
