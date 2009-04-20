@@ -10,7 +10,7 @@ var data = {
     "category": {
         "label": "Life",
         "articles": [
-            {"title": "Hello world"},
+            {"title": "Hello world<nice>"},
             {"title": "Bye world"},
             {"title": "It works"}
         ]
