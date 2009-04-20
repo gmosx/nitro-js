@@ -1,0 +1,18 @@
+<h1>hello {name}<h1>
+
+{# This is a comment.}
+
+{.with category}
+<p>{label}</p>
+<ul>
+    {.with articles}
+    <li>{title} in {label} by {name}</li>
+    {.end}    
+</ul>
+{.end}
+
+{.with admin}
+You are the admin    
+{.else}
+Access denied
+{.end}
