@@ -16,7 +16,7 @@
             <link rel="alternate" title="Blog Atom feed" href="/index.atom" type="application/atom+xml" />
             <meta name="description" content="A simple blog, powered by Nitro" />
             <meta name="keywords">
-                <xsl:attribute name="content">${metaKeywords}</xsl:attribute>
+                <xsl:attribute name="content">{metaKeywords}</xsl:attribute>
             </meta>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
             <xsl:apply-templates select="x:head" mode="show" />
@@ -90,7 +90,7 @@
     <xsl:template match="x:error-page">
         <html xml:lang="en" lang="en" dir="ltr">
             <head>
-                <title>${statusString} | A simple blog</title>
+                <title>{statusString} | A simple blog</title>
                 <link rel="stylesheet" href="/screen.css" type="text/css" />
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
             </head>

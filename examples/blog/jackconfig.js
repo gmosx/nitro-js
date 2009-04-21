@@ -1,3 +1,7 @@
+#!/usr/bin/env jackup
+
+load("etc/config.js");
+
 var Nitro = require("nitro");
 
 var Database = require("database").Database;
@@ -15,8 +19,6 @@ var Dispatch = require("nitro/middleware/dispatch").Dispatch,
     SessionManager = require("nitro/middleware/sessionmanager").SessionManager;
 
 var Setup = require("app/middleware/setup").Setup;
-
-load("etc/config.js");
 
 Database.register(CONFIG.database);
 

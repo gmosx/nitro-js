@@ -10,6 +10,7 @@ CONFIG = {
     session: {
         secret: "s3cr3t"
     },
+    template: "nitro/xsltemplate",
     mailer: {
     	protocol: "smtp",
     	host: "smtp.gmail.com",

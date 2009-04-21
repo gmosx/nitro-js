@@ -1,3 +1,5 @@
+#!/usr/bin/env jackup
+
 var File = require("jack/file").File, 
     ContentLength = require("jack/contentlength").ContentLength, 
     Cascade = require("jack/cascade").Cascade;

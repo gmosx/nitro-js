@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
 <?xml-stylesheet type="text/xsl" href="html.xsl"?>
 
-<x:page title="${category}" xmlns:x="http://lib.unjou.org/Schemas/Style"
-                            xmlns:xi="http://www.w3.org/2001/XInclude">
+<x:page title="{category}" xmlns:x="http://lib.unjou.org/Schemas/Style"
+                           xmlns:xi="http://www.w3.org/2001/XInclude">
 
 <x:breadcrumbs>
-    / ${category}
+    / {category}
 </x:breadcrumbs>
 
 <section class="main hfeed">
-{for article in articles} 
+{.with articles} 
 <xi:include href="../article.inc.html" />
-{/for}
+{.end}
 
 <xi:include href="../paginator.inc.html" />
 </section>

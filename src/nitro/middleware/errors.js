@@ -1,8 +1,10 @@
-var Hash = require("hash"),
+var File = require("file").File,
     Utils = require("jack/utils");
 
 var Response = require("nitro/response").Response,
-    Template = require("nitro/utils/template").Template;
+    Template = require(CONFIG.template || "nitro/template").Template;
+
+var template;
 
 /**
  * Catches 4XX and 5XX errors from upstream. 
@@ -10,8 +12,15 @@ var Response = require("nitro/response").Response,
  */
 exports.Errors = function(app, templatePath) {
 
-    var template = Template.load(templatePath || "src/root/error.html");
-
+    templatePath = templatePath || "src/root/error.html";
+    
+    try {
+        var src = File.read(templatePath).toString()
+        template = new Template(src, templatePath);
+    } catch (e) {
+        throw "Error template '"; // + templatePath + "' not found!"
+    }
+    
     return function(env) {
         var response;
 

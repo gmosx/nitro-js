@@ -83,9 +83,8 @@ var op_interpolate = function(stmt, scope) {
     
     if (value) {
         var formatters = stmt[2];
-        for (var i in formatters) {
+        for (var i in formatters)
             value = formatters[i](value);
-        }
     } 
 
     return value;    
@@ -106,9 +105,8 @@ var op_with = function(stmt, scope) {
                 scope.replace(context[i]);
                 output += execute(block, scope);
             }
-        } else {
-            output += execute(block, scope);
-        }
+        } else
+            output = execute(block, scope);
     }
             
     if (context) scope.pop();

@@ -1,13 +1,13 @@
 <article class="hentry">
     <header>
-    <h3 class="entry-title"><a href="/${article.path()}">${article.title}</a></h3>
-    by <strong>Editor</strong> in <a href="/categories/*${article.categoryId}/${article.categoryLabel}">${article.categoryLabel}</a> at ${article.created} / ${article.updated}
+    <h3 class="entry-title"><a href="/{path}">{title}</a></h3>
+    by <strong>Editor</strong> in <a href="/categories/*{categoryId}/{categoryLabel}">{categoryLabel}</a> at {created} / {updated}
     </header>
     <section class="entry-content">
-        ${article.content}
+        {content}
     </section>
     <footer>
-        <a href="/tags">Tags</a>: ${article.tagString_linked()} | <a href="/${article.path()}#comments">${article.commentCount} comments</a> | <a href="/edit?id=${article.id}">edit</a> | <a href="/${article.path()}" class="delete">delete</a>
+        <a href="/tags">Tags</a>: {tagString} | <a href="/${article.path()}#comments">{commentCount} comments</a> | <a href="/edit?id={id}">edit</a> | <a href="/{path}" class="delete">delete</a>
     </footer>
 </article>
 

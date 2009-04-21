@@ -8,9 +8,9 @@
 </x:breadcrumbs>
 
 <section class="main hfeed">
-{for article in articles} 
+{.with articles} 
 <xi:include href="article.inc.html" />
-{/for}
+{.end}
 
 <xi:include href="paginator.inc.html" />
 </section>

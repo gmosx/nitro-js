@@ -1,13 +1,13 @@
 <div xmlns:x="http://lib.unjou.org/Schemas/Style">
-{if paginator.needed()}
+{.with paginator}
 <div class="pager">
-    {if paginator.next}
-    <a href="${paginator.next}" class="next">newer</a>
-    {/if}
-    {if paginator.prev}
-    <a href="${paginator.prev}" class="prev">older</a>
-    {/if}
+    {.with next}
+    <a href="{next}" class="next">newer</a>
+    {.end}
+    {.with prev}
+    <a href="{prev}" class="prev">older</a>
+    {.end}
     <x:clear />
 </div>
-{/if}
+{.end}
 </div>

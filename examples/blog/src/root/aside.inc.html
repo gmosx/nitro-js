@@ -3,16 +3,16 @@
 
     <h2>Categories</h2>
     <ul>
-        {for category in asideCategories}
-        <li><a href="/categories/${category.path()}">${category.label}</a></li>
-        {/for}
+        {.with asideCategories}
+        <li><a href="/categories/{path}">{label}</a></li>
+        {.end}
     </ul>
 
     <h2>Latest comments</h2>
     <ul>
-        {for comment in asideLatestComments}
-        <li>${comment.name} on <a href="/*${comment.parentId}/${comment.articleTitle}">${comment.articleTitle}</a></li>
-        {/for}
+        {.with asideLatestComments}
+        <li>{name} on <a href="/*{comment}/{articleTitle}">{articleTitle}</a></li>
+        {.end}
     </ul>
 </aside>
 

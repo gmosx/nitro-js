@@ -13,11 +13,11 @@ require("lang/object");
  */
 var Nitro = exports.Nitro = {};
 
-Nitro.VERSION = "0.0.7";
+Nitro.VERSION = "0.0.8";
 
 // Global CONFIG object.
 
-if (!global.CONFIG) CONFIG = {};
+if (!global.CONFIG) global.CONFIG = {};
 
 // Setup js path.
 
