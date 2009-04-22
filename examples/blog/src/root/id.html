@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <?xml-stylesheet type="text/xsl" href="html.xsl"?>
 
-<x:page title="${article.title}" xmlns:x="http://lib.unjou.org/Schemas/Style"
-                                 xmlns:xi="http://www.w3.org/2001/XInclude">
+<x:page title="{title}" xmlns:x="http://lib.unjou.org/Schemas/Style"
+                         xmlns:xi="http://www.w3.org/2001/XInclude">
 
 <x:breadcrumbs>
-    / <a href="/categories/*${article.categoryId}/${article.categoryLabel}">${article.categoryLabel}</a> / ${article.title}
+    / <a href="/categories/*{categoryId}/{categoryLabel}">{categoryLabel}</a> / {title}
 </x:breadcrumbs>
 
 <x:script>
@@ -37,12 +37,12 @@ $(document).bind("ready", function() {
 
 <xi:include href="article.inc.html" />
 
-<h3 id="comments">${comments.length} Comments</h3>
+<h3 id="comments">{commentsCount} Comments</h3>
 
 <section id="commentList" class="comments">
-{for comment in comments}
+{.with comments}
     <xi:include href="comments/comment.inc.html" />
-{/for}
+{.end}
 <x:clear />
 </section>
 
@@ -53,3 +53,4 @@ $(document).bind("ready", function() {
 <xi:include href="aside.inc.html" />
 
 </x:page>
+

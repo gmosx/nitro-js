@@ -1,4 +1,4 @@
-CONFIG = {
+global.CONFIG = {
     database: {
         type: "relational",
         system: "mysql",

@@ -1,7 +1,7 @@
-var json = require("json");
+var json = require("json"),
+    base64 = require("codec/base64");
 
 var SHA256 = require("data/digest/sha256").SHA256,
-    Base64 = require("codec/mime/base64").Base64,
     Request = require("nitro/request").Request,
     Cookie = require("nitro/cookie").Cookie;
 
@@ -32,7 +32,7 @@ var SessionManager = exports.SessionManager = function(app, secret, cookieName) 
             var data = parts[0], hash = parts[1];
                 
             if (hash == SHA256(data + secret))
-                session = json.parse(Base64.decode(data));
+                session = json.parse(base64.decode(data));
         }
         
         return session || {};
@@ -46,7 +46,7 @@ var SessionManager = exports.SessionManager = function(app, secret, cookieName) 
         var session = env["jack.session"]
         
         if (session && session.dirty) {
-            var data = Base64.encode(json.stringify(session.data));
+            var data = base64.encode(json.stringify(session.data));
             var hash = SHA256(data + secret);
 
             var date = new Date();

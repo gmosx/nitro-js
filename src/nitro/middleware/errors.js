@@ -1,4 +1,4 @@
-var File = require("file").File,
+var file = require("file"),
     Utils = require("jack/utils");
 
 var Response = require("nitro/response").Response,
@@ -15,7 +15,7 @@ exports.Errors = function(app, templatePath) {
     templatePath = templatePath || "src/root/error.html";
     
     try {
-        var src = File.read(templatePath).toString()
+        var src = file.read(templatePath).toString();
         template = new Template(src, templatePath);
     } catch (e) {
         throw "Error template '"; // + templatePath + "' not found!"

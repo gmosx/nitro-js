@@ -1,16 +1,17 @@
-var File = require("file").File,
+var file = require("file"),
     Template = require(CONFIG.template || "nitro/template").Template;
 
 var FileCache = require("nitro/utils/filecache").FileCache;
 
 var loadTemplate = function(path) {
     try {
-        var src = File.read(path).toString();
+        var src = file.read(path).toString();
         return new Template(src, path);
     } catch (e) {
         return null;
     }
 }
+
 var cache = new FileCache(loadTemplate);
 
 /**

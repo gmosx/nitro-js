@@ -31,20 +31,21 @@ exports.GET= function(env) {
             ""
         ];
     } else {
-        var comments = db.query("SELECT * FROM Comment WHERE parentId=?", id).all(Comment);
-        
-        article.commentCount = comments.length;
+        article.comments = db.query("SELECT * FROM Comment WHERE parentId=?", id).all(Comment).map(function(c) {
+            c.gravatarURI = c.gravatarURI();
+            c.authorLink = c.authorLink();
+            return c;
+        });
+        article.commentCount = article.comments.length;
+        article.metaKeywords = article.tagString;
         
         return [
             200, {
                 "Cache-Control": "public; must-revalidate",
                 "Last-Modified": Date.fromSQLString(article.updated).toGMTString(),
                 "ETag": etag
-            }, {
-                article: article,
-                metaKeywords: article.tagString,
-                comments: comments
-            }
+            },
+            article
         ];
     }
 }
