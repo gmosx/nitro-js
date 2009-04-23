@@ -19,11 +19,14 @@ Nitro.VERSION = "0.0.8";
 
 if (!global.CONFIG) global.CONFIG = {};
 
+// FIXME: HACK, detect GAE environment and set the pathPrefix accordingly.
+CONFIG.pathPrefix = system.prefix.match("WEB-INF") ? "WEB-INF/" : "";
+
 // Setup js path.
 
 var paths = require.loader.getPaths();
 
-paths.unshift(CONFIG.srcPath || "src");
-paths.unshift(CONFIG.libPath || "lib");
+paths.unshift(CONFIG.srcPath || (CONFIG.pathPrefix+"src"));
+paths.unshift(CONFIG.libPath || (CONFIG.pathPrefix+"lib"));
 
 require.loader.setPaths(paths);

@@ -19,7 +19,7 @@ var cache = new FileCache(loadTemplate);
  */
 exports.Render = function(app, templateRoot) {
 
-    templateRoot = templateRoot || "src/root";
+    templateRoot = templateRoot || (CONFIG.pathPrefix+"src/root");
 
     // The request parameters are not used as template arguments by default, 
     // this is a major security risk!
