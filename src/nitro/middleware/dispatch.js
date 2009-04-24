@@ -31,7 +31,7 @@ exports.Dispatch = function(root) {
                 return response;
         } catch (e) {
             if (/^Error: require error/.test(e.toString())) { // FIXME: a better test needed here!
-                return [404, {}, e.toString()];
+            	return [404, {}, e.toString()];
             } else
                 throw e;
         }

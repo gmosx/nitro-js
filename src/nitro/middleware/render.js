@@ -3,16 +3,15 @@ var file = require("file"),
 
 var FileCache = require("nitro/utils/filecache").FileCache;
 
-var loadTemplate = function(path) {
+var cache = new FileCache(function(path) {
     try {
         var src = file.read(path).toString();
         return new Template(src, path);
     } catch (e) {
+    	print(e);
         return null;
     }
-}
-
-var cache = new FileCache(loadTemplate);
+});
 
 /**
  * Render middleware.
@@ -31,9 +30,12 @@ exports.Render = function(app, templateRoot) {
         
         // FIXME: better test here.
         if ((typeof(response[2]) != "string") && (response[1]["Transfer-Encoding"] != "chunked")) {
-            var template = loadTemplate(templateRoot + env["PATH_INFO"]);
-            if (template)
+            var template = cache.get(templateRoot + env["PATH_INFO"]);
+            if (template) {
                 response[2] = template.render(response[2]);
+            } else {
+            	response[2] = "Template '" + env["PATH_INFO"] + "'not found";
+            }
         }
 
         return response;

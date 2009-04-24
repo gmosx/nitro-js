@@ -12,13 +12,13 @@ var template;
  */
 exports.Errors = function(app, templatePath) {
 
-    templatePath = templatePath || "src/root/error.html";
+    templatePath = templatePath || (CONFIG.pathPrefix+"src/root/error.html");
     
     try {
         var src = file.read(templatePath).toString();
         template = new Template(src, templatePath);
     } catch (e) {
-        throw "Error template '"; // + templatePath + "' not found!"
+        throw "Error template '" + templatePath + "' not found!";
     }
     
     return function(env) {
