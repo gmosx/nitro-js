@@ -1,6 +1,6 @@
 var HashP = require("hashp").HashP,
     STATUS_WITH_NO_ENTITY_BODY = require("jack/utils").STATUS_WITH_NO_ENTITY_BODY,
-    MIME_TYPES = require("jack/mime").Mime.MIME_TYPES;
+    MIME_TYPES = require("jack/mime").MIME_TYPES;
 
 var ContentType = require("nitro/middleware/contenttype").ContentType;
 
