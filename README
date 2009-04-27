@@ -6,7 +6,7 @@ Nitro applications are implemented with JavaScript and leverage (strict) Web Sta
 
 Nitro is a higher level application framework build on top of the lower level Jack web server gateway interface and Narwhal standad JavaScript library. Leveraging Jack's simplicity and flexibility, Nitro is implemented as a collection of Jack middleware apps. Nitro provides 'just-enough' functionality on top of Jack by implementing a small and carefully designed library for web application development. Moreover, Nitro runs on top of Rhino and has full access on all Java libararies.
 
-Homepage: http://nitroframework.org/
+Homepage: http://nitrojs.org/
 
 Source & Download: http://github.com/gmosx/nitro/
 
