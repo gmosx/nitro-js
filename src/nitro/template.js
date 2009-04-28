@@ -28,7 +28,7 @@ Template.formatters = {
 }
 
 var TOKEN_RE = new RegExp("(" + "\\{.+?\\}\n?)"),
-    WITH_RE = /(with)\s+(\S+)?/;
+    WITH_RE = /(with|if)\s+(\S+)?/;
 
 // A program block.
 var Block = function() {
