@@ -13,7 +13,7 @@ require("lang/object");
  */
 var Nitro = exports.Nitro = {};
 
-Nitro.VERSION = "0.0.8";
+Nitro.VERSION = "0.0.9";
 
 // Global CONFIG object.
 

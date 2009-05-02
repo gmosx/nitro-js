@@ -18,9 +18,6 @@ exports.Normalize = function(app) {
     var upstream = ContentType(app);
     
     return function(env) {
-        // FIXME: this is a hack around an inconsitency between Servlet and Simple.
-        env["PATH_INFO"] = env["SCRIPT_NAME"] + env["PATH_INFO"];    
-    
         var path = env["PATH_INFO"];
 
         if ("/" == path) 
