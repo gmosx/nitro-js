@@ -54,10 +54,6 @@ ln -s $WORK/narwhal/platforms/rhino/jars/js.jar $WINF/lib/.
 ln -s $SAPP/jackconfig.js $WINF/.
 ln -s $SAPP/src $WINF/.
 
-# Convienience root link.
-
-pushd $WINF; ln -s .. root; popd
-
 echo ""
 echo "THE SKELETON IS READY"
 echo ""
