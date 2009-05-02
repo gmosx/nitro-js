@@ -23,15 +23,21 @@ exports.Dispatch = function(root) {
             // THINK: Useful helper?
             env.request = new Request(env);
 
-            var response = app[env["REQUEST_METHOD"]](env);
-
-            if (!Array.isArray(response)) {
-                return  [200, {}, response || {}];
-            } else
-                return response;
+            var action = app[env["REQUEST_METHOD"]];
+			if (action) {
+			    var response = action(env);
+			
+			    if (!Array.isArray(response)) {
+			        return  [200, {}, response || {}];
+			    } else
+			        return response;
+			} else {
+				print(env["PATH_INFO"] + " cannot respond to '" + env["REQUEST_METHOD"] + "'");
+				throw [404, {}, []];
+			}
         } catch (e) {
             if (/^Error: require error/.test(e.toString())) { // FIXME: a better test needed here!
-            	return [404, {}, e.toString()];
+            	throw [404, {}, []];
             } else
                 throw e;
         }
