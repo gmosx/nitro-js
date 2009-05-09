@@ -4,7 +4,7 @@ var XSL = require("text/xslt").XSL,
     PlainTemplate = require("nitro/template").Template,
     FileCache = require("nitro/utils/filecache").FileCache;
 
-var xslRoot = CONFIG.xslRoot || (CONFIG.pathPrefix+"src/app/");
+var xslRoot = CONFIG.xslRoot || "src/app/";
 var XSLPI_RE = new RegExp('<\?xml-stylesheet type="text/xsl" href="([^"]*)');
 
 var cache = new FileCache(function(path) {

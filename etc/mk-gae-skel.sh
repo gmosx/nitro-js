@@ -1,6 +1,6 @@
 #/usr/bin/env bash
 
-WORK=~/Workspace
+WORK=~/Code
 
 EPRJ=$WORK/Jack # the gae project created in Eclipse
 SKEL=$WORK/skel # the skeleton project dir
@@ -22,6 +22,7 @@ ln -s $WORK/narwhal/lib $WINF/narwhal/.
 ln -s $WORK/narwhal/platforms $WINF/narwhal/.
 ln -s $WORK/narwhal/narwhal.js $WINF/narwhal/.
 ln -s $WORK/narwhal/narwhal.conf $WINF/narwhal/.
+ln -s $WORK/narwhal/local.json $WINF/narwhal/.
 ln -s $WORK/narwhal/package.json $WINF/narwhal/.
 
 # Copy packages

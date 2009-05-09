@@ -1,26 +1,26 @@
-var file = require("file"),
-    Template = require(CONFIG.template || "nitro/template").Template;
+var file = require("file");
 
 var FileCache = require("nitro/utils/filecache").FileCache;
-
-var loadTemplate = function(path) {
-    try {
-        var src = file.read(path).toString();
-        return new Template(src, path);
-    } catch (e) {
-    	print(e);
-        return null;
-    }
-}
-
-var cache = new FileCache(loadTemplate);
 
 /**
  * Render middleware.
  */
-exports.Render = function(app, templateRoot) {
+exports.Render = function(app, templateRoot, Template) {
 
-    templateRoot = templateRoot || (CONFIG.pathPrefix+"src/root");
+    templateRoot = templateRoot || (CONFIG.templateRoot) || "src/root";
+    Template = Template || require("nitro/template").Template;
+
+    var loadTemplate = function(path) {
+        try {
+            var src = file.read(path).toString();
+            return new Template(src, path);
+        } catch (e) {
+        	print(e);
+            return null;
+        }
+    }
+
+    var cache = new FileCache(loadTemplate);
 
     // The request parameters are not used as template arguments by default, 
     // this is a major security risk!
@@ -31,7 +31,7 @@ exports.Render = function(app, templateRoot) {
         var response = app(env);
         
         // FIXME: better test here.
-        if ((typeof(response[2]) != "string") && (response[1]["Transfer-Encoding"] != "chunked")) {
+        if ((response[0] == 200) && (typeof(response[2]) != "string") && (response[1]["Transfer-Encoding"] != "chunked")) {
             var template = loadTemplate(templateRoot + env["PATH_INFO"]);
             if (template) {
                 response[2] = template.render(response[2]);

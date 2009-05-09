@@ -1,8 +1,7 @@
 var file = require("file"),
     Utils = require("jack/utils");
 
-var Response = require("nitro/response").Response,
-    Template = require(CONFIG.template || "nitro/template").Template;
+var Response = require("nitro/response").Response;
 
 var template;
 
@@ -10,9 +9,12 @@ var template;
  * Catches 4XX and 5XX errors from upstream. 
  * Renders the error using the provided template.
  */
-exports.Errors = function(app, templatePath) {
+exports.Errors = function(app, templateRoot, Template) {
 
-    templatePath = templatePath || (CONFIG.pathPrefix+"src/root/error.html");
+    templateRoot = templateRoot || (CONFIG.templateRoot) || "src/root";
+    Template = Template || require("nitro/template").Template;
+    
+    templatePath = templateRoot + "/error.html";
     
     try {
         var src = file.read(templatePath).toString();
@@ -29,7 +31,7 @@ exports.Errors = function(app, templatePath) {
         } catch (e) {
             // TODO: show backtrace!
             // var backtrace = String((e.rhinoException && e.rhinoException.printStackTrace()) || (e.name + ": " + e.message));
-            response = [500, {}, e.toString()];
+            response = [500, {}, [e.toString()]];
         }
 
         var status = parseInt(response[0]);

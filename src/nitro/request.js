@@ -1,14 +1,11 @@
-var SeeOther = require("nitro/exceptions").SeeOther;
-
 var Request = exports.Request = require("jack/request").Request;
 
 /**
- * Redirect this request to another URI. This helper throws a SeeOther (307)
- * exception to skip the normal application middleware pipeline.
+ * Redirect this request to another URI. 
  */
-Request.prototype.redirect = function(uri) {
-    // TODO: ignore redirect in XHR requests!
-    throw SeeOther(uri || this.referer());
+Request.prototype.redirect = function(location, status) {
+    location = location || this.referer;
+    return [status || 303, {"Location": location}, ['Go to <a href="' + location + '">' + location + "</a>"]];
 }
 
 var XHR_RE = new RegExp("XMLHttpRequest", "i");

@@ -1,3 +1,5 @@
+var sandbox = require("sandbox").sandbox;
+
 var FileCache = require("nitro/utils/filecache").FileCache,
     Request = require("nitro/request").Request;
    
@@ -18,7 +20,13 @@ exports.Dispatch = function(root) {
         var path = env["PATH_INFO"].split(".")[0];
         
         try {
-            var app = require(root + path); // FIXME: require force needed!
+        	var app;
+        	
+        	if (CONFIG.reload) {
+        		app = sandbox(root + path, system, { loader : require.loader });
+        	} else {
+        		app = require(root + path); 
+        	}
 
             // THINK: Useful helper?
             env.request = new Request(env);
@@ -32,12 +40,11 @@ exports.Dispatch = function(root) {
 			    } else
 			        return response;
 			} else {
-				print(env["PATH_INFO"] + " cannot respond to '" + env["REQUEST_METHOD"] + "'");
-				throw [404, {}, []];
+				return [404, {}, []];
 			}
         } catch (e) {
             if (/^Error: require error/.test(e.toString())) { // FIXME: a better test needed here!
-            	throw [404, {}, []];
+            	return [404, {}, []];
             } else
                 throw e;
         }
