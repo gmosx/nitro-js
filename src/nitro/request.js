@@ -4,7 +4,7 @@ var Request = exports.Request = require("jack/request").Request;
  * Redirect this request to another URI. 
  */
 Request.prototype.redirect = function(location, status) {
-    location = location || this.referer;
+    location = location || this.referer();
     return [status || 303, {"Location": location}, ['Go to <a href="' + location + '">' + location + "</a>"]];
 }
 
