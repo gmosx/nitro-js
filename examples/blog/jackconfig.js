@@ -2,7 +2,7 @@
 
 load("etc/config.js");
 
-var Nitro = require("nitro");
+require("nitro");
 
 var Database = require("database").Database;
 
@@ -17,12 +17,14 @@ var Dispatch = require("nitro/middleware/dispatch").Dispatch,
     Errors = require("nitro/middleware/errors").Errors,
     SessionManager = require("nitro/middleware/sessionmanager").SessionManager;
 
+var Template = require("nitro/xsltemplate").Template;
+
 var Setup = require("app/middleware/setup").Setup;
 
 Database.register(CONFIG.database);
 
 exports.app = ContentLength(Normalize(Cascade([
     File("root"), 
-    SessionManager(Errors(Render(Setup(Dispatch()))), CONFIG.session.secret)
+    Errors(Render(Setup(Dispatch()), Template, "src/root"))
 ])));
 

@@ -4,7 +4,7 @@ A simple blog is the defacto standard example for a Web Application Framework. T
 
 This example strives to use clean and semantically rich markup. For this reason it uses HTML5 tags (header, footer, aside, article etc) and MicroFormat css classes (hAtom).
 
-This example is more elaborate than it really needs to be. This is understandable though as the goal is to demonstrate as many features and best practices of Nitro. 
+This example is more elaborate than it really needs to be. This is understandable though as the goal is to demonstrate many features and best practices of Nitro. 
 
 Please note that you need MySQL to run this example.
 
@@ -14,6 +14,15 @@ First of all, you have to configure the application for your system. Open your f
 
 $ vi etc/config.js
 
-Then just use jackup to run the application:
+Then you have to setup the database:
+
+$ mysql -u root -p
+
+mysql> GRANT ALL PRIVILEGES ON blog.* TO 'nitro'@'localhost' IDENTIFIED BY 'p@ssw0rd' WITH GRANT OPTION;
+mysql> quit
+
+$ mysql -u nitro -p < etc/schema.sql
+
+Finally, just use jackup to run the application:
 
 $ jackup

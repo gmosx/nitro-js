@@ -1,9 +1,8 @@
 A simple Nitro example
 
-This is a very simple example. To start make sure you have the nitro command in 
-the path and give:
+This is a very simple example. To start the application just give:
 
-$ nitro app.js
+$ jackup
 
 Then browse localhost:8080:
 

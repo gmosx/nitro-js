@@ -10,12 +10,12 @@ global.CONFIG = {
     session: {
         secret: "s3cr3t"
     },
-    template: "nitro/xsltemplate",
     mailer: {
     	protocol: "smtp",
     	host: "smtp.gmail.com",
     	port: 465,
     	username: "george.moschovitis@gmail.com",
     	password: "xxxxxx"
-    }    
+    },
+    reload: true
 }

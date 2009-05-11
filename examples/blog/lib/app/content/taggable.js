@@ -64,6 +64,8 @@ Taggable.prototype.removeTags = function() {
 /**
  */
 Taggable.prototype.tagString_linked = function() {
+    if (!this.tagString) return "";
+
     var t, tags = this.tagString.split(",");
     var arr = [];
     
