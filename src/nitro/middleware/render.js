@@ -12,15 +12,11 @@ exports.Render = function(app, Template, templateRoot) {
 
     // FIXME: don't catch exceptions here.
     var loadTemplate = function(path) {
-        try {
+        if (file.exists(path)) {
             var src = file.read(path).toString();
-            print(path);
             return new Template(src, path);
-        } catch (e) {
-        	print(e);
-            print(String((e.rhinoException && e.rhinoException.printStackTrace()) || (e.name + ": " + e.message)));
-            return null;
-        }
+        } else
+            return false;
     }
 
     var cache = new FileCache(loadTemplate);

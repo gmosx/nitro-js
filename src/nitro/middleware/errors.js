@@ -24,14 +24,13 @@ exports.Errors = function(app, templateRoot, Template) {
     }
     
     return function(env) {
-        var response, backtrace;
+        var response;
 
         try {
             response = app(env);
         } catch (e) {
-            // TODO: show backtrace!
-            backtrace = String((e.rhinoException && e.rhinoException.printStackTrace()) || (e.name + ": " + e.message));
-            response = [500, {}, [e.toString()]];
+            var backtrace = String((e.rhinoException && e.rhinoException.printStackTrace()) || (e.name + ": " + e.message));
+            response = [500, {}, [e.toString() + " : " + backtrace]];
         }
 
         var status = parseInt(response[0]);
@@ -44,10 +43,8 @@ exports.Errors = function(app, templateRoot, Template) {
                 error: response[2]
             }
             
-            if (status >= 500) {
+            if (status >= 500)
                 print("ERROR: " + data.error);
-                print(backtrace);
-            }
             
             return new Response(status, {}, template.render(data)).finish();
         }
