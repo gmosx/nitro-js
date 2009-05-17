@@ -4,7 +4,7 @@ var XSL = require("text/xslt").XSL,
     PlainTemplate = require("nitro/template").Template,
     FileCache = require("nitro/utils/filecache").FileCache;
 
-var xslRoot = CONFIG.xslRoot || "src/app/";
+var xslRoot = CONFIG.xslRoot || "src/app";
 var XSLPI_RE = new RegExp('<\?xml-stylesheet type="text/xsl" href="([^"]*)');
 
 var cache = new FileCache(function(path) {
@@ -21,7 +21,7 @@ var Template = exports.Template = function(src, path) {
 	    if (match) {
 	        // If the template includes an XSL processing instruction, 
 	        // XSL transform the input.
-	        var xslPath = xslRoot + match[1];       
+	        var xslPath = xslRoot + "/" + match[1];       
 	        var xsl = cache.get(xslPath);
 	        src = xsl.transform(src, path);
 	    }
