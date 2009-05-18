@@ -27,7 +27,7 @@ Template.formatters = {
     uri: encodeURI
 }
 
-var TOKEN_RE = new RegExp("(" + "\\{.+?\\}\n?)"),
+var TOKEN_RE = new RegExp("(\{.+?\}\n?)"),
     WITH_RE = /(with|if)\s+(\S+)?/;
 
 // A program block.
@@ -137,7 +137,9 @@ var compile = function(str) {
     for (var i in tokens) {
         var token = tokens[i];
                 
-        if (token[0] == "{") {
+        // FIXME: hack fix to handle {_, for example client side javascript
+        // blocks. Come up with a better TOKEN_RE.
+        if ((token[0] == "{") && (token[1] != " ")) {
             if (token.slice(-1) == "\n")
                 token = token.slice(null, -1);
 
