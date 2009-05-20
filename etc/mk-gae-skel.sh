@@ -19,11 +19,17 @@ cp -R $EPRJ $SKEL
 
 mkdir $WINF/narwhal
 ln -s $WORK/narwhal/lib $WINF/narwhal/.
-ln -s $WORK/narwhal/platforms $WINF/narwhal/.
 ln -s $WORK/narwhal/narwhal.js $WINF/narwhal/.
 ln -s $WORK/narwhal/narwhal.conf $WINF/narwhal/.
 ln -s $WORK/narwhal/local.json $WINF/narwhal/.
 ln -s $WORK/narwhal/package.json $WINF/narwhal/.
+
+# Copy platforms
+
+mkdir -p $WINF/narwhal/platforms
+ln -s $WORK/narwhal/platforms/default $WINF/narwhal/platforms/default
+ln -s $WORK/narwhal/platforms/rhino $WINF/narwhal/platforms/rhino
+ln -s $WORK/narwhal/platforms/secure $WINF/narwhal/platforms/secure
 
 # Copy packages
 
