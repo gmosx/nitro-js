@@ -21,9 +21,6 @@ if (!global.CONFIG) CONFIG = {};
 
 // Setup js path.
 
-var paths = require.loader.getPaths();
+require.paths.unshift(CONFIG.srcPath || "src");
+require.paths.unshift(CONFIG.libPath || "lib");
 
-paths.unshift(CONFIG.srcPath || "src");
-paths.unshift(CONFIG.libPath || "lib");
-
-require.loader.setPaths(paths);
