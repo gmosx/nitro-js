@@ -1,5 +1,6 @@
 /**
- * A simple and portable templating system.
+ * A simple and portable templating system. 
+ * Based on ideas from jsontemplate.org
  */ 
 var Template = exports.Template = function(str) {
     this.program = compile(str);
@@ -14,6 +15,7 @@ Template.prototype.render = function(data) {
 
 /**
  * Formatting functions used in interpolations.
+ * This map can be extended with application-specific formatters.
  */
 Template.formatters = {
     html: function(str) {
@@ -24,7 +26,10 @@ Template.formatters = {
         return str.replace(/&/g, "&amp;").replace(/>/g, "&gt;").
                    replace(/</g, "&lt;").replace(/"/g, "&quot;");
     },
-    uri: encodeURI
+    uri: encodeURI,
+    fixed2: function(num) {
+    	return Number(num).toFixed(2);
+    }
 }
 
 var TOKEN_RE = new RegExp("(\{.+?\}\n?)"),
@@ -35,15 +40,18 @@ var Block = function() {
     this.statements = [];
 }
 
+// Add a new statement to the program block.
 Block.prototype.push = function(stmt) {
     this.statements.push(stmt);
 }
 
-// A program scope,
+// A program scope implemented as a stack of contexts.
 var Scope = function(data) {
     this.stack = [data];
 }
 
+// Create a new context (frame) in the scope stack. Typically a value in the
+// current context is unshifted as a new context.
 Scope.prototype.push = function(name) {
     var context = this.stack[0][name];
     
@@ -61,6 +69,7 @@ Scope.prototype.replace = function(context) {
     this.stack[0] = context;
 }
 
+// Lookup the value for the given name in the scope stack.
 Scope.prototype.lookup = function(name) {
     var value;
     
