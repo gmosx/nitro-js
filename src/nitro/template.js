@@ -27,6 +27,9 @@ Template.formatters = {
                    replace(/</g, "&lt;").replace(/"/g, "&quot;");
     },
     uri: encodeURI,
+    fixed: function(num) {
+    	return Number(num).toFixed();    	
+    },
     fixed2: function(num) {
     	return Number(num).toFixed(2);
     }
