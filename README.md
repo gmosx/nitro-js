@@ -60,6 +60,7 @@ Credits
 -------
 
 George Moschovitis <george-moschovitis@gmosx.com>
+Kris Kowal <kris.kowal@cixar.com>
 
 
 License
