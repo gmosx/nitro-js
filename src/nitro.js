@@ -6,6 +6,5 @@ if (!global.CONFIG) global.CONFIG = {};
 
 // Setup js path.
 
-var paths = require.loader.getPaths();
-paths.unshift(CONFIG.srcPath || "src");
-require.loader.setPaths(paths);
+require.paths.unshift(CONFIG.srcPath || "src");
+require.paths.unshift(CONFIG.libPath || "lib");
