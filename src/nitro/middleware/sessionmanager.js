@@ -17,7 +17,7 @@ var SHA256 = require("data/digest/sha256").SHA256,
  */
 var SessionManager = exports.SessionManager = function(app, secret, cookieName) {
 
-    if (undefined === secret) throw "Please define the SessionManager secret value!";
+    if (!secret) throw new Error("Please define the SessionManager secret value!");
 
     cookieName = cookieName || "ns";
 
@@ -38,11 +38,11 @@ var SessionManager = exports.SessionManager = function(app, secret, cookieName) 
     }
       
     return function(env) {
-        env["jack.session.load"] = loadSession;
+        env["jsgi.session.load"] = loadSession;
 
         var response = app(env); 
         
-        var session = env["jack.session"]
+        var session = env["jsgi.session"]
         
         if (session && session.dirty) {
             var data = json.stringify(session.data);

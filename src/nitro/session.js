@@ -8,13 +8,13 @@
  * users from using them.
  */
 var Session = exports.Session = function(env) {
-    if (env["jack.session"])
-        return env["jack.session"];
+    if (env["jsgi.session"])
+        return env["jsgi.session"];
 
-    this.data = env["jack.session.load"](env);
+    this.data = env["jsgi.session.load"](env);
     this.dirty = false;
 
-    env["jack.session"] = this;
+    env["jsgi.session"] = this;
 }
 
 /**
