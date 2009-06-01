@@ -41,9 +41,6 @@ exports.Render = function(app, Template, templateRoot) {
             }
         }
 
-    print("===");
-    print(response[2]);
-    
         return response;
     }
     
