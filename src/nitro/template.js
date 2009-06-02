@@ -76,7 +76,7 @@ Scope.prototype.replace = function(context) {
 Scope.prototype.lookup = function(name) {
     var value;
     
-    for (var i in this.stack) {
+    for (var i = 0; i < this.stack.length; i++) {
         value = this.stack[i][name];
         if (value) break;
     }
@@ -95,7 +95,7 @@ var op_interpolate = function(stmt, scope) {
     
     if (value) {
         var formatters = stmt[2];
-        for (var i in formatters)
+        for (var i = 0; i < formatters.length; i++)
             value = formatters[i](value);
     } 
 
@@ -113,7 +113,7 @@ var op_with = function(stmt, scope) {
     if (block) {
         if (Array.isArray(context)) { 
             // The context is an array, loop.
-            for (var i in context) {
+            for (var i = 0; i < context.length; i++) {
                 scope.replace(context[i]);
                 output += execute(block, scope);
             }
@@ -130,7 +130,7 @@ var execute = function(program, scope) {
     var output = [];
     var statements = program.statements;
     
-    for (var i in statements) {
+    for (var i = 0; i < statements.length; i++) {
         var stmt = statements[i];
         output.push(stmt[0](stmt, scope));
     }
@@ -146,7 +146,7 @@ var compile = function(str) {
     // Split the input string in tokens. 
     var tokens = str.split(TOKEN_RE);
     
-    for (var i in tokens) {
+    for (var i = 0; i < tokens.length; i++) {
         var token = tokens[i];
 
         // FIXME: hack fix to handle {_, for example client side javascript
@@ -184,12 +184,12 @@ var compile = function(str) {
                 var parts = token.substring(1, token.length-1).split("|");
                 var name = parts.shift();
                 var formatters = [];
-                for (var i in parts) {
-                    var formatter = Template.formatters[parts[i]];
+                for (var j = 0; j < parts.length; j++) {
+                    var formatter = Template.formatters[parts[j]];
                     if (formatter) 
                         formatters.push(formatter);
                     else
-                        throw "Undefined formatter '" + parts[i] + "'";
+                        throw "Undefined formatter '" + parts[j] + "'";
                 }
                 program.push([op_interpolate, name, formatters]);
             }
