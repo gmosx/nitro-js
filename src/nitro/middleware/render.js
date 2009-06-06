@@ -33,7 +33,7 @@ exports.Render = function(app, Template, templateRoot) {
         if ((typeof(response[2]) == "object") && (!Array.isArray(response[2])) && (response[1]["Transfer-Encoding"] != "chunked")) { 
             var template = loadTemplate(templateRoot + env["PATH_INFO"]);
             if (template) {
-                response[2] = template.render(response[2]);
+                response[2] = [template.render(response[2])];
             } else {
             	response[2] = []; // FIXME, warn template not found?
             }
