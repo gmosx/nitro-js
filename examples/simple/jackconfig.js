@@ -13,16 +13,12 @@ exports.app = ContentLength(Normalize(Render(Dispatch())));
 
 // The default jackup environment is 'development'.
 exports.development = function(app) {
-	global.CONFIG = {
-		srcPath: "src",
-		templateRoot: "src/root"
-	}
-	
 	return Nitro(ShowExceptions(Lint(app)));
 }
 
 // The default gae environment is 'gae'.
 exports.gae = function(app) {
+    // Override defaults.
 	global.CONFIG = {
 		srcPath: "WEB-INF/src",
 		templateRoot: "WEB-INF/src/root",
