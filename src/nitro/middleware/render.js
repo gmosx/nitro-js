@@ -35,6 +35,7 @@ exports.Render = function(app, Template, templateRoot) {
             if (template) {
                 response[2] = [template.render(response[2])];
             } else {
+                // print("Template not found: " + templateRoot + env["PATH_INFO"]);
             	response[2] = []; // FIXME, warn template not found?
             }
         }

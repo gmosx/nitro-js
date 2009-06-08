@@ -1,15 +1,19 @@
 #/usr/bin/env bash
 
+# This script creates a skeleton project directory, ready to be deployed to
+# Google App Engine
+
+# The working directory where narwhal, jack, jack-servlet and nitro reside.
 WORK=~/Code
 
-EPRJ=$WORK/Jack # the gae project created in Eclipse
+EPRJ=$WORK/JackSkel # the gae project created in Eclipse
 SKEL=$WORK/skel # the skeleton project dir
 SAPP=$WORK/nitro/examples/simple # a simple app to use as starting point
 
 WINF=$SKEL/war/WEB-INF
 
 # To prepare the Skeleton project:
-# 1. create a new Eclipse GAE Web application project with name 'Jack' and 
+# 1. create a new Eclipse GAE Web application project with name 'JackSkell' and 
 #    package 'org.jackjs' 
 # 2. Set the servlet mapping path to '/*'.
 
