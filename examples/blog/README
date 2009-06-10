@@ -14,6 +14,10 @@ First of all, you have to configure the application for your system. Open your f
 
 $ vi etc/config.js
 
+Setup the classpath to include the mysql jar:
+
+$ export CLASSPATH="jars/mysql-connector-java-5.1.6.jar"
+
 Then you have to setup the database:
 
 $ mysql -u root -p

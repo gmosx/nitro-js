@@ -1,8 +1,6 @@
-#!/usr/bin/env jackup
-
 load("etc/config.js");
 
-require("nitro");
+var nitro = require("nitro");
 
 var Database = require("database").Database;
 
@@ -25,6 +23,10 @@ Database.register(CONFIG.database);
 
 exports.app = ContentLength(Normalize(Cascade([
     File("root"), 
-    Errors(Render(Setup(Dispatch()), Template, "src/root"))
+    Errors(Render(Setup(Dispatch()), Template))
 ])));
+
+exports.development = function(app) {
+    return(app);
+}
 
