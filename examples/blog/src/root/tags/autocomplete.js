@@ -11,5 +11,5 @@ exports.GET = function(env) {
     for (var i in tags)
         res.push(tags[i].name);
         
-    return res.join("\n");
+    return [200, {}, [res.join("\n")]];
 }
