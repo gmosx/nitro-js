@@ -1,28 +1,25 @@
+var nitro = require("nitro");
+
 var File = require("jack/file").File, 
     ContentLength = require("jack/contentlength").ContentLength,
     ShowExceptions = require("jack/showexceptions").ShowExceptions,
     Lint = require("jack/lint").Lint,
     Cascade = require("jack/cascade").Cascade;
 
-var Nitro = require("nitro").Nitro,
-	Dispatch = require("nitro/middleware/dispatch").Dispatch,
+var Dispatch = require("nitro/middleware/dispatch").Dispatch,
 	Normalize = require("nitro/middleware/normalize").Normalize,
 	Render = require("nitro/middleware/render").Render;
 
-exports.app = ContentLength(Normalize(Render(Dispatch())));
+var Wrap = require("app/middleware/wrap").Wrap;
+
+exports.app = ContentLength(Normalize(Render(Wrap(Dispatch()))));
 
 // The default jackup environment is 'development'.
 exports.development = function(app) {
-	return Nitro(ShowExceptions(Lint(app)));
+ 	return ShowExceptions(Lint(app));
 }
 
 // The default gae environment is 'gae'.
 exports.gae = function(app) {
-    // Override defaults.
-	global.CONFIG = {
-		srcPath: "WEB-INF/src",
-		templateRoot: "WEB-INF/src/root",
-	}
-
-	return Nitro(app);
+	return app;
 }
