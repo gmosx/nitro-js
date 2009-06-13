@@ -17,16 +17,16 @@ var Dispatch = require("nitro/middleware/dispatch").Dispatch,
 
 var Template = require("nitro/xsltemplate").Template;
 
-var Setup = require("app/middleware/setup").Setup;
+var Wrap = require("./src/wrap").Wrap;
 
 Database.register(CONFIG.database);
 
 exports.app = ContentLength(Normalize(Cascade([
     File("root"), 
-    Errors(Render(Setup(Dispatch()), Template))
+    Errors(Render(Wrap(Dispatch()), Template))
 ])));
 
 exports.development = function(app) {
-    return(app);
+    return app;
 }
 

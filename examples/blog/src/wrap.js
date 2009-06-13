@@ -1,9 +1,9 @@
-var Category = require("app/content/category").Category,
-    Comment = require("app/content/comment").Comment;
+var Category = require("./content/category").Category,
+    Comment = require("./content/comment").Comment;
     
-var Aside = require("app/middleware/aside").Aside;
+var Aside = require("./aside").Aside;
 
-exports.Setup = function(app) {
+exports.Wrap = function(app) {
 
     return function(env) {
         var response = app(env);

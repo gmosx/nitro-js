@@ -1,7 +1,7 @@
 var Paginator = require("nitro/utils/paginator").Paginator;
 
-var Article = require("app/content/article").Article,
-    Category = require("app/content/category").Category;
+var Article = require("../../content/article").Article,
+    Category = require("../../content/category").Category;
     
 exports.GET = function(env) {
     var db = openDatabase();

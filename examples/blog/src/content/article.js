@@ -1,7 +1,7 @@
 require("lang/date");
 
-var Taggable = require("app/content/taggable").Taggable,
-    seo = require("app/content/seo").SEO.encode;
+var Taggable = require("./taggable").Taggable,
+    seo = require("./seo").SEO.encode;
 
 /**
  * An article is the basic content unit.

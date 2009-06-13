@@ -1,6 +1,6 @@
 var NotFound = require("nitro/exceptions").NotFound;
 
-var Tag = require("app/content/tag").Tag;
+var Tag = require("../content/tag").Tag;
 
 exports.GET = function(env) {
     var db = openDatabase();

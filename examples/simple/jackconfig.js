@@ -10,7 +10,7 @@ var Dispatch = require("nitro/middleware/dispatch").Dispatch,
 	Normalize = require("nitro/middleware/normalize").Normalize,
 	Render = require("nitro/middleware/render").Render;
 
-var Wrap = require("app/middleware/wrap").Wrap;
+var Wrap = require("./src/wrap").Wrap;
 
 exports.app = ContentLength(Normalize(Render(Wrap(Dispatch()))));
 
