@@ -1,4 +1,4 @@
-var nitro = require("nitro");
+require("nitro");
 
 var File = require("jack/file").File, 
     ContentLength = require("jack/contentlength").ContentLength,
@@ -21,5 +21,6 @@ exports.development = function(app) {
 
 // The default gae environment is 'gae'.
 exports.gae = function(app) {
+    CONFIG.root = "WEB-INF/src/root";
 	return app;
 }

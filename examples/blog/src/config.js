@@ -1,4 +1,4 @@
-global.CONFIG = {
+exports.development = {
     database: {
         type: "relational",
         system: "mysql",

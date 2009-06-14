@@ -1,6 +1,5 @@
-load("etc/config.js");
-
-var nitro = require("nitro");
+require("oop");
+require("nitro");
 
 var Database = require("database").Database;
 
@@ -15,11 +14,10 @@ var Dispatch = require("nitro/middleware/dispatch").Dispatch,
     Errors = require("nitro/middleware/errors").Errors,
     SessionManager = require("nitro/middleware/sessionmanager").SessionManager;
 
-var Template = require("nitro/xsltemplate").Template;
+var Template = require("nitro/utils/xsltemplate").Template;
 
-var Wrap = require("./src/wrap").Wrap;
-
-Database.register(CONFIG.database);
+var Wrap = require("./src/wrap").Wrap,
+    config = require("./src/config");
 
 exports.app = ContentLength(Normalize(Cascade([
     File("root"), 
@@ -27,6 +25,7 @@ exports.app = ContentLength(Normalize(Cascade([
 ])));
 
 exports.development = function(app) {
+    require("hash").Hash.update(CONFIG, config.development);   
+    Database.register(CONFIG.database);
     return app;
 }
-
