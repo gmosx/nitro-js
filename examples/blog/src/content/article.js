@@ -1,5 +1,3 @@
-require("lang/date");
-
 var Taggable = require("./taggable").Taggable,
     seo = require("./seo").SEO.encode;
 

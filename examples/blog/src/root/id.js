@@ -1,5 +1,3 @@
-require("lang/date");
-
 var md5 = require("md5").MD5.hexdigest;
 
 var NotFound = require("nitro/exceptions").NotFound;
