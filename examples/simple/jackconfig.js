@@ -6,9 +6,9 @@ var File = require("jack/file").File,
     Lint = require("jack/lint").Lint,
     Cascade = require("jack/cascade").Cascade;
 
-var Dispatch = require("nitro/middleware/dispatch").Dispatch,
-	Normalize = require("nitro/middleware/normalize").Normalize,
-	Render = require("nitro/middleware/render").Render;
+var Dispatch = require("nitro/dispatch").Dispatch,
+	Normalize = require("nitro/normalize").Normalize,
+	Render = require("nitro/render").Render;
 
 var Wrap = require("./src/wrap").Wrap;
 

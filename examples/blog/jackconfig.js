@@ -8,11 +8,11 @@ var File = require("jack/file").File,
     Cascade = require("jack/cascade").Cascade,
     MethodOverride = require("jack/methodoverride").MethodOverride;
     
-var Dispatch = require("nitro/middleware/dispatch").Dispatch,
-    Normalize = require("nitro/middleware/normalize").Normalize,
-    Render = require("nitro/middleware/render").Render,
-    Errors = require("nitro/middleware/errors").Errors,
-    SessionManager = require("nitro/middleware/sessionmanager").SessionManager;
+var Dispatch = require("nitro/dispatch").Dispatch,
+    Normalize = require("nitro/normalize").Normalize,
+    Render = require("nitro/render").Render,
+    Errors = require("nitro/errors").Errors,
+    SessionManager = require("nitro/sessionmanager").SessionManager;
 
 var Template = require("nitro/utils/xsltemplate").Template;
 
@@ -21,7 +21,7 @@ var Wrap = require("./src/wrap").Wrap,
 
 exports.app = ContentLength(Normalize(Cascade([
     File("root"), 
-    Errors(Render(Wrap(Dispatch()), Template))
+    Errors(Render(Wrap(Dispatch())))
 ])));
 
 exports.development = function(app) {
