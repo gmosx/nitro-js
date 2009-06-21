@@ -1,5 +1,5 @@
 var Paginator = require("nitro/utils/paginator").Paginator,
-    encode = require("text/atom").Atom.encode;
+    encode = require("nitro/utils/atom").Atom.encode;
 
 var Article = require("../content/article").Article,
     Category = require("../content/category").Category;
