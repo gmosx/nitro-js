@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="html.xsl"?>
+
+<x:page title="${tag}" xmlns:x="http://lib.unjou.org/Schemas/Style"
+                       xmlns:xi="http://www.w3.org/2001/XInclude">
+
+<x:breadcrumbs>
+    / <a href="/tags">Tags</a> / articles tagged with '${tag}'
+</x:breadcrumbs>
+
+<section class="main hfeed">
+{for article in articles} 
+<xi:include href="../article.inc.html" />
+{/for}
+
+<xi:include href="../paginator.inc.html" />
+</section>
+
+<xi:include href="../aside.inc.html" />
+
+</x:page>

@@ -22,5 +22,6 @@ exports.development = function(app) {
 // The default gae environment is 'gae'.
 exports.gae = function(app) {
     CONFIG.root = "WEB-INF/src/root";
+    CONFIG.templateRoot = "WEB-INF/src/templates";
 	return app;
 }
