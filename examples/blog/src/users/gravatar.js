@@ -1,4 +1,4 @@
-var md5 = require("md5").MD5.hexdigest;
+var md5 = require("md5").hash;
 
 /**
  * A gravatar, or globally recognized avatar, is quite simply an avatar 

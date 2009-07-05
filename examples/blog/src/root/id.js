@@ -1,4 +1,4 @@
-var md5 = require("md5").MD5.hexdigest;
+var hash = require("crc32").hash;
 
 var NotFound = require("nitro/exceptions").NotFound;
 
@@ -15,7 +15,7 @@ exports.GET= function(env) {
     
     if (!article) throw NotFound();
     
-    var etag = md5(article.updated.toString());
+    var etag = hash(article.updated.toString());
 
     if (env["HTTP_IF_NONE_MATCH"] == etag) {
         throw [
