@@ -1,8 +1,8 @@
 {
     "name": "nitro",
     "author": "George Moschovitis",
-    "email": "george-moschovitis@gmosx.com",
-    "dependencies": ["jack"],
+    "email": "george.moschovitis@gmail.com",
+    "dependencies": ["jack", "template"],
     "js": "lib",
     "main": "examples/simple/jackconfig"
 }
