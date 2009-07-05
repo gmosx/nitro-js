@@ -1,4 +1,4 @@
-var Chunked = require("nitro/chunked").Chunked;
+var ChunkedResponse = require("nitro/utils/chunked").ChunkedResponse;
 
 var JThread = Packages.java.lang.Thread;
 
@@ -10,6 +10,6 @@ var stream = function(write) {
 }
 
 exports.GET = function(env) {
-    return new Chunked(stream);
+    return new ChunkedResponse(stream);
 }
 
