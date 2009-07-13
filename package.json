@@ -3,7 +3,11 @@
     "author": "George Moschovitis",
     "email": "george.moschovitis@gmail.com",
     "dependencies": ["jack", "template"],
+    "contributors": [
+        "Kris Kowal"
+    ],
     "js": "lib",
-    "main": "examples/simple/jackconfig"
+    "main": "examples/simple/jackconfig",
+    "lean": ["lib"]
 }
 

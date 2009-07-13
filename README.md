@@ -31,7 +31,7 @@ After you have installed Narwhal and Jack you are ready to run the simple exampl
 $ cd examples/simple
 $ jackup 
 
-The application will start listening at localhost:8080, so use your favourite browser (FireFox?) to verify that everything works correctly.
+The application will start listening at localhost:8080, so use your favourite browser to verify that everything works correctly.
 
 
 Directory structure
@@ -59,7 +59,7 @@ Nitro is under intense development. Changes to the API are to be expected.
 Credits
 -------
 
-George Moschovitis <george-moschovitis@gmosx.com>
+George Moschovitis <george.moschovitis@gmail.com>
 Kris Kowal <kris.kowal@cixar.com>
 
 
