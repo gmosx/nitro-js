@@ -38,9 +38,6 @@ Directory structure
 -------------------
 
 /lib:
-    Contains the implementation of standard library code that complements the Narwhal library
-    
-/src/nitro:
     Contains the implementation of the web application framework
     
 /examples/simple:
@@ -48,7 +45,23 @@ Directory structure
 
 /examples/blog:
     A sophisticated example, implements a real world blog.
-    
+
+
+Google App Engine
+-----------------
+
+Nitro applications run great on Google App Engine. Have a look at the [blog-gae](http://github.com/gmosx/blog-gae/tree/master) example for a demonstration of using Nitro and [appengine](http://github.com/gmosx/appengine/tree/master) package to develop a simple Blog.
+
+
+Related projects
+----------------
+
+Nitro is an ecosystem of related projects:
+
+* [appengine](http://github.com/gmosx/appengine/tree/master) 
+* [template](http://github.com/gmosx/template/tree/master)
+* [blog-gae](http://github.com/gmosx/blog-gae/tree/master)
+
     
 Caveats
 -------
@@ -59,8 +72,8 @@ Nitro is under intense development. Changes to the API are to be expected.
 Credits
 -------
 
-George Moschovitis <george.moschovitis@gmail.com>
-Kris Kowal <kris.kowal@cixar.com>
+* George Moschovitis <george.moschovitis@gmail.com>
+* Kris Kowal <kris.kowal@cixar.com>
 
 
 License
