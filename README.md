@@ -23,13 +23,13 @@ Getting Started
 
 At the moment, Nitro requires customized versions of Narwhal and Jack. Please get patched versions from:
     
-http://github.com/gmosx/jack
-http://github.com/gmosx/narwhal
+[http://github.com/gmosx/jack](http://github.com/gmosx/jack)
+[http://github.com/gmosx/narwhal](http://github.com/gmosx/narwhal)
 
 After you have installed Narwhal and Jack you are ready to run the simple example:
 
-$ cd examples/simple
-$ jackup 
+    $ cd examples/simple
+    $ jackup 
 
 The application will start listening at localhost:8080, so use your favourite browser to verify that everything works correctly.
 
@@ -38,13 +38,13 @@ Directory structure
 -------------------
 
 /lib:
-    Contains the implementation of the web application framework
+Contains the implementation of the web application framework
     
 /examples/simple:
-    Contains a simple example        
+Contains a simple example        
 
 /examples/blog:
-    A sophisticated example, implements a real world blog.
+A sophisticated example, implements a real world blog.
 
 
 Google App Engine
