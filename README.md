@@ -33,6 +33,10 @@ After you have installed Narwhal and Jack you are ready to run the simple exampl
 
 The application will start listening at localhost:8080, so use your favourite browser to verify that everything works correctly.
 
+For a more sophisticated exampe that implements a simple Blog on Google App Engine have a look at:
+
+[blog-gae](http://github.com/gmosx/blog-gae/tree/master)    
+
 
 Directory structure
 -------------------
@@ -42,9 +46,6 @@ Contains the implementation of the web application framework
     
 /examples/simple:
 Contains a simple example        
-
-/examples/blog:
-A sophisticated example, implements a real world blog.
 
 
 Google App Engine
