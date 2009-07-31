@@ -1,11 +1,9 @@
 Nitro
 =====
 
-Nitro is a Web Application Framework. 
-    
-Nitro applications are implemented with JavaScript and leverage (strict) Web Standards like XHTML/HTML, CSS, HTTP, XML, XSLT, ECMAScript 3.0, MicroFormats, etc. Typically, Nitro applications are a collection of programs that run on the server *and* the client. A control program dispatches work to the application programs and aggregates their output. The application's output is consumed by modern web browsers, web services or other applications through a standard REST interface.
+Nitro provides a library of carefully designed middleware and utilities for creating scalable, standards-compliant Web Applications with JavaScript. Nitro is build on top of Jack/JSGI, Narwhal/ServerJS and Rhino. 
 
-Nitro is a higher level application framework build on top of the lower level Jack web server gateway interface and Narwhal standad JavaScript library. Leveraging Jack's simplicity and flexibility, Nitro is implemented as a collection of Jack middleware apps. Nitro provides 'just-enough' functionality on top of Jack by implementing a small and carefully designed library for web application development. Moreover, Nitro runs on top of Rhino and has full access on all Java libararies.
+Nitro applications leverage (strict) Web Standards like XHTML/HTML, CSS, HTTP, XML, XSLT, ECMAScript 3.0, MicroFormats, etc. Typically, Nitro applications are a collection of programs that run on the server *and* the client. A control program dispatches work to the application programs and aggregates their output. The application's output is consumed by modern web browsers, web services or other applications through a standard REST interface.
 
 Homepage: http://nitrojs.org/
 
