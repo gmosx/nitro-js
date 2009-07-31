@@ -54,6 +54,68 @@ Google App Engine
 Nitro applications run great on Google App Engine. Have a look at the [blog-gae](http://github.com/gmosx/blog-gae/tree/master) example for a demonstration of using Nitro and [appengine](http://github.com/gmosx/appengine/tree/master) package to develop a simple Blog.
 
 
+Layout
+------
+
+The Layout mechanism is an effective enhancement of the Template mechanism. A Layout is a standard template that accepts as input (and interpolates) 'content' templates. Moreover, it resolves include directives to allow for componentization of complex Templates.
+
+The Layout mechanism is similar to Rails templates, but an example will better illustrate the concept.
+
+layout.html (layout template):
+
+    <html>
+        <head>
+            <title>{{title}}</title>
+        </head>
+        <body>
+            <h1>{breadcrumbs</h1>
+            <section>
+                {yield}
+            </section>
+        </body>
+    </html>
+
+index.html (content template):
+
+    {.layout "/layout.html"}
+
+    <l:breadcrumbs>Home / hello</l:breadcrumbs>
+
+    <h2>The content</h2>
+    <p>
+        Hello world!
+        {.include "fragment.inc.html"}
+    </p>
+
+fragment.inc.html (fragment template):
+
+    <span>I am included</span>
+
+The output of the Layout filter is:
+
+    <html>
+        <head>
+            <title>{title}</title>
+        </head>
+        <body>
+            <h1>Home / hello</h1>
+            <section>
+                <h2>The content</h2>
+                <p>
+                    Hello world!
+                    <span>I am included</span>
+                </p>
+            </section>
+        </body>
+    </html>
+
+Please notice:
+
+* {{title}} is unescaped to {title} after the Layout template evaluation (standard template behaviour). It will be interpolated at run time.
+
+* <l:xxx>...</l:xxx> blocks define fragments that are passed as values to the 'layout' template. A special value called 'yield' captures the whole of the 'content' template.
+
+
 Related projects
 ----------------
 
