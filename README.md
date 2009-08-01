@@ -71,7 +71,7 @@ layout.html (layout template):
         <body>
             <h1>{breadcrumbs</h1>
             <section>
-                {yield}
+                {content}
             </section>
         </body>
     </html>
@@ -84,11 +84,13 @@ index.html (content template):
         Home / hello
     {.end breadcrumbs}
 
+    {.block content}
     <h2>The content</h2>
     <p>
         Hello world!
         {.include "fragment.inc.html"}
     </p>
+    {.end content}
 
 fragment.inc.html (fragment template):
 
