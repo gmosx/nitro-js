@@ -55,9 +55,12 @@ Nitro applications run great on Google App Engine. Have a look at the [blog-gae]
 Layout
 ------
 
-The Layout mechanism is an effective enhancement of the Template mechanism. A Layout is a standard template that accepts as input (and interpolates) 'content' templates. Moreover, it resolves include directives to allow for componentization of complex Templates.
+The Layout mechanism provides two effective enhancements over the Template infrastructure:
 
-The Layout mechanism is similar to Rails templates, but an example will better illustrate the concept.
+* A fragment inclusion mechanism
+* A template inheritance mechanism
+
+The Layout mechanism is similar to Django templates or Rails layouts. An example will help illustrate the concept:
 
 layout.html (layout template):
 
@@ -75,9 +78,11 @@ layout.html (layout template):
 
 index.html (content template):
 
-    {.layout "/layout.html"}
+    {.extends "/layout.html"}
 
-    <l:breadcrumbs>Home / hello</l:breadcrumbs>
+    {.block breadcrumbs}
+        Home / hello
+    {.end breadcrumbs}
 
     <h2>The content</h2>
     <p>
@@ -111,7 +116,7 @@ Please notice:
 
 * {{title}} is unescaped to {title} after the Layout template evaluation (standard template behaviour). It will be interpolated at run time.
 
-* <l:xxx>...</l:xxx> blocks define fragments that are passed as values to the 'layout' template. A special value called 'yield' captures the whole of the 'content' template.
+* {.block xxx}...{.end xxx} blocks define fragments that are passed as values to the parent template. A special value called 'yield' captures the whole of the template as a convenience.
 
 
 Related projects
