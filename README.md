@@ -69,7 +69,7 @@ layout.html (layout template):
             <title>{{title}}</title>
         </head>
         <body>
-            <h1>{breadcrumbs</h1>
+            <h1>{breadcrumbs}</h1>
             <section>
                 {content}
             </section>
