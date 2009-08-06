@@ -1,3 +1,5 @@
+var redirect = require("nitro/response").redirectResponse;
+
 exports.GET = function(env) {
-    return env.request.redirect();
+    return redirect(env.request.referer());
 }

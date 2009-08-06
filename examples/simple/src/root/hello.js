@@ -1,3 +1,5 @@
+var text = require("nitro/response").textResponse;
+
 exports.GET = function(env) {
-    return [200, {}, ["Hello World"]];
+    return text("Hello World");
 }
