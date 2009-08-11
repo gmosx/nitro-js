@@ -5,15 +5,12 @@ Nitro provides a library of carefully designed middleware and utilities for crea
 
 Nitro applications leverage (strict) Web Standards like XHTML/HTML, CSS, HTTP, XML, XSLT, ECMAScript 3.0, MicroFormats, etc. Typically, Nitro applications are a collection of programs that run on the server *and* the client. A control program dispatches work to the application programs and aggregates their output. The application's output is consumed by modern web browsers, web services or other applications through a standard REST interface.
 
-Homepage: [http://nitrojs.org/](http://nitrojs.org/)
-
-Source & Download: [http://github.com/gmosx/nitro/](http://github.com/gmosx/nitro/)
-
-Mailing list: [http://groups.google.com/group/nitro-devel](http://groups.google.com/group/nitro-devel)
-
-Issue tracking: [http://github.com/gmosx/nitro/issues](http://github.com/gmosx/nitro/issues)
-
-IRC: #nitro on [irc.freenode.net](http://freenode.net/)    
+* Homepage: [http://nitrojs.org/](http://nitrojs.org/)
+* Source & Download: [http://github.com/gmosx/nitro/](http://github.com/gmosx/nitro/)
+* Documentation: [http://nitrojs.org/docs](http://nitrojs.org/docs)
+* Mailing list: [http://groups.google.com/group/nitro-devel](http://groups.google.com/group/nitro-devel)
+* Issue tracking: [http://github.com/gmosx/nitro/issues](http://github.com/gmosx/nitro/issues)
+* IRC: #nitro on [irc.freenode.net](http://freenode.net/)    
 
 
 Getting Started
@@ -26,7 +23,7 @@ At the moment, Nitro requires customized versions of Narwhal and Jack. Please ge
 
 After you have installed Narwhal and Jack you are ready to run the simple example:
 
-    $ cd examples/simple
+    $ cd example
     $ jackup 
 
 The application will start listening at localhost:8080, so use your favourite browser to verify that everything works correctly.
@@ -42,7 +39,7 @@ Directory structure
 /lib:
 Contains the implementation of the web application framework
     
-/examples/simple:
+/example:
 Contains a simple example        
 
 
@@ -50,75 +47,6 @@ Google App Engine
 -----------------
 
 Nitro applications run great on Google App Engine. Have a look at the [blog-gae](http://github.com/gmosx/blog-gae/tree/master) example for a demonstration of using Nitro and [appengine](http://github.com/gmosx/appengine/tree/master) package to develop a simple Blog.
-
-
-Layout
-------
-
-The Layout mechanism provides two effective enhancements over the Template infrastructure:
-
-* A fragment inclusion mechanism
-* A template inheritance mechanism
-
-The Layout mechanism is similar to Django templates or Rails layouts. An example will help illustrate the concept:
-
-layout.html (layout template):
-
-    <html>
-        <head>
-            <title>{{title}}</title>
-        </head>
-        <body>
-            <h1>{breadcrumbs}</h1>
-            <section>
-                {content}
-            </section>
-        </body>
-    </html>
-
-index.html (content template):
-
-    {.extends "/layout.html"}
-
-    {.block breadcrumbs}
-        Home / hello
-    {.end breadcrumbs}
-
-    {.block content}
-    <h2>The content</h2>
-    <p>
-        Hello world!
-        {.include "fragment.inc.html"}
-    </p>
-    {.end content}
-
-fragment.inc.html (fragment template):
-
-    <span>I am included</span>
-
-The output of the Layout filter is:
-
-    <html>
-        <head>
-            <title>{title}</title>
-        </head>
-        <body>
-            <h1>Home / hello</h1>
-            <section>
-                <h2>The content</h2>
-                <p>
-                    Hello world!
-                    <span>I am included</span>
-                </p>
-            </section>
-        </body>
-    </html>
-
-Please notice:
-
-* {{title}} is unescaped to {title} after the Layout template evaluation (standard template behaviour). It will be interpolated at run time.
-
-* {.block xxx}...{.end xxx} blocks define fragments that are passed as values to the parent template. A special value called 'yield' captures the whole of the template as a convenience.
 
 
 Related projects
