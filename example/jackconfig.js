@@ -8,20 +8,14 @@ var File = require("jack/file").File,
 
 var Dispatch = require("nitro/dispatch").Dispatch,
 	Normalize = require("nitro/normalize").Normalize,
-	Render = require("nitro/render").Render;
+	Render = require("nitro/render").Render,
+	SessionManager = require("nitro/sessionmanager").SessionManager;
 
 var Wrap = require("./src/wrap").Wrap;
 
-exports.app = ContentLength(Normalize(Render(Wrap(Dispatch()))));
+exports.app = ShowExceptions(Lint(ContentLength(Normalize(SessionManager(Render(Wrap(Dispatch())), "s3cr3t")))));
 
 // The default jackup environment is 'development'.
 exports.development = function(app) {
- 	return ShowExceptions(Lint(app));
-}
-
-// The default gae environment is 'gae'.
-exports.gae = function(app) {
-    CONFIG.root = "WEB-INF/src/root";
-    CONFIG.templateRoot = "WEB-INF/src/templates";
-	return app;
+    return require("jack/reloader").Reloader(module.id, "app");
 }
