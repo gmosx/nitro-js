@@ -7,9 +7,9 @@ var File = require("jack/file").File,
     Cascade = require("jack/cascade").Cascade;
 
 var Dispatch = require("nitro/dispatch").Dispatch,
-	Normalize = require("nitro/normalize").Normalize,
-	Render = require("nitro/render").Render,
-	SessionManager = require("nitro/sessionmanager").SessionManager;
+    Normalize = require("nitro/normalize").Normalize,
+    Render = require("nitro/render").Render,
+    SessionManager = require("nitro/sessionmanager").SessionManager;
 
 var Wrap = require("./src/wrap").Wrap;
 
