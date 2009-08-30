@@ -65,7 +65,7 @@ produce the output...
         You have admin rights
     </html> 
 
-The template mechanism is available as a [standard ServerJS package](http://github.com/gmosx/template/tree/master).
+The template mechanism is available as a [standard CommonJS package](http://github.com/gmosx/template/tree/master).
 
 Additional features
 -------------------
