@@ -131,6 +131,6 @@ produce the output....
 
 Please notice:
 
-1. {{{title}}} is unescaped to {{title}} after the Layout template evaluation (standard template behaviour). It will be interpolated at run time.
-2. {{.block xxx}}....{{.end xxx}} blocks define fragments that are passed as values to the parent template. A special value called 'yield' captures the whole of the template as a convenience.
+1. {{title}} is unescaped to {title} after the Layout template evaluation (standard template behaviour). It will be interpolated at run time.
+2. {.block xxx}....{.end xxx} blocks define fragments that are passed as values to the parent template. A special value called 'yield' captures the whole of the template as a convenience.
 
