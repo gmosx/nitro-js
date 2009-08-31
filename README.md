@@ -10,7 +10,7 @@ Nitro applications leverage (strict) Web Standards like XHTML/HTML, CSS, HTTP, X
 * Documentation: [http://nitrojs.org/docs](http://nitrojs.org/docs)
 * Mailing list: [http://groups.google.com/group/nitro-devel](http://groups.google.com/group/nitro-devel)
 * Issue tracking: [http://github.com/gmosx/nitro/issues](http://github.com/gmosx/nitro/issues)
-* IRC: #nitro on [irc.freenode.net](http://freenode.net/)    
+* IRC: #nitrojs on [irc.freenode.net](http://freenode.net/)    
 
 
 Getting Started
