@@ -9,8 +9,8 @@ exports.GET = function(env) {
     counter += 1;
     session.put("counter", counter);
  
-    return render({
+    return {data: {
         time: new Date(),
         counter: counter
-    });
+    }};
 }

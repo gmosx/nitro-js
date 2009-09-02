@@ -1,4 +1,4 @@
-var chunked = require("nitro/response").chunked;
+var chunked = require("nitro/responses").chunked;
 
 var JThread = Packages.java.lang.Thread;
 
