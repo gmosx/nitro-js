@@ -67,6 +67,24 @@ produce the output...
 
 The template mechanism is available as a [standard CommonJS package](http://github.com/gmosx/template/tree/master).
 
+
+Formatters
+----------
+
+The templating engine supports the notion of formatters using the JSON-Template/Django syntax:
+
+    Hello {name|html}
+    This is {name|html|bold}
+
+You can easily add custom fromatters:
+
+    Template.formatters.custom = function(val) {
+        return val.toString() + "-formatted";
+    }
+
+    Hello {name|custom}
+
+
 Additional features
 -------------------
 
