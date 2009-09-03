@@ -15,6 +15,8 @@ The template...
         </p>
         {.end}
 
+        <p>Your age is {profile.age}</p>
+        
         <ul>
         {.with articles}
             <li>{title} - {count}</li>
@@ -56,6 +58,8 @@ produce the output...
             M<br/>
         </p>
 
+        <p>Your age is 34</p>
+        
         <ul>
             <li>Hello world - 34</li>
             <li>Another article - 23</li>
@@ -66,6 +70,20 @@ produce the output...
     </html> 
 
 The template mechanism is available as a [standard CommonJS package](http://github.com/gmosx/template/tree/master).
+
+
+Dot-delimited references
+------------------------
+
+For extra convenience, dot-delimited references are supported for {.with} and interpolations:
+
+    {.with user.profile}
+        {age}
+    {.end}
+
+or
+
+    {user.profile.age}
 
 
 Formatters
@@ -83,6 +101,15 @@ You can easily add custom fromatters:
     }
 
     Hello {name|custom}
+    
+Alternatively, you can add formatters per template:
+
+    var t = new Template(src, {formatters: {
+        "custom": function(val) {
+        return val.toString() + "-formatted";
+    }} 
+    
+The custom formatters are merged (and can even override) the default formatters.       
 
 
 Additional features
