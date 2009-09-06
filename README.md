@@ -36,11 +36,17 @@ For a more sophisticated exampe that implements a simple Blog on Google App Engi
 Directory structure
 -------------------
 
+/docs:
+Contains documentation files in markdown format. The docs are published at www.nitrojs.org/docs
+
 /lib:
 Contains the implementation of the web application framework
     
 /example:
 Contains a simple example        
+
+/tests:
+Contains unit and functional tests.        
 
 
 Google App Engine
