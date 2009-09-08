@@ -1,5 +1,3 @@
-require("nitro");
-
 var File = require("jack/file").File, 
     ContentLength = require("jack/contentlength").ContentLength,
     ShowExceptions = require("jack/showexceptions").ShowExceptions,
@@ -13,6 +11,7 @@ var Dispatch = require("nitro/dispatch").Dispatch,
 
 var Wrap = require("./src/wrap").Wrap;
 
+// The application.
 exports.app = ShowExceptions(Lint(ContentLength(Path(SessionManager(Render(Wrap(Dispatch())), "s3cr3t")))));
 
 // The default jackup environment is 'development'.
