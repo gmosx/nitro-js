@@ -1,5 +1,7 @@
-var Response = require("jack/response").Response;
+var Request = require("nitro/request").Request,
+    Response = require("nitro/response").Response;
 
 exports.GET = function(env) {
-    return Response.redirect(env.request.referer());
+    var request = new Request(env);
+    return Response.redirect(request.referer());
 }
