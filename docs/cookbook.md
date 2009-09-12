@@ -18,10 +18,10 @@ Code:
 Template:
 
     <ul>
-    {.with categories}
-        {.if selected}
+    {.repeated section categories}
+        {.section selected}
         <li class="selected">{name}</li>
-        {.else}
+        {.or}
         <li><a href="/category?id={name}">{name}</a></li>
         {.end}
     {.end}

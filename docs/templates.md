@@ -1,40 +1,46 @@
 Templates
 =========
 
-The basic templating mechanism is a clean implementation of [JSON Template](http://json-template.googlecode.com/svn/trunk/doc), with minor changes. A template string is combined with a JSON data dictionary to produce the final output. An example will help to illustrate the concept.
+The basic templating mechanism is a clean implementation of [JSON Template](http://json-template.googlecode.com/svn/trunk/doc). A template string is combined with a JSON data dictionary to produce the final output.
 
-The template...
+Example usage
+-------------
+
+template.html:
 
     <html>
-        <h1>Hello {name}</h1>
+    <h1>Hello {name}</h1>
 
-        {.with profile}
-        <p>
-            {age}<br/>
-            {gender}<br/>
-        </p>
-        {.end}
+    {.section profile}
+    <p>
+        {age}<br/>
+        {gender}<br/>
+    </p>
+    {.end}
 
-        <p>Your age is {profile.age}</p>
+    <p>Your age is {profile.age}</p>
         
-        <ul>
-        {.with articles}
-            <li>{title} - {count}</li>
-        {.else}
-            <li>No articles found</li>    
-        {.end}
-        </ul>
-        
-        {.if admin}
-        You have admin rights
-        {.else}
-        You don't have admin rights
-        {.end}
+    <ul>
+    {.repeated section articles}
+        <li>{title} - {count}</li>
+    {.or}
+        <li>No articles found</li>    
+    {.end}
+    </ul>
+    
+    {.section admin}
+    You have admin rights
+    {.or}
+    You don't have admin rights
+    {.end}
     </html>
 
-combined with the data dictionary (JSON object)...
+template.js:
 
-    data = {
+    var fs = require("file"),
+        Template = require("template").Template;
+
+    var data = {
         name: "George",
         profile: {
             age: 34,
@@ -48,28 +54,31 @@ combined with the data dictionary (JSON object)...
         admin: true
     }
 
-produce the output...
+    var src = fs.read("template.html").toString();
+    var template = new Template(src);
+
+    print(template.render(data));
+
+output:
 
     <html>
-        <h1>Hello George</h1>
+    <h1>Hello George</h1>
 
-        <p>
-            34<br/>
-            M<br/>
-        </p>
+    <p>
+        34<br/>
+        M<br/>
+    </p>
 
-        <p>Your age is 34</p>
+    <p>Your age is 34</p>
         
-        <ul>
-            <li>Hello world - 34</li>
-            <li>Another article - 23</li>
-            <li>The final - 7</li>
-        </ul>
+    <ul>
+        <li>Hello world - 34</li>
+        <li>Another article - 23</li>
+        <li>The final - 7</li>
+    </ul>
 
-        You have admin rights
-    </html> 
-
-The template mechanism is available as a [standard CommonJS package](http://github.com/gmosx/template/tree/master).
+    You have admin rights
+    </html>
 
 
 Dot-delimited references
@@ -77,7 +86,7 @@ Dot-delimited references
 
 For extra convenience, dot-delimited references are supported for {.with} and interpolations:
 
-    {.with user.profile}
+    {.section user.profile}
         {age}
     {.end}
 
@@ -126,7 +135,7 @@ The parent template...
 
     <html>
         <head>
-            <title>{{title}}</title>
+            <title>{.meta-left}title{.meta-right}</title>
         </head>
         <body>
             <h1>{breadcrumbs}</h1>
@@ -176,7 +185,7 @@ produce the output....
 
 Please notice:
 
-1. {{title}} is unescaped to {title} after the Layout template evaluation (standard template behaviour). It will be interpolated at run time.
+1. {.meta-left}..{.meta-right} is used to produce {title} after the parent template evaluation. It will be interpolated at run time when the child template is evaluated.
 2. {.block xxx}....{.end xxx} blocks define fragments that are passed as values to the parent template. A special value called 'yield' captures the whole of the template as a convenience.
 
 
