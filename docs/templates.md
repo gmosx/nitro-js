@@ -84,7 +84,7 @@ output:
 Dot-delimited references
 ------------------------
 
-For extra convenience, dot-delimited references are supported for {.with} and interpolations:
+For extra convenience, dot-delimited references are supported for {.section} and interpolations:
 
     {.section user.profile}
         {age}
@@ -192,6 +192,6 @@ Please notice:
 Related articles
 ----------------
 
-[Introducing JSON Template](http://json-template.googlecode.com/svn/trunk/doc/Introducing-JSON-Template.html)
-[On Design Minimalism](http://json-template.googlecode.com/svn/trunk/doc/On-Design-Minimalism.html)
+* [Introducing JSON Template](http://json-template.googlecode.com/svn/trunk/doc/Introducing-JSON-Template.html)
+* [On Design Minimalism](http://json-template.googlecode.com/svn/trunk/doc/On-Design-Minimalism.html)
 
