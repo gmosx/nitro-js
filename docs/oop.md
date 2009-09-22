@@ -42,7 +42,7 @@ It is obvious from the above example that only Single Inheritance is supported. 
     }
     
     // Include Taggable functionality in Article.
-    Taggable(Article);
+    Taggable.extend(Article);
     
     var article = new Article("Hello", "Hello world");
     article.tagString = "news,local";
