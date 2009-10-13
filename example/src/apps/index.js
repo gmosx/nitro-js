@@ -5,9 +5,9 @@ var render = require("nitro/response").render;
 exports.GET = function(env) {
     var session = new Session(env);
 
-    var counter = session.get("counter") || 0;
+    var counter = session.counter || 0;
     counter += 1;
-    session.put("counter", counter);
+    session.counter = counter;
  
     return {data: {
         time: new Date(),
