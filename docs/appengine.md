@@ -13,20 +13,12 @@ The Python ext/db api is supported. The API is slightly different to better fit 
 
     var db = require("google/appengine/ext/db");
 
-    var Category = function(term, label, category) {
-	    this.term = term;
-	    this.label = label;
-	    this.category = category;
-	    this.__key__ = db.key({kind: this.constructor.kind(), name: term});
-    }
-
-    db.Model.extend(Category, "Category", {
-	    term: new db.StringProperty(),
+    var Category = db.Model("Category", {
 	    label: new db.StringProperty(),
 	    category: new db.ReferenceProperty({referenceClass: Category})
     });
 
-    var c = new Category("news", News");
+    var c = new Category({keyName: "news", label: News"});
     c.put();
     var key = ...
     var c1 = Category.get(key);
@@ -64,3 +56,18 @@ Memcache
         ...
         memcache.set("fragment", fragment);
     }
+
+
+Users
+-----
+
+    var users = require("google/appengine/api/users");
+    
+    var user = users.getCurrentUser();
+    
+    if (users.isCurrentUserAdmin()) {
+        ...
+    }
+    
+    var url = user.createLoginURL();
+
