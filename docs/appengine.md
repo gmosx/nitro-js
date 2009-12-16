@@ -71,3 +71,44 @@ Users
     
     var url = user.createLoginURL();
 
+
+Task Queue
+----------
+
+    var taskqueue = require("google/appengine/api/labs/taskqueue");
+    
+    taskqueue.add({url: "/worker", method: "GET", params: {par1: "hello", par2: "world"}});  
+    
+    var task = new Task({url: "/worker", method: "GET", params: {par1: "hello", par2: "world"}});
+    task.add("customqueue");
+
+
+Example
+-------
+
+For an example of the usage of this library have a look at the [blog-gae](http://github.com/gmosx/blog-gae) example.
+
+
+Component status
+----------------
+
+This library is under construction but usable. Substantial parts of the Python API are converted.
+
+* google/appengine/api/memcache: 80% (usable)
+* google/appengine/api/urlfetch: 80% (usable)
+* google/appengine/api/mail: 60% (usable)
+* google/appengine/api/images: 40% (usable)
+* google/appengine/api/users: 80% (usable)
+* google/appengine/api/labs/taskqueue: 80% (usable)
+* google/appengine/ext/db: 80% (usable, expect minor API changes)
+* google/appengine/ext/db/forms: 30% (expect API changes)
+
+
+
+Google App Engine
+-----------------
+
+This is a community project, not affiliated in any way with Google.
+
+Google App Engine is a service of Google, Inc. Copyright (c) 2009 Google, all rights reserved.
+
