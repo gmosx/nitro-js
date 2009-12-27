@@ -58,11 +58,17 @@ Nitro applications run great on Google App Engine. Have a look at the [blog-gae]
 Related projects
 ----------------
 
-Nitro is an ecosystem of related projects:
+Nitro is an ecosystem of Web Application development tools:
 
-* [appengine](http://github.com/gmosx/appengine/tree/master) 
-* [template](http://github.com/gmosx/template/tree/master)
-* [blog-gae](http://github.com/gmosx/blog-gae/tree/master)
+* [appengine](http://github.com/gmosx/appengine) 
+* [template](http://github.com/gmosx/template)
+* [blog-gae](http://github.com/gmosx/htmlparser)
+* [blog-gae](http://github.com/gmosx/ui)
+* [markdown](http://www.github.com/gmosx/markdown)
+
+Other related projects:
+
+* [blog-gae](http://www.nitrojs.org/appenginejs/blog-gae.tar.gz)
 
     
 Caveats

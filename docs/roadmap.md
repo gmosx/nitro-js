@@ -17,6 +17,11 @@ Documentation
 * Better documentation.
 * Create a screencast.
 
+Source code
+-----------
+
+* Use engines/ directory to be consistent with narwhal conventions.
+
 Done
 ----
 
