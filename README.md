@@ -6,6 +6,7 @@ Nitro provides a library of carefully designed middleware and utilities for crea
 Nitro applications leverage (strict) Web Standards like XHTML/HTML, CSS, HTTP, XML, XSLT, ECMAScript 3.0, MicroFormats, etc. Typically, Nitro applications are a collection of programs that run on the server *and* the client. A control program dispatches work to the application programs and aggregates their output. The application's output is consumed by modern web browsers, web services or other applications through a standard REST interface.
 
 * Homepage: [http://nitrojs.org/](http://nitrojs.org/)
+* Status updates: [http://twitter.com/nitrojs](http://twitter.com/nitrojs)
 * Source & Download: [http://github.com/gmosx/nitro/](http://github.com/gmosx/nitro/)
 * Documentation: [http://nitrojs.org/docs](http://nitrojs.org/docs)
 * Mailing list: [http://groups.google.com/group/nitro-devel](http://groups.google.com/group/nitro-devel)
@@ -87,7 +88,7 @@ Credits
 License
 -------
 
-Copyright (c) 2009 George Moschovitis, http://gmosx.com
+Copyright (c) 2009-2010 George Moschovitis, [http://www.gmosx.com](http://www.gmosx.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to
