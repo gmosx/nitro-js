@@ -24,6 +24,72 @@ The Python ext/db api is supported. The API is slightly different to better fit 
     var c1 = Category.get(key);
     var c2 = Category.getByKeyName("news");
     var categories = Category.all().limit(3).fetch();
+         
+
+Blobstore
+--------- 
+
+form:
+
+    var blobstore = require("google/appengine/api/blobstore");
+
+    exports.GET = function(env) {
+        return {data: {
+            uploadURL: blobstore.createUploadUrl("/test")
+        }}
+    }
+
+    <form action="{uploadURL}" method="POST" enctype="multipart/form-data">
+        <p>
+            <input type="file" name="file" />
+        </p>
+        <p>       
+            <button type="submit">Upload</button>
+        </p>
+    </form>
+
+upload:
+
+    var blobstore = require("google/appengine/api/blobstore");
+
+    exports.GET = function(env) {
+        return {data: {
+            uploadURL: blobstore.createUploadUrl("/save")
+        }}
+    }
+
+save:
+
+    var blobstore = require("google/appengine/api/blobstore");
+
+    exports.POST = function(env) {
+        var blobs = blobstore.getUploadedBlobs(env);
+        
+        return {
+            status : 303,
+            headers : {
+                "Location": "/serve?key=" + blobs.file.toString()
+            }
+        };     
+    }
+    
+serve:
+
+    var blobstore = require("google/appengine/api/blobstore");
+
+    exports.GET = function(env) {
+        var params = new Request(env).GET();
+        return blobstore.serve(params.key, env);
+    }
+
+
+URL Fetch
+---------
+
+    var fetch = require("google/appengine/api/urlfetch").fetch;
+
+    var response = fetch("http://www.appenginejs.org"),
+        html = response.content.decodeToString("UTF-8");
 
 
 Images
@@ -83,10 +149,24 @@ Task Queue
     task.add("customqueue");
 
 
+Forms
+-----
+
+    var Article = require("article").Article,
+        ModelForm = require("google/appengine/ext/db/forms").ModelForm,
+        ArticleForm = ModelForm(Article);
+
+        ...
+        
+    var form = new ArticleForm(params, {instance: article});
+        ...
+        form.save();
+
+
 Example
 -------
 
-For an example of the usage of this library have a look at the [blog-gae](http://github.com/gmosx/blog-gae) example.
+For an example of the usage of this library have a look at the example/ directory. For a more advanced example have a lok at the [blog-gae](http://www.nitrojs.org/appenginejs/blog-gae.tar.gz) example.
 
 
 Component status
@@ -97,12 +177,12 @@ This library is under construction but usable. Substantial parts of the Python A
 * google/appengine/api/memcache: 80% (usable)
 * google/appengine/api/urlfetch: 80% (usable)
 * google/appengine/api/mail: 60% (usable)
-* google/appengine/api/images: 40% (usable)
+* google/appengine/api/images: 60% (usable)
 * google/appengine/api/users: 80% (usable)
 * google/appengine/api/labs/taskqueue: 80% (usable)
 * google/appengine/ext/db: 80% (usable, expect minor API changes)
 * google/appengine/ext/db/forms: 30% (expect API changes)
-
+* google/appengine/ext/blobstore: 40% (usable)
 
 
 Google App Engine
