@@ -4,7 +4,7 @@
     "keywords": ["web", "framework", "jsgi"],
     "author": "George Moschovitis",
     "email": "george.moschovitis@gmail.com",
-    "dependencies": ["jack", "template"],
+    "dependencies": ["jack"],
     "contributors": [
         "Kris Kowal (http://askawizard.blogspot.com/)"
     ],
