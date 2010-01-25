@@ -3,6 +3,7 @@ A simple Nitro example
 
 This is a very simple example. To start the application just give:
 
+    $ /path/to/narwhal/bin/sea
     $ jackup
 
 Then browse localhost:8080:
