@@ -1,63 +1,66 @@
 Templates
 =========
 
-The basic templating mechanism is a clean implementation of [JSON Template](http://json-template.googlecode.com/svn/trunk/doc). A template string is combined with a JSON data dictionary to produce the final output.
+The default Nitro template engine are [Normal Templates](http://github.com/gmosx/normal-template)
 
-Example usage
--------------
+Normal templates are simple, yet powerful. They are safe, usable in non XML/HTML contexts and portable to any programming language. 
+
+
+Usage
+-----
 
 template.html:
 
     <html>
-    <h1>Hello {name}</h1>
+    <h1>Hello {=name}</h1>
 
-    {.section profile}
+    {:select profile}
     <p>
-        {age}<br/>
-        {gender}<br/>
+        {=age}<br/>
+        {=gender}<br/>
     </p>
-    {.end}
+    {/:select}
 
-    <p>Your age is {profile.age}</p>
+    <p>Your age is {=profile/age}</p>
         
     <ul>
-    {.repeated section articles}
-        <li>{title} - {count}</li>
-    {.or}
+    {:reduce articles}
+        <li>{=title} - {=count}</li>
+    {:else}
         <li>No articles found</li>    
-    {.end}
+    {/:reduce}
     </ul>
     
-    {.section admin}
-    You have admin rights
-    {.or}
-    You don't have admin rights
-    {.end}
+    {:if admin}
+        You have admin rights
+    {:else}
+        You don't have admin rights
+    {/:if}
     </html>
 
 template.js:
 
-    var fs = require("file"),
-        Template = require("template").Template;
+    var FILE = require("file"),
+        TEMPLATE = requier("normal-template"),
+        src = FILE.read("template.html").decodeToString(),
+        template = TEMPLATE.compile(src); // compile the input string into a template function
 
-    var data = {
+    var data = { // the data dictionary in JSON format
         name: "George",
         profile: {
             age: 34,
             gender: "M"
         },
         articles: [
-            { "Hello world", 34 },
-            { "Another article", 23 },
-            { "The final", 7 }
+            { title: "Hello world", count: 34 },
+            { title: "Another article", count: 23 },
+            { title: "The final", count: 7 }
         ],
         admin: true
     }
 
-    var src = fs.read("template.html").toString();
-    var template = new Template(src);
-
-    print(template.render(data));
+    // calling the template with the data dictionary returns the rendered output
+    print(template(data)); 
 
 output:
 
@@ -81,117 +84,204 @@ output:
     </html>
 
 
-Dot-delimited references
-------------------------
+Syntax
+------
 
-For extra convenience, dot-delimited references are supported for {.section} and interpolations:
+Template commands are enclosed in curly braces. A carefully defined set of commands are provided:
 
-    {.section user.profile}
-        {age}
-    {.end}
+* Interpolation {=path}
+* Select {:select} .. {:else} .. {/:select}
+* Reduce {:reduce} .. {:reduce} .. {/:reduce}
+* If {:if} .. {:else} .. {/:if}
+* Comment {:! this is a comment }
+* Escape {:lb}, {:rb} emit the delimeters '{', '}'
 
-or
+Moreover, a number of static commands are applied during an optional compile-time pre-processing step:
 
-    {user.profile.age}
+* Static inclusion {#include /path/to/fragment}
+* Meta template {#template /path/to/meta/template}
+* Block definitions to be injected in the meta template {#def name} .. {/#def}
+
+Please note that the paths in #include and #template include a leading '/'. 
+
+The template compiler performs syntax error checks and detects unbalanced commands or not closed command tags.
 
 
-Formatters
-----------
+Interpolation
+-------------
 
-The templating engine supports the notion of formatters using the JSON-Template/Django syntax:
+Values from the data dictionary can be interpolated with the {=path} command where 'path' is the location of the value in the dictionary using a subset of the xpath notation:
 
-    Hello {name|html}
-    This is {name|html|bold}
+    data = {
+        "name": "George",
+        "article": {
+            "title": "Hello",
+            "content": "World"
+        }
+    }
+    
+    {=name} => George
+    {=article/title} => Hello
+    {=/article/title} => Hello
+    {=article.title} => Hello (you can use '.' instead of '/')
+    
+You can prefix the path with one or more filters:
 
-You can easily add custom fromatters:
+    {=html name}
+    {=head html name}
+    
+The following filters are provided by default:
 
-    Template.formatters.custom = function(val) {
-        return val.toString() + "-formatted";
+* str, no escaping (useful to override the default filter)
+* html, html escaping
+* attibute, tag attribute escaping
+* uri, URI escaping
+
+Custom filters can be provided to the template compiler:
+
+    var template = TEMPLATE.compile("Hello {=upcase name}", {filters: {
+        upcase: function(val) {
+            return val.toString().toUpperCase();
+        }
+    }});
+    var data = {name: "George"};
+    template(data) // => Hello GEORGE
+    
+    
+Condition
+---------
+
+Conditional rendering is supported through a standard if-else construct:
+
+    {:if admin}
+    Hello Admin
+    {:else}
+    Go away
+    {/:if}
+           
+           
+Selection
+---------
+
+Select is an extension of the if statement that walks the data dictionary tree. Inside a selection block the path in the selection command is considered as the root of the data tree:
+
+    data = {
+        "name": "George",
+        "article": {
+            "title": "Hello",
+            "content": "World"
+        }
     }
 
-    Hello {name|custom}
+    {:select article}
+        {=title}, {=html content}
+    {/:select} 
     
-Alternatively, you can add formatters per template:
-
-    var t = new Template(src, {formatters: {
-        "custom": function(val) {
-        return val.toString() + "-formatted";
-    }} 
+    {:select comments}
+        {=content}
+    {:else}
+        no comments
+    {/:select}
     
-The custom formatters are merged (and can even override) the default formatters.       
+As a shortcut you can use the {:s path}, {:e}, {/:s} tags.
 
 
-Additional features
--------------------
+Reduction
+---------
 
-Nitro provides two effective enhancements over the basic Template:
+Iteration of collections is supported with the {:reduce} statement, itself an extension of the {:select} statement:
 
-1. A fragment inclusion mechanism
-2. A template inheritance mechanism
+    data = {
+        "name": "George",
+        articles: [
+            { title: "Hello world", count: 34 },
+            { title: "Another article", count: 23 },
+            { title: "The final", count: 7 }
+        ]
+    }
 
-These features are similar to [Django templates](http://docs.djangoproject.com/en/dev/topics/templates/) or [Rails layouts](http://guides.rubyonrails.org/layouts_and_rendering.html). Again, an example will help illustrate the concept.
+    {:reduce article}
+        {=title} {=count}
+    {:else}
+        no articles
+    {/:reduce}
 
-The parent template...
+As a shortcut you can use the {:r collectionpath}, {:e}, {/:r} tags.
+
+
+More examples
+-------------
+
+Here are some more complicated examples that demonstrate the usage of xpath for extracting values from the data dictionary:
+
+    data = {
+        version: 1,
+        admin: "true",
+        articles: [
+            {title: "Hello", content: "World"},
+            {title: "Hello", content: "World"},
+            {title: "Hello", content: "World"},
+        ]
+    }
+    
+    {:! this is a comment, ignore me }
+    
+    {:r articles}
+        {=title} {=/version}
+    {/:r articles} {:! you can repeat the path of the opening tag for extra readability }
+    
+    {:s admin}
+        {=.}
+    {/:s}
+
+
+Meta Template
+-------------
+
+A meta-templating mechanism similar to Django's inherited templates and Rails' layout system is provided. Let's demonstrate with an example:
+
+layout.html
+
+    <html>
+        {=head}
+        <body>
+            {=content}
+            <br>
+            {:lb}=key{:rb}
+        </body>
+    </html>
+    
+fragment.inc.html
+
+    <p>this is a fragment</p>
+        
+template.html
+
+    {#template layout.html}
+    
+    {#def head}
+        <head>
+            <title>Normal Template</title>
+        </head>
+    {/#def}    
+    
+    {#def content}
+        This is an example
+        {#include /fragment.inc.html}
+    {/#def}
+    
+compiled template:
 
     <html>
         <head>
-            <title>{.meta-left}title{.meta-right}</title>
+            <title>Normal Template</title>
         </head>
         <body>
-            <h1>{breadcrumbs}</h1>
-            <section>
-                {content}
-            </section>
+            This is an example
+            <p>this is a fragment</p>
+            <br>
+            {=key}
         </body>
     </html>
 
-combined with the child template...
-
-    {.extends "/layout.html"}
-
-    {.block breadcrumbs}
-        Home / hello
-    {.end breadcrumbs}
-
-    {.block content}
-    <h2>The content</h2>
-    <p>
-        Hello world!
-        {.include "fragment.inc.html"}
-    </p>
-    {.end content}
-
-and a fragment template...
-
-    <span>I am included</span>
-
-produce the output....
-
-    <html>
-        <head>
-            <title>{title}</title>
-        </head>
-        <body>
-            <h1>Home / hello</h1>
-            <section>
-                <h2>The content</h2>
-                <p>
-                    Hello world!
-                    <span>I am included</span>
-                </p>
-            </section>
-        </body>
-    </html>
-
-Please notice:
-
-1. {.meta-left}..{.meta-right} is used to produce {title} after the parent template evaluation. It will be interpolated at run time when the child template is evaluated.
-2. {.block xxx}....{.end xxx} blocks define fragments that are passed as values to the parent template. A special value called 'yield' captures the whole of the template as a convenience.
-
-
-Related articles
-----------------
-
-* [Introducing JSON Template](http://json-template.googlecode.com/svn/trunk/doc/Introducing-JSON-Template.html)
-* [On Design Minimalism](http://json-template.googlecode.com/svn/trunk/doc/On-Design-Minimalism.html)
-
+In essence, the blocks defined in the template are passed as the values in the data dictionary passed to the meta-template. Both templates are evaluated.
