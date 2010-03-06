@@ -62,7 +62,7 @@ Related projects
 Nitro is an ecosystem of Web Application development tools:
 
 * [appengine](http://github.com/gmosx/appengine) 
-* [template](http://github.com/gmosx/template)
+* [normal-template](http://github.com/gmosx/normal-template)
 * [htmlparser](http://github.com/gmosx/htmlparser)
 * [blog-gae](http://github.com/gmosx/ui)
 * [markdown](http://www.github.com/gmosx/markdown)
