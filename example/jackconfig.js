@@ -12,7 +12,7 @@ var Dispatch = require("nitro/dispatch").Dispatch,
 var Wrap = require("./src/wrap").Wrap;
 
 // The application.
-exports.app = ShowExceptions(Lint(ContentLength(Path(CookieSessions(Render(Wrap(Dispatch())), {secret: "s3cr3t"})))));
+exports.app = ShowExceptions(Lint(ContentLength(Path(CookieSessions(Render(Wrap(Dispatch({dispatchRoot: "src/root"}), {templateRoot: "src/templates"})), {secret: "s3cr3t"})))));
 
 // The default jackup environment is 'development'.
 exports.development = function(app) {
