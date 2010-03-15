@@ -3,7 +3,9 @@ Google App Engine
 
 Nitro is compatible with Google App Engine. The Narwhal [appengine](http://github.com/gmosx/appengine) package is a component of the Ecosystem.
 
-For an example Nitro application that runs on AppEngine and leverages AppEngine services like the DataStore, download and study the [blog-gae](http://github.com/gmosx/blog-gae) example.
+For an example that implements a simple Blog on Google App Engine have a look at:
+
+[appengine-example](http://www.nitrojs.org/appenginejs/appengine-example.tar.gz)
 
 
 Datastore
@@ -166,7 +168,7 @@ Forms
 Example
 -------
 
-For an example of the usage of this library have a look at the example/ directory. For a more advanced example have a lok at the [blog-gae](http://www.nitrojs.org/appenginejs/blog-gae.tar.gz) example.
+For an example of the usage of this library have a look at the example/ directory. For a more advanced example have a lok at the [appengine-example](http://www.nitrojs.org/appenginejs/appengine-example.tar.gz) example.
 
 
 Component status

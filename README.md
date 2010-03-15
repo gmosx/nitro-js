@@ -29,9 +29,9 @@ After you have installed Narwhal and Jack you are ready to run the simple exampl
 
 The application will start listening at localhost:8080, so use your favourite browser to verify that everything works correctly.
 
-For a more sophisticated exampe that implements a simple Blog on Google App Engine have a look at:
+For a more sophisticated example that implements a simple Blog on Google App Engine have a look at:
 
-[blog-gae](http://github.com/gmosx/blog-gae/tree/master)    
+[appengine-example](http://www.nitrojs.org/appenginejs/appengine-example.tar.gz)
 
 
 Directory structure
@@ -53,7 +53,7 @@ Contains unit and functional tests.
 Google App Engine
 -----------------
 
-Nitro applications run great on Google App Engine. Have a look at the [blog-gae](http://github.com/gmosx/blog-gae/tree/master) example for a demonstration of using Nitro and [appengine](http://github.com/gmosx/appengine/tree/master) package to develop a simple Blog.
+Nitro applications run great on Google App Engine. Have a look at the [appengine-example](http://www.nitrojs.org/appenginejs/appengine-example.tar.gz) example for a demonstration of using Nitro and [appengine](http://github.com/gmosx/appengine/tree/master) package to develop a simple Blog.
 
 
 Related projects
@@ -69,7 +69,7 @@ Nitro is an ecosystem of Web Application development tools:
 
 Other related projects:
 
-* [blog-gae](http://www.nitrojs.org/appenginejs/blog-gae.tar.gz)
+* [appengine-example](http://www.nitrojs.org/appenginejs/appengine-example.tar.gz)
 
     
 Caveats
@@ -82,7 +82,6 @@ Credits
 -------
 
 * George Moschovitis <george.moschovitis@gmail.com>
-* Kris Kowal <kris.kowal@cixar.com>
 
 
 License
