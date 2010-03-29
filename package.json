@@ -10,6 +10,11 @@
     ],
     "lib": "lib",
     "main": "examples/simple/jackconfig",
-    "lean": ["lib"]
+    "lean": {
+        "include": [
+            "lib/**/*",
+            "package.json"
+        ]
+    }
 }
 
