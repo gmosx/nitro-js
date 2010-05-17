@@ -12,5 +12,5 @@ Nitro is not a monolithical framework. Instead it provides a collection of fine 
 
 We also provide a number of example applications to help you get started:
 
-* [blog-gae](http://www.nitrojs.org/appenginejs/blog-gae.tar.gz)
+* [appengine-example](http://www.nitrojs.org/appenginejs/appengine-example.tar.gz)
 
