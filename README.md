@@ -27,10 +27,10 @@ To install Ringo, follow the instructions here:
 
 Then, you should install the nitro package:
 
-$ ringo-admin gmosx/nitro
-$ ringo-admin gmosx/narwhal-lib
-$ ringo-admin gmosx/jack-lib
-$ ringo-admin gmosx/normal-template
+    $ ringo-admin gmosx/nitro
+    $ ringo-admin gmosx/narwhal-lib
+    $ ringo-admin gmosx/jack-lib
+    $ ringo-admin gmosx/normal-template
 
 Finally, you are ready to run the simple example:
 
