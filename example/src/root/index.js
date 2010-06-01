@@ -1,6 +1,6 @@
 var Session = require("nitro/session").Session;
 
-exports.GET = function(env) {
+exports.GET = function (env) {
     var session = new Session(env);
 
     var counter = session.counter || 0;

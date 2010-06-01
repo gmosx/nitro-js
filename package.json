@@ -4,12 +4,15 @@
     "keywords": ["web", "framework", "jsgi"],
     "author": "George Moschovitis",
     "email": "george.moschovitis@gmail.com",
-    "dependencies": ["jack"],
+    "dependencies": [
+        "narwhal-lib",
+        "jack-lib"
+    ],
     "contributors": [
         "Kris Kowal (http://askawizard.blogspot.com/)"
     ],
     "lib": "lib",
-    "main": "examples/simple/jackconfig",
+    "main": "examples/config.js",
     "lean": {
         "include": [
             "lib/**/*",
