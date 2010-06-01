@@ -19,12 +19,11 @@ Nitro is engineered to work great with Google App Engine.
 Getting Started
 ---------------
 
-An older version of Nitro was powered by Narwhal but we have switched to RingoJS 
-(http://www.ringojs.org) due to better support for Rhino.
+An older version of Nitro was powered by [Narwhal](http://www.narwhaljs.org] but we have switched to [RingoJS](http://www.ringojs.org) due to better support for [Rhino](http://www.mozilla.org/rhino). Still, we 'll try hard to keep future Nitro versions compatible with Narwhal.
 
 To install Ringo, follow the instructions here:
 
-http://ringojs.org/wiki/Getting_Started
+[http://ringojs.org/wiki/Getting_Started](http://ringojs.org/wiki/Getting_Started)
 
 Then, you should install the nitro package:
 
