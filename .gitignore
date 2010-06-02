@@ -1,3 +1,5 @@
 /.pinf-workspace.json
 /bin/.pinf-activate-workspace
 *.local.*
+.DS_Store
+*.swp
