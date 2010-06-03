@@ -62,7 +62,7 @@ Contains the implementation of the web application framework
 /example:
 Contains a simple example        
 
-/tests:
+/test:
 Contains unit and functional tests.        
 
 
@@ -74,7 +74,6 @@ Nitro is an ecosystem of Web Application development tools:
 * [appengine](http://github.com/gmosx/appengine) 
 * [normal-template](http://github.com/gmosx/normal-template)
 * [htmlparser](http://github.com/gmosx/htmlparser)
-* [ui](http://github.com/gmosx/ui)
 * [markdown](http://www.github.com/gmosx/markdown)
 * [inflection](http://github.com/gmosx/inflection)
 
@@ -92,7 +91,8 @@ Nitro is under intense development. Changes to the API are to be expected.
 Credits
 -------
 
-* George Moschovitis <george.moschovitis@gmail.com>
+* George Moschovitis, [george.moschovitis@gmail.com](mailto:george.moschovitis@gmail.com)
+* Panagiotis Astithas, [pastith@gmail.com](mailto:george.moschovitis@gmail.com)
 
 
 License
