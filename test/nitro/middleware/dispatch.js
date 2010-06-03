@@ -1,8 +1,15 @@
-var assert = require("test/assert");
+var assert = require("assert");
 
-var DISPATCH = require("nitro/dispatch"),
-    realPath = DISPATCH.realPath;
+var DISPATCH = require("../../../lib/nitro/middleware/dispatch");
 
+/*
+exports.testSetDefaults = function () {
+    var response = DISPATCH.setDefaults({});
+    assert.deepEqual(response, {status: 200, headers: {}, body: []});
+}
+*/
+
+/*
 exports.testRealPath = function() {
     var sitemap = {
         "/index": {title: "Home"},
@@ -23,4 +30,4 @@ exports.testRealPath = function() {
     var env = { "PATH_INFO": "/not/in/map.html" }
     assert.isEqual("/not/in/map", realPath(env, sitemap));
 }
-
+*/
