@@ -81,12 +81,6 @@ Other related projects:
 
 * [appengine-blog-example](http://www.nitrojs.org/appenginejs/appengine-blog-example.tar.gz)
 
-    
-Caveats
--------
-
-Nitro is under intense development. Changes to the API are to be expected.        
-
 
 Credits
 -------
