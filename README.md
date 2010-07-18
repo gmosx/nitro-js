@@ -88,6 +88,9 @@ Credits
 * George Moschovitis, [george.moschovitis@gmail.com](mailto:george.moschovitis@gmail.com)
 * Panagiotis Astithas, [pastith@gmail.com](mailto:george.moschovitis@gmail.com)
 
+This version of Nitro includes files from Jack (http://github.com/tlrobinson/jack). 
+The copyright belongs to the Jack contributors.
+
 
 License
 -------
