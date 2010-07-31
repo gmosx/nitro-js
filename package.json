@@ -4,10 +4,7 @@
     "keywords": ["web", "framework", "jsgi"],
     "author": "George Moschovitis",
     "email": "george.moschovitis@gmail.com",
-    "dependencies": [
-        "narwhal-lib",
-        "jack-lib"
-    ],
+    "dependencies": [],
     "contributors": [
         "Kris Kowal (http://askawizard.blogspot.com/)"
     ],
