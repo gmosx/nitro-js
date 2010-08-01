@@ -28,9 +28,7 @@ To install Ringo, follow the instructions here:
 Then, you should install the nitro package:
 
     $ ringo-admin gmosx/nitro
-    $ ringo-admin gmosx/narwhal-lib
-    $ ringo-admin gmosx/jack-lib
-    $ ringo-admin gmosx/normal-template
+    $ ringo-admin gmosx/normal-template (optional, used in the example)
 
 Finally, you are ready to run the simple example:
 
@@ -42,6 +40,8 @@ The application will start listening at localhost:8080, so use your favourite br
 For a more sophisticated example that implements a simple Blog on Google App Engine have a look at:
 
 [appengine-blog-example](http://www.nitrojs.org/appenginejs/appengine-blog-example.tar.gz)
+
+For more details on Nitro, make sure you check out the [documentation](http://www.nitrojs.org/docs).
 
 
 Google App Engine
